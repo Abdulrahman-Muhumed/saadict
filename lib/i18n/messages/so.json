@@ -1,0 +1,521 @@
+{
+  "home": {
+    "hero": {
+      "badge": "Mareegta Rasmiga ah ee Dijitaalka",
+      "titleTop": "Ku soo dhowow",
+      "titleHighlight": "Hoggaan E-Portal",
+      "desc": "Maaree safarkaaga Iimaanka si ammaan ah — ka hel hal koonto: booqashooyinka, Aqoonsiyada Dijitaalka ah (QR), qaansheegyada, iyo xaqiijinta dukumentiyada.",
+      "cta": "Gali E-Portal-ka",
+      "chips": {
+        "secure": "Ammaan",
+        "accessible": "La marin karo",
+        "verified": "La xaqiijiyey"
+      },
+      "imageAlt": "Muuqaalka Dashboard-ka Hoggaan E-Portal"
+    },
+    "chips": [
+      {
+        "title": "Tan iyo 2020",
+        "subtitle": "Khibrad"
+      },
+      {
+        "title": "Shati leh",
+        "subtitle": "iyo Caymis"
+      },
+      {
+        "title": "Waqtiyaysan",
+        "subtitle": "Taageero"
+      }
+    ],
+    "why": {
+      "title": "Sababta Hoggaan Travels",
+      "desc": "Khibrad la aamini karo, raaxo leh, oo si xirfad leh loo hago—xujaaj iyo qoysas.",
+      "cards": [
+        {
+          "title": "La Aamini Karo",
+          "desc": "Qiime cad & jadwal daah-furan."
+        },
+        {
+          "title": "Raaxo",
+          "desc": "Hoteello la soo xulay & gaadiid fudud."
+        },
+        {
+          "title": "Hagid",
+          "desc": "Taageero goobta iyo caawinta cibaadooyinka."
+        },
+        {
+          "title": "Khibrad",
+          "desc": "Xilliyaal badan & iskaashi hawlgal."
+        }
+      ]
+    },
+    "process": {
+      "title": "Hoggaan Travels",
+      "desc": "Safarkaaga, talaabo-talaabo",
+      "step1": "Fiiso",
+      "step2": "Duulimaad",
+      "step3": "Hoteel",
+      "step4": "Cibaadooyin",
+      "step5": "Soo laabasho"
+    },
+    "cta": {
+      "title": "Diyaar ma u tahay qorshaha xajka/ Cumrada?",
+      "desc": "Nala soo xidhiidh — jadwalka iyo xirmada saxda ah ayaan kugu hagi doonaa.",
+      "button": "Nala Soo Xidhiidh"
+    },
+    "services": {
+      "title": "Adeegyadeenna",
+      "desc": "Madal mideysan oo loogu talagalay adeegyada safarka & saadka."
+    },
+    "features": {
+      "badge": "Astaamaha Muhiimka ah",
+      "title": "Wax walba oo aad ugu baahan tahay socdaal Xaj & Cumro dijitaal ah oo habsami leh",
+      "desc": "Hoggaan E-Portal wuxuu isku xiraa hujjajka, wakiillada iyo maamulka gudaha hal nidaam ammaan ah — socdaalka, dukumiintiyada iyo lacag-bixinnada.",
+      "items": {
+        "id": {
+          "title": "Aqoonsi Dijitaal ah oo Hujaajka",
+          "desc": "Ka hel aqoonsigaaga gaarka ah, daabac kaarka, oo si degdeg ah u xaqiiji boos celintaada."
+        },
+        "data": {
+          "title": "Xog Isku-xiran",
+          "desc": "Dhammaan boos celinta, dukumiintiyada iyo xogta safarka waxaa lagu kaydiyaa si ammaan ah oo waqtiga-dhabta ah isu waafaqsan."
+        },
+        "payments": {
+          "title": "Lacag-bixino & Invoice-yo",
+          "desc": "La soco lacag-bixinnada, invoice-yada iyo risiidhada — daah-furnaan buuxda talaabo kasta."
+        },
+        "access": {
+          "title": "Gelitaan La Xaqiijiyay",
+          "desc": "Heerarka oggolaanshaha kala duwan ayaa ka dhigaya in hujjajka, wakiillada iyo maamulku ay helaan waxa ay u baahan yihiin oo keliya."
+        },
+        "updates": {
+          "title": "Cusboonaysiin 24/7 ah",
+          "desc": "La soco digniino degdeg ah, jadwalka socdaalka iyo xaaladda dukumiintiyada."
+        },
+        "support": {
+          "title": "Taageero Isku-dhexjir ah",
+          "desc": "Kala xiriir maamulkaaga safarka ama kooxda Hoggaan si toos ah gudahaa portal-ka."
+        }
+      },
+      "ctaTitle": "Ka bilaaw safarkaaga Hoggaan E-Portal",
+      "ctaDesc": "Gali akoonkaaga si aad u hesho qalabka dijitaalka ah ama u xaqiijiso xaaladda boos celintaada.",
+      "ctaLogin": "Gali (Login)"
+    }
+  },
+  "about": {
+    "about": {
+      "badge": "Ku Saabsan Madasha",
+      "title": "Hoggaan E-Portal",
+      "body": "Hoggaan E-Portal waa madal gudaha ah oo rasmiga ah ee Hoggaan Travels. Waxay mideysaa dhammaan hawlgallada dijitaalka ah — laga bilaabo qabsashada iyo maaraynta xujaajta ilaa diiwaannada maaliyadda iyo xaqiijinta dukumentiyada. Waxaa loo dhisay oo keliya shaqaalaha Hoggaan ee la oggolaaday iyo isticmaaleyaasha la xaqiijiyey si loo hubiyo ammaan, hufnaan, iyo daah-furnaan dhammaan waaxyaha."
+    },
+    "access": {
+      "badge": "Yaa Gala",
+      "title": "Shaqaale La Xaqiijiyey & Isticmaaleyaal La Oggolaaday Kaliya",
+      "body": "Gelitaanka madashu wuxuu xaddidan yahay: shaqaalaha Hoggaan ee la xaqiijiyey, kooradinatarrada kooxaha, iyo isticmaalayaasha maamulka ee loo qoondeeyey. Gelitaan walba waxaa ilaaliya maarayn kal-fadhi oo sugan si xogta sida fiisooyinka, lacag-bixinnada, iyo booqashooyinka ay u ahaadaan kuwo sir ah.",
+      "bullets": [
+        "Shaqaale iyo maareeyayaal waaxeed",
+        "Wakiillo & kooradintarro goob-fadhi",
+        "Shaqaale maamul oo la xaqiijiyey"
+      ]
+    },
+    "core": {
+      "badge": "Awoodaha Asaaska",
+      "title": "Qalab Isku Xiran oo Hal Dashboard Ku Jira",
+      "body": "Nidaamku wuxuu isku daraa qabsashada, maaraynta dukumentiyada, raadraaca maaliyadda, iyo xaqiijinta aqoonsiga dijitaalka ah si uu u noqdo hal shaqo-socod. Tani waxay suurto-gelisaa iskaashi waqtiga-dhabta ah iyo kaydin toos ah.",
+      "bullets": [
+        "Qabsasho & maarayn kooxeed",
+        "Aqoonsi Xujaaj & QR xaqiijin",
+        "Qaybin hoteel & gaadiid",
+        "Qaansheegyo & lacag-raac",
+        "Warbixinno & falanqayn toos ah"
+      ]
+    },
+    "security": {
+      "badge": "Ammaan & Xasillooni",
+      "title": "Ilaalin Heer-Shirkadeed",
+      "body": "Xogtu waxay ku sugan tahay Supabase iyo Next.js middleware, fal-gelli kasta, fayl walba, iyo kal-fadhi walba waxay raacaan siyaasad gelitaan oo gudaha ah. Kormeer joogto ah & kaydin qarsoon ayaa ilaalinaya xogta shaqaalaha iyo xujaajta.",
+      "bullets": [
+        "RLS waqtiga-dhabta ah (Supabase)",
+        "Ogolaansho door-ku-saleysan (admin/employee)",
+        "Cusboonaysiin kal-fadhi & difaac waqtiga",
+        "Kaydin la qarxiyey & raad-raac (audit logs)"
+      ]
+    }
+  },
+  "contact": {
+    "title": "La Xiriir Kooxda Hoggaan E-Portal",
+    "intro": "La xidhiidh kooxda hawlgallada dijitaalka — si degdeg ah ayaan uga jawaabi doonaa.",
+    "side": {
+      "title": "Wax Caawin ah Rabtaa?",
+      "subtitle": "Dhibaato farsamo, dalab gelitaan, ama E-Portal khaas ah — waanu ku taageeri doonaa."
+    },
+    "form": {
+      "title": "Nagu Soo Dir Fariin",
+      "name": "Magaca Buuxa",
+      "email": "Cinwaanka Email-ka",
+      "message": "Fariin",
+      "placeholders": {
+        "name": "Magacaaga buuxa",
+        "email": "adiga@example.com",
+        "message": "Halkan ku qor fariintaada…"
+      },
+      "cta": "Dir Fariinta",
+      "sending": "Diraya…",
+      "success": "Fariinta si guul ah ayaa loo diray.",
+      "disclaimer": "Markaad dirto, waxaad oggoshahay in kooxda taageerada Hoggaan E-Portal ay kula soo xidhiidho."
+    },
+    "errors": {
+      "required": "Fadlan buuxi dhammaan meelaha loo baahan yahay."
+    }
+  },
+  "meta": {
+    "title": "Hoggaan Travels",
+    "description": "Bogga rasmiga ah ee Hoggaan Travels"
+  },
+  "nav": {
+    "brandName": "Hoggaan E-Portal",
+    "logoAlt": "Astaanta Hoggaan E-Portal",
+    "home": "Bogga Hore",
+    "about": "Ku Saabsan Portal-ka",
+    "services": "Adeegyo",
+    "contact": "Caawimaad & Taageero",
+    "login": "Gali"
+  },
+  "portalFooter": {
+    "brand": "Hoggaan E-Portal",
+    "description": "Lafta dhexe ee dijitaalka ah ee Hoggaan Travels — isku xirta qabsashada, maaliyadda, iyo hawlgallada xujaajta hal madal ammaan ah.",
+    "badges": {
+      "verified": "Nidaam La Xaqiijiyey",
+      "secure": "Gelitaan Amaan ah",
+      "powered": "Ku shaqeeya Next.js + Supabase"
+    },
+    "groups": {
+      "platform": "Madal",
+      "resources": "Kheyraad"
+    },
+    "links": {
+      "about": "Ku Saabsan Portal-ka",
+      "services": "Adeegyo",
+      "support": "Taageero",
+      "login": "Gali",
+      "main": "Bogga Ugu Weyn"
+    },
+    "support": {
+      "title": "Taageerada Nidaamka",
+      "address": "Hoggaan Travels HQ – Muqdisho & Jeddah",
+      "languages": "Afaf Badan (EN / SO / AR)"
+    },
+    "legal": {
+      "rights": "© {year} Hoggaan Travels E-Portal – Xuquuq kasta way xifdisan yihiin",
+      "builtWith": "Waxaa dhisay "
+    }
+  },
+  "terms_privacy": {
+    "hero": {
+      "badge": "Shuruudo & Qarsoodi",
+      "title": "Ilaalin cad. Adeeg daacad ah.",
+      "desc": "Hal bog, laba aragti. Akhri kooban oo fudud — ama u beddel aragtida Sharciga si aad u hesho faahfaahin dhamaystiran. Labadaba waxa ka siman: ixtiraamka xogtaada, shuruudo caddaalad ah, iyo adeeg hufan.",
+      "lastUpdated": "Cusboonaysiintii u dambeysay:",
+      "toggle": {
+        "label": "Hab-aragti",
+        "plain": "Fudud",
+        "legal": "Sharciga"
+      },
+      "pills": {
+        "agent": "Wakiil Ruqsad leh",
+        "privacy": "Qarsoodi-Hore",
+        "refunds": "Dib-u-celin Daah-furan"
+      }
+    },
+    "toc": {
+      "title": "Ku lifaaqan boggan"
+    },
+    "sections": {
+      "principles": {
+        "title": "Mabaadi'deena"
+      },
+      "terms": {
+        "title": "Shuruudaha Adeegga"
+      },
+      "payments": {
+        "title": "Lacag-bixin & Qayb-Qayb"
+      },
+      "refunds": {
+        "title": "Dib-u-celin"
+      },
+      "dataMap": {
+        "title": "Khariidadda Xogta (Waxaan shaqeyneyno)"
+      },
+      "lawful": {
+        "title": "Asaas Sharci (Sababta aan u shaqeyno)"
+      },
+      "retention": {
+        "title": "Kaydinta (Mudada aan hayno)"
+      },
+      "security": {
+        "title": "Amniga (Sida aan u ilaalino)"
+      },
+      "cookies": {
+        "title": "Cookies & Raad-raac"
+      },
+      "rights": {
+        "title": "Xuquuqdaada"
+      },
+      "complaints": {
+        "title": "Cabashooyin"
+      },
+      "changes": {
+        "title": "Is-beddellada"
+      }
+    },
+    "principles": {
+      "safety": {
+        "title": "Amni Marka Koowaad",
+        "plain": "Nabadgelyadaadu waxay hagtaa go’aan kasta.",
+        "legal": "Amniga ayaa mudnaanta koowaad u leh doorashada iibiyeyaasha iyo qorshaynta jadwalka."
+      },
+      "honesty": {
+        "title": "Daacadnimo Mar Walba",
+        "plain": "Qiyaamo ma jirto, qoraal dhuumana ma jiro.",
+        "legal": "Qiimayaasha & waxa ku jira waa horay loo caddeeyey; VAT (5%) waa ku jiraa haddii aan si kale u sheegin."
+      },
+      "compliance": {
+        "title": "Waafaqsanaan",
+        "plain": "Shuruucda ayaan raacnaa si safarkaagu u socdo si siman.",
+        "legal": "Waxaan ka shaqaynaa sidii wakiil duullimaadyo/hoteello/fiiso; waxaan u hoggaansannaa siyaasadahooda iyo kuwa qunsuliyadaha."
+      },
+      "respect": {
+        "title": "Ixtiraam",
+        "plain": "Adeeg xushmad leh—bilow ilaa soo-laabasho ammaan ah.",
+        "legal": "Shaqaaluhu waxay ku shaqeeyaan waajibaad daryeel iyo gelitaan ku yar waxa loo baahan yahay."
+      }
+    },
+    "terms": {
+      "plain": {
+        "intro": "Waxaan kuu ahayn wakiilka duullimaadyada, hoteellada, iyo fiisooyinka. Oggolaansho & helitaan kama dambays waxaa leh bixiyeyaasha.",
+        "bullets": [
+          "Socdaalayaashu waa inay ka weyn yihiin 18. Haddii ka yar, masuul (waliid) ayaa la soconaya oo dhammeeya foomamka.",
+          "Baasaaboorku ha ansax ahaado ugu yaraan 6 bilood ka dib safarka (12+ bilood ayaa la talinayaa).",
+          "Dhammaan qiimayaashu waxay ku jiraan VAT 5% haddii aan si cad u sheegin in kale."
+        ]
+      },
+      "legal": {
+        "intro": "Hoggaan Travels waxay u shaqaysaa oo keliya sidii wakiil wadajirka u koordineeya boos celinta & fiisooyinka bixiyeyaasha saddexaad. Dhammaan booskuna waxa uu ku xiran yahay xeerarka bixiyaha & awooddiisa; fulinta & oggolaanshuhu waa masuuliyadda bixiyaha.",
+        "bullets": [
+          "Da'da: 18+. Carruurtu waxay u baahan yihiin masuul/la-soconaya oo qaata masuuliyadda & dukumeentiyada.",
+          "Baasaaboorka: ansax ugu yaraan 6 bilood ka dib bixitaanka; 12+ bilood waa la doorbidaa.",
+          "Qiimayn: haddii aan si gaar ah loo kala bixin, VAT 5% waa ku jiraa."
+        ]
+      }
+    },
+    "payments": {
+      "full": {
+        "title": "Bixin Buuxda",
+        "plain": "Lacag caddaan ah ama wareejin bangi. Boos celintu way xaqiijinaysaa marka lacagtu soo gasho.",
+        "legal": "Bixin buuxda: caddaan ama wareejin bangi; xaqiijin kadib marka la helo & la isu-eego lacagta."
+      },
+      "install": {
+        "title": "Qayb-Qayb (SomBank & Amal Bank)",
+        "plain": "Haddii aad u qalanto: caddeyn shaqo, bayaannada bangiga 6 bilood, baasaaboor (6+ bilood), sawir, iyo damiin (shakhsi ama shirkad).",
+        "legal": "Qalanka qayb-qaybku wuxuu u baahan yahay: caddeyn shaqo, bayaannada 6-bilood ee bangiga, baasaaboor >6 bilood, sawir, iyo damiin. Haddii shakhsi: baasaaboorka, sawirka, caddeynta shaqada, iyo bayaannada 6-bilood. Haddii shirkad: diiwaangelin sax ah (Shatiga)."
+      }
+    },
+    "refunds": {
+      "plain": [
+        "Dib-u-celin buuxda haddii aad kansasho ka hor inta aan fiisada loo gudbin xafiiska dhexe ama la farsameyn.",
+        "Haddii fiisadu hore loo gudbiyey ama la bixiyey, waxaan ka jarnay oo keliya kharashka fiisada; inta kale waanu soo celineynaa."
+      ],
+      "legal": [
+        "Kansashooyinka ka hor gudbinta/ farsamaynta fiisada — macaamiilku wuxuu xaq u leeyahay lacag-celin buuxda.",
+        "Marka fiiso la gudbiyo ama la bixiyo, kharashka fiisadu ma-celin; kaliya taas ayaa laga jaraa, wixii kale ee suurtagal ah waa la celiyaa."
+      ]
+    },
+    "dataMap": {
+      "head": {
+        "cat": "Qeyb",
+        "ex": "Tusaalooyin",
+        "why": "Ujeeddo",
+        "share": "Cidda aragta"
+      },
+      "rows": {
+        "identity": {
+          "cat": "Aqoonsi",
+          "ex": "Magac buuxa, jinsiyad, lambar baasaboore, sawir",
+          "why": "Bixinta fiiso, xaqiijin socdaale, soo bandhigid jadwal (Hoggaan ID & QR)",
+          "share": "Shirkado duulimaad & xarumo fiiso — sida loogu baahan yahay"
+        },
+        "contact": {
+          "cat": "Xiriir",
+          "ex": "Telefoon, email",
+          "why": "Cusboonaysiinta jadwalka, fariimaha lama huraanka ah",
+          "share": "Bixiyeyaasha haddii loo baahdo xaqiijinta boos celinta"
+        },
+        "booking": {
+          "cat": "Booqasho",
+          "ex": "Trip ID, duulimaadyo, hoteello",
+          "why": "Si loo habeeyo safarkaaga dhammaad ilaa dhammaad",
+          "share": "Duulimaadyo & hoteello (si loo fuliyo boos celinta)"
+        }
+      },
+      "note": "Xogtaada uma adeegsaneyno suuqgeyn ama falanqayn—kaliya adeeg bixinta safarka."
+    },
+    "lawful": {
+      "contract": {
+        "title": "Qandaraas",
+        "plain": "Xog gaara ayaan u baahan nahay si aan u qabsanno safarkaaga & u bixino adeegyada aad dalbatay.",
+        "legal": "Falkalinta lagama maarmaanka u ah fulinta qandaraas ama qaadista tallaabooyin ka hor qandaraas—codsigaaga darteed."
+      },
+      "legal": {
+        "title": "Waajibaad Sharci",
+        "plain": "Shuruucda iyo shuruudaha qunsuliyadaha ayaan dhowrnaa.",
+        "legal": "Falkalin lagu raacayo waajibaadka sharciga, socdaalka/immigration, iyo canshuuraha."
+      },
+      "legit": {
+        "title": "Danta Sharciga ah",
+        "plain": "Waxaan ilaalinaa in safarkaagu u socdo si ammaan ah oo joogto ah.",
+        "legal": "Falkalin loogu talagalay amniga adeegga, ka-hortagga khiyaanada, iyo gaarsiinta jadwal ammaan ah—iyagoo la miisaamay xuquuqdaada."
+      },
+      "consent": {
+        "title": "Oggolaansho (Astaamo gaar ah)",
+        "plain": "Haddii astaamo u baahan yihiin oggolaansho, waanu waydiisan doonaa — waadna la noqon kartaa mar kasta.",
+        "legal": "Meelaha oggolaansho la adeegsado, waa mid gaar ah, xog-ogaal ah, isla markaana si dhib la’aan ah looga noqon karo."
+      }
+    },
+    "retention": {
+      "head": {
+        "data": "Xog",
+        "howLong": "Mudada",
+        "notes": "Faallooyin"
+      },
+      "rows": {
+        "idContact": {
+          "what": "Aqoonsi & Xiriir",
+          "howLong": "Inta safarku socdo + muddada sharcigu qoro",
+          "notes": "Kadib waa la tirtiraa ama si aan la celin karin ayaa loo yaqaanayn."
+        },
+        "booking": {
+          "what": "Booqasho & Jadwal",
+          "howLong": "Inta adeeggu socdo + daaqadda kormeerka",
+          "notes": "Waxay taageertaa xaqiijin, dood, iyo waafaqsanaan."
+        },
+        "install": {
+          "what": "Dukumentiyada Qayb-Qayb",
+          "howLong": "Sida uu qabo sharciga & shuruudaha bankiga",
+          "notes": "Kaliya loola wadaagaa SomBank / Amal Bank maalgelinta."
+        }
+      },
+      "footer": "Waxaan haysannaa xog kaliya inta looga baahan yahay safarkaaga & waajibaadkeena sharci—kuma kaydinno wax dheeri ah."
+    },
+    "security": {
+      "items": [
+        {
+          "title": "Gelitaan Xadidan",
+          "body": "Shaqaalaha Hoggaan ee tababaran oo u baahan kaliya ayaa geli kara diiwaankaaga."
+        },
+        {
+          "title": "Is-Difaac Darajooyin Badan",
+          "body": "Xakameyn ku saabsan dadka, habraacyada, iyo tignoolajiga si loo yareeyo khatarta."
+        },
+        {
+          "title": "Kanaallo Ammaan ah",
+          "body": "Xogta maraysa & kaydsanba waxaa ilaaliya habraacyo heer warshadeed."
+        }
+      ]
+    },
+    "cookies": {
+      "plain": "Raad-raac waan ka fogaanaynaa. Haddii cookie jiro, waa muhiim—sida gelitaanka ama luqadda. Xayeysiis/analytics ma jiro.",
+      "legal": "Cookies muhiim ah oo keliya (tusaale: kal-fadhi, luqad) ayaa loo adeegsan karaa hawlaha aasaasiga. Lama sameeyo xayeysiis dabeecad-raac ama analytics suuqgeyn."
+    },
+    "complaints": {
+      "plain": "Haddii wax khaldan dareentid, noo sheeg — waan saxeynaa. Haddii aadan ku qanacsanayn, waxaad la xiriiri kartaa hay’adda xogta ee degaankaaga.",
+      "legal": "Macaamiishu waxay cabasho u gudbin karaan Hoggaan Travels cinwaanka hoose. Haddii aan la xalin, waxaad u gudbin kartaa hay’adda kormeerka ee kugu shaqo leh."
+    },
+    "changes": [
+      {
+        "date": "2025-01-01",
+        "change": "Qaab laba-aragtiba leh (Fudud / Sharci), khariidad xog oo balaaran, caddeynta dib-u-celinta & qayb-qaybta."
+      },
+      {
+        "date": "2024-11-20",
+        "change": "Ku darid caddaynta isticmaalka QR & siyaasadda cookies."
+      }
+    ]
+  },
+  "portalServices": {
+    "hero": {
+      "badge": "Hoggaan E-Portal",
+      "title": "Adeegyada & Qaybaha Ugu Muhiimsan",
+      "desc": "E-Portal-ku waa madal mideysan oo u adeegta shaqaalaha Hoggaan iyo isticmaalayaasha la xaqiijiyey — fududeynta hawlgallada dijitaalka, qabsashada, iyo maaraynta geeddi-socod kasta."
+    },
+    "groups": [
+      {
+        "heading": "Hawlgallo & Maareyn",
+        "desc": "Qaybo aasaasi ah oo loogu talagalay qabsashada & isku-xirka xujaajta gudaha nidaamka Hoggaan.",
+        "items": [
+          {
+            "icon": "booking",
+            "title": "Qabsasho & Maareyn Kooxo",
+            "desc": "Abuur, maamul, oo la soco qabsashooyinka, duulimaadyada, & kooxaha waqtiga-dhabta ah."
+          },
+          {
+            "icon": "id",
+            "title": "Aqoonsi Xujaaj & Xaqiijin",
+            "desc": "Soo saar ID-yo dijitaal ah oo leh QR si jeeg-gelis degdeg ah & isku-dubarid xog."
+          },
+          {
+            "icon": "documents",
+            "title": "Dukumentiyo & Habka Fiisada",
+            "desc": "Si ammaan ah u geli, u xaqiiji, uguna kaydi dukumentiyada socdaalka & fiisada."
+          }
+        ]
+      },
+      {
+        "heading": "Hoy & Gaadiid",
+        "desc": "Qalab loogu talagalay dhaqdhaqaaqa & dejinta laga bilaabo imaanshaha ilaa bixitaanka.",
+        "items": [
+          {
+            "icon": "hotel",
+            "title": "Qaybin Hoteel & Qolal",
+            "desc": "Qoondee qolal oo la soco awoodda hoteelka adoo adeegsanaya dashboards."
+          },
+          {
+            "icon": "transport",
+            "title": "Gaadiid & Jadwal Mar-gaadiid",
+            "desc": "Isku-duwo wareegga garoomada, Madiina, iyo Makka waqtiga-dhabta ah."
+          },
+          {
+            "icon": "finance",
+            "title": "Qaansheegyo & Diiwaanno Maaliyadeed",
+            "desc": "Abuur & dib-u-eeg biilal, kharashaad, & lacag-bixinno—iyadoo la haynayo raad-raac amni."
+          }
+        ]
+      },
+      {
+        "heading": "Amni, Falanqayn & Taageero",
+        "desc": "Lakabyo horumarsan oo ka dhigaya hawlgallada kuwo ammaan ah, la cabbiri karo, oo isku xiran.",
+        "items": [
+          {
+            "icon": "security",
+            "title": "Amni Door-ku-saleysan",
+            "desc": "Ogolaanshooyin heerar kala duwan leh—shaqaale, maamuleyaal, & admins—si waafaqsanaan loo hubiyo."
+          },
+          {
+            "icon": "analytics",
+            "title": "Falanqayn & Warbixin",
+            "desc": "Dashboard-yo muuqaal leh oo cabbira KPI-yada: qabsasho, deggenaansho, kharashaad, iwm."
+          },
+          {
+            "icon": "support",
+            "title": "Taageero Isku-dhex-jira",
+            "desc": "Helpdesk gudaha ah & isgaarsiin shaqaale/koox goob-fadhi."
+          }
+        ]
+      }
+    ],
+    "cta": {
+      "title": "Ma xiisaynaysaa E-Portal la mid ah ururkaaga?",
+      "desc": "Kooxda horumarinta ee Hoggaan waxay kuu habayn kartaa oo kuu daabici kartaa nooc khaas ah—xafiisyada socdaalka, wasaaradaha, ama shirkadaha waaweyn.",
+      "button": "La Xiriir Kooxdeena"
+    }
+  }
+}

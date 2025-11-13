@@ -1,0 +1,521 @@
+{
+  "home": {
+    "hero": {
+      "badge": "Official Digital Platform",
+      "titleTop": "Welcome to",
+      "titleHighlight": "Hoggaan E-Portal",
+      "desc": "Manage your pilgrimage journey securely — access bookings, digital IDs, invoices, and document verification in one unified dashboard.",
+      "cta": "Login to Portal",
+      "chips": {
+        "secure": "Secure",
+        "accessible": "Accessible",
+        "verified": "Verified"
+      },
+      "imageAlt": "Hoggaan E-Portal Dashboard Preview"
+    },
+    "chips": [
+      {
+        "title": "Since 2020",
+        "subtitle": "Experience"
+      },
+      {
+        "title": "Licensed",
+        "subtitle": "& Insured"
+      },
+      {
+        "title": "On Time",
+        "subtitle": "Support"
+      }
+    ],
+    "why": {
+      "title": "Why Hoggaan Travels",
+      "desc": "Trusted, comfortable, and expertly guided experiences for pilgrims and families.",
+      "cards": [
+        {
+          "title": "Trusted",
+          "desc": "Transparent pricing & clear itineraries."
+        },
+        {
+          "title": "Comfort",
+          "desc": "Curated hotels & smooth transport."
+        },
+        {
+          "title": "Guidance",
+          "desc": "On-ground support and ritual help."
+        },
+        {
+          "title": "Experience",
+          "desc": "Multi-season partners & ops."
+        }
+      ]
+    },
+    "process": {
+      "title": "Hoggaan Travels",
+      "desc": "Your journey, step by step",
+      "step1": "Visa",
+      "step2": "Flight",
+      "step3": "Hotel",
+      "step4": "Rituals",
+      "step5": "Return"
+    },
+    "cta": {
+      "title": "Ready to plan your pilgrimage?",
+      "desc": "Contact us — we’ll help you choose the right dates and package.",
+      "button": "Contact Us"
+    },
+    "services": {
+      "title": "Our Services",
+      "desc": "A unified platform for Travel services & logistics."
+    },
+    "features": {
+      "badge": "Core Features",
+      "title": "Everything you need for a seamless digital pilgrimage",
+      "desc": "The Hoggaan E-Portal connects pilgrims, agents, and administrators through one secure system — for travel, documents, and payments.",
+      "items": {
+        "id": {
+          "title": "Digital Pilgrim ID",
+          "desc": "Access your personalized ID, print cards, and verify your booking instantly."
+        },
+        "data": {
+          "title": "Centralized Data",
+          "desc": "All bookings, documents, and traveler details securely stored and synced in real-time."
+        },
+        "payments": {
+          "title": "Payments & Invoices",
+          "desc": "Track transactions, invoices, and receipts with full transparency at every step."
+        },
+        "access": {
+          "title": "Verified Access",
+          "desc": "Multi-role authentication keeps pilgrims, agents, and admins on the right access level."
+        },
+        "updates": {
+          "title": "24/7 Updates",
+          "desc": "Stay informed with instant alerts, travel schedules, and document status updates."
+        },
+        "support": {
+          "title": "Integrated Support",
+          "desc": "Reach your travel administrator or the Hoggaan team directly from within the portal."
+        }
+      },
+      "ctaTitle": "Begin your journey with Hoggaan E-Portal",
+      "ctaDesc": "Log in to access your digital tools or verify your booking status now.",
+      "ctaLogin": "Login"
+    }
+  },
+  "about": {
+    "about": {
+      "badge": "About the Platform",
+      "title": "The Hoggaan E-Portal",
+      "body": "The Hoggaan E-Portal is the official internal platform for Hoggaan Travels. It centralizes all digital operations — from booking and pilgrim management to financial records and document verification. Built exclusively for authorized Hoggaan employees and verified users, it ensures security, efficiency, and transparency across every department."
+    },
+    "access": {
+      "badge": "Who Can Access",
+      "title": "Verified Staff and Authorized Users Only",
+      "body": "Access to the portal is restricted to authenticated Hoggaan personnel, group coordinators, and assigned administrative users. Every login is protected by secure session management, ensuring that sensitive data such as visas, payments, and bookings remain confidential.",
+      "bullets": [
+        "Employees and departmental managers",
+        "Authorized agents and field coordinators",
+        "Verified administrative staff"
+      ]
+    },
+    "core": {
+      "badge": "Core Capabilities",
+      "title": "Connected Tools in One Secure Dashboard",
+      "body": "The system integrates booking, document management, financial tracking, and digital identity verification into a unified workflow. This enables real-time collaboration and automated record keeping.",
+      "bullets": [
+        "Booking and group management",
+        "Pilgrim ID and QR verification",
+        "Hotel and transport assignment",
+        "Invoice and payment tracking",
+        "Automated reports and analytics"
+      ]
+    },
+    "security": {
+      "badge": "Security & Reliability",
+      "title": "Enterprise-Level Protection",
+      "body": "Data is secured through Supabase and Next.js middleware, ensuring that every transaction, file, and session follows strict internal access policies. Continuous audits and encrypted storage protect both staff and pilgrim data.",
+      "bullets": [
+        "Supabase real-time RLS enforcement",
+        "Role-based access for admins and employees",
+        "Automatic session updates and timeout protection",
+        "Encrypted file storage and audit logs"
+      ]
+    }
+  },
+  "contact": {
+    "title": "Contact the Hoggaan E-Portal Team",
+    "intro": "Reach out to our digital operations team — we’ll get back to you promptly.",
+    "side": {
+      "title": "Need Assistance?",
+      "subtitle": "Technical issues, access requests, or custom portal inquiries — we’re here to help."
+    },
+    "form": {
+      "title": "Send us a message",
+      "name": "Full Name",
+      "email": "Email Address",
+      "message": "Message",
+      "placeholders": {
+        "name": "Your full name",
+        "email": "you@example.com",
+        "message": "Write your message here..."
+      },
+      "cta": "Send Message",
+      "sending": "Sending…",
+      "success": "Message sent successfully.",
+      "disclaimer": "By submitting, you agree to be contacted by the Hoggaan E-Portal support team."
+    },
+    "errors": {
+      "required": "Please fill in all required fields."
+    }
+  },
+  "meta": {
+    "title": "Hoggaan Travels",
+    "description": "Official Hoggaan Travels website"
+  },
+  "nav": {
+    "brandName": "Hoggaan E-Portal",
+    "logoAlt": "Hoggaan E-Portal Logo",
+    "home": "Home",
+    "about": "About Portal",
+    "services": "Services",
+    "contact": "Help & Support",
+    "login": "Login"
+  },
+  "portalFooter": {
+    "brand": "Hoggaan E-Portal",
+    "description": "The centralized digital backbone of Hoggaan Travels — connecting bookings, finance, and pilgrim operations in one secure platform.",
+    "badges": {
+      "verified": "Verified System",
+      "secure": "Secure Access",
+      "powered": "Powered by Next.js + Supabase"
+    },
+    "groups": {
+      "platform": "Platform",
+      "resources": "Resources"
+    },
+    "links": {
+      "about": "About Portal",
+      "services": "Services",
+      "support": "Support",
+      "login": "Login",
+      "main": "Main Website"
+    },
+    "support": {
+      "title": "System Support",
+      "address": "Hoggaan Travels HQ – Mogadishu & Jeddah",
+      "languages": "Multi-Language Interface (EN / SO / AR)"
+    },
+    "legal": {
+      "rights": "© {year} Hoggaan Travels E-Portal – All Rights Reserved",
+      "builtWith": "Built by"
+    }
+  },
+  "terms_privacy": {
+    "hero": {
+      "badge": "Legal — Terms & Privacy",
+      "title": "Protection with clarity. Service with integrity.",
+      "desc": "One page. Two views. Read the essentials in Plain English—or switch to the Legal view for full detail. Either way, you’ll find the same commitments: respect for your privacy, fair terms, and transparent service.",
+      "lastUpdated": "Last updated:",
+      "toggle": {
+        "label": "View mode",
+        "plain": "Plain",
+        "legal": "Legal"
+      },
+      "pills": {
+        "agent": "Licensed Agent",
+        "privacy": "Privacy-First",
+        "refunds": "Transparent Refunds"
+      }
+    },
+    "toc": {
+      "title": "On this page"
+    },
+    "sections": {
+      "principles": {
+        "title": "Our Principles"
+      },
+      "terms": {
+        "title": "Terms of Service"
+      },
+      "payments": {
+        "title": "Payments & Installments"
+      },
+      "refunds": {
+        "title": "Refunds"
+      },
+      "dataMap": {
+        "title": "Data Map (What we process)"
+      },
+      "lawful": {
+        "title": "Lawful Bases (Why we process)"
+      },
+      "retention": {
+        "title": "Retention (How long we keep it)"
+      },
+      "security": {
+        "title": "Security (How we protect it)"
+      },
+      "cookies": {
+        "title": "Cookies & Tracking"
+      },
+      "rights": {
+        "title": "Your Rights"
+      },
+      "complaints": {
+        "title": "Complaints"
+      },
+      "changes": {
+        "title": "Change Log"
+      }
+    },
+    "principles": {
+      "safety": {
+        "title": "Safety First",
+        "plain": "Your wellbeing drives every decision.",
+        "legal": "Safety is prioritized in vendor selection and itinerary planning."
+      },
+      "honesty": {
+        "title": "Honesty Always",
+        "plain": "No hidden tricks, no vague fine print.",
+        "legal": "Pricing and inclusions are stated upfront; VAT (5%) included unless stated otherwise."
+      },
+      "compliance": {
+        "title": "Compliance",
+        "plain": "We follow the rules so your trip goes smoothly.",
+        "legal": "We act as agent for flights/hotels/visas and comply with provider and consular policies."
+      },
+      "respect": {
+        "title": "Respect",
+        "plain": "Careful, courteous service—start to safe return.",
+        "legal": "Staff operate under a duty of care and least-privilege data access."
+      }
+    },
+    "terms": {
+      "plain": {
+        "intro": "We’re your agent for flights, hotels, and visas. Final approval and availability come from the providers.",
+        "bullets": [
+          "Travelers must be 18+. If younger, a sponsor (guardian) must travel with them and complete all forms.",
+          "Passport must be valid at least 6 months from travel date (12+ months recommended).",
+          "All prices include 5% VAT unless we explicitly say otherwise."
+        ]
+      },
+      "legal": {
+        "intro": "Hoggaan Travels acts solely as an agent coordinating reservations and visa applications with third-party providers. All bookings are subject to provider rules and capacity; service delivery and approvals remain the provider’s responsibility.",
+        "bullets": [
+          "Age: 18+. Minors require a traveling sponsor/guardian who assumes liability and submits all documentation.",
+          "Passport: minimum validity of 6 months post-departure; 12+ months advised.",
+          "Pricing: unless itemized otherwise, charges are VAT-inclusive at 5%."
+        ]
+      }
+    },
+    "payments": {
+      "full": {
+        "title": "Full Payment",
+        "plain": "Pay cash or via bank transfer. Booking is confirmed after funds clear.",
+        "legal": "Full settlement via cash or bank transfer; confirmation follows receipt and reconciliation of funds."
+      },
+      "install": {
+        "title": "Installments (SomBank & Amal Bank)",
+        "plain": "If eligible, apply with proof of employment, last 6 months’ bank statements, passport (6+ months), photo, and a sponsor (individual or company).",
+        "legal": "Installment eligibility requires: current employment proof, 6-month bank statements, passport validity > 6 months, applicant photo, and a sponsor. If an individual: sponsor’s passport, photo, employment proof, and 6-month bank statements. If a company: valid registration (Shatiga)."
+      }
+    },
+    "refunds": {
+      "plain": [
+        "Full refund if you cancel before your visa is submitted to the main office or processed.",
+        "If your visa was already submitted or issued, we deduct only the visa cost and refund the rest."
+      ],
+      "legal": [
+        "For package cancellations prior to visa submission or processing by the main office, Customer is entitled to a full refund.",
+        "Where visa has been submitted to the main office or issued, the visa fee becomes non-refundable. Only that amount is deducted; all other recoverable sums are returned."
+      ]
+    },
+    "dataMap": {
+      "head": {
+        "cat": "Category",
+        "ex": "Examples",
+        "why": "Purpose",
+        "share": "Who sees it"
+      },
+      "rows": {
+        "identity": {
+          "cat": "Identity",
+          "ex": "Full name, nationality, passport number, photo",
+          "why": "Visa issuance, traveler verification, itinerary display (Hoggaan ID & QR)",
+          "share": "Airlines, visa centers—only as necessary"
+        },
+        "contact": {
+          "cat": "Contact",
+          "ex": "Phone, email",
+          "why": "Itinerary updates, essential travel communications",
+          "share": "Service providers if needed for booking confirmation"
+        },
+        "booking": {
+          "cat": "Booking",
+          "ex": "Trip ID, flights, hotels",
+          "why": "To coordinate your journey end-to-end",
+          "share": "Airlines, hotels (as required to fulfill reservations)"
+        }
+      },
+      "note": "We do not use your data for marketing or analytics—only to deliver your trip."
+    },
+    "lawful": {
+      "contract": {
+        "title": "Contract",
+        "plain": "We need some data to book your trip and deliver the services you ordered.",
+        "legal": "Processing necessary to perform a contract or to take steps at your request before entering a contract."
+      },
+      "legal": {
+        "title": "Legal Obligation",
+        "plain": "We obey applicable laws and consular requirements.",
+        "legal": "Processing to comply with legal duties, immigration/consular requirements, and tax obligations."
+      },
+      "legit": {
+        "title": "Legitimate Interests",
+        "plain": "We keep your journey secure and running smoothly.",
+        "legal": "Processing for service integrity, fraud prevention, and secure itinerary delivery—balanced against your rights."
+      },
+      "consent": {
+        "title": "Consent (specific features)",
+        "plain": "If a feature needs consent, we’ll ask and you can withdraw anytime.",
+        "legal": "Where consent is used, it is specific, informed, and revocable without detriment."
+      }
+    },
+    "retention": {
+      "head": {
+        "data": "Data",
+        "howLong": "Retention",
+        "notes": "Notes"
+      },
+      "rows": {
+        "idContact": {
+          "what": "Identity & Contact",
+          "howLong": "While trip is active + legally required period",
+          "notes": "Then deleted or irreversibly anonymized."
+        },
+        "booking": {
+          "what": "Booking & Itinerary",
+          "howLong": "While service is active + audit window",
+          "notes": "Supports confirmations, disputes, compliance."
+        },
+        "install": {
+          "what": "Installment Docs",
+          "howLong": "Per bank & legal requirements",
+          "notes": "Only shared with SomBank / Amal Bank for financing."
+        }
+      },
+      "footer": "We only keep data for as long as needed for your journey and our legal duties—no extra."
+    },
+    "security": {
+      "items": [
+        {
+          "title": "Least-Privilege Access",
+          "body": "Only trained Hoggaan staff with a genuine need can access your record."
+        },
+        {
+          "title": "Defense-in-Depth",
+          "body": "Controls across people, process, and technology to reduce risk."
+        },
+        {
+          "title": "Secure Channels",
+          "body": "Data in transit and at rest is protected with industry-standard methods."
+        }
+      ]
+    },
+    "cookies": {
+      "plain": "We avoid tracking. If any cookie exists, it’s essential—like sign-in or language preference. No ads, no analytics.",
+      "legal": "Only essential cookies (e.g., session, locale) may be used to deliver core functions. No behavioral ads, cross-site tracking, or marketing analytics are performed."
+    },
+    "complaints": {
+      "plain": "If something feels off, tell us—we’ll make it right. If you’re not satisfied, you may contact your local data authority.",
+      "legal": "Customers may submit complaints to Hoggaan Travels at the contact below. If unresolved, you may escalate to your competent supervisory authority (where applicable)."
+    },
+    "changes": [
+      {
+        "date": "2025-01-01",
+        "change": "New dual-mode (Plain / Legal) layout, expanded data map, clarified refunds and installments."
+      },
+      {
+        "date": "2024-11-20",
+        "change": "Added QR usage clarifications and cookie stance."
+      }
+    ]
+  },
+  "portalServices": {
+    "hero": {
+      "badge": "Hoggaan E-Portal",
+      "title": "Core Services & Modules",
+      "desc": "The E-Portal is a unified platform for Hoggaan employees and verified users — enabling smooth digital operations, bookings, and management of every travel process."
+    },
+    "groups": [
+      {
+        "heading": "Operations & Management",
+        "desc": "Core modules designed for booking workflows and pilgrim coordination inside Hoggaan’s ecosystem.",
+        "items": [
+          {
+            "icon": "booking",
+            "title": "Booking & Group Management",
+            "desc": "Create, manage, and track pilgrim bookings, flights, and groups in real-time across departments."
+          },
+          {
+            "icon": "id",
+            "title": "Pilgrim ID & Verification",
+            "desc": "Issue unique digital IDs with QR codes for instant check-in, identification, and data sync."
+          },
+          {
+            "icon": "documents",
+            "title": "Documents & Visa Processing",
+            "desc": "Securely upload, verify, and store required travel and visa documentation for every registered pilgrim."
+          }
+        ]
+      },
+      {
+        "heading": "Accommodation & Logistics",
+        "desc": "Tools for handling all movement and lodging operations from arrival to departure.",
+        "items": [
+          {
+            "icon": "hotel",
+            "title": "Hotel & Room Allocation",
+            "desc": "Assign rooms and monitor occupancy seamlessly through hotel dashboards and capacity tracking."
+          },
+          {
+            "icon": "transport",
+            "title": "Transport & Route Scheduling",
+            "desc": "Coordinate transfers between airports, Madinah, and Makkah with route-based time tracking."
+          },
+          {
+            "icon": "finance",
+            "title": "Invoices & Financial Records",
+            "desc": "Generate and review invoices, expenses, and payments automatically with secure audit trails."
+          }
+        ]
+      },
+      {
+        "heading": "Security, Analytics & Support",
+        "desc": "Advanced layers that keep operations safe, measurable, and connected for Hoggaan’s workforce.",
+        "items": [
+          {
+            "icon": "security",
+            "title": "Role-Based Access Security",
+            "desc": "Granular permissions for employees, managers, and admins to ensure safe access and compliance."
+          },
+          {
+            "icon": "analytics",
+            "title": "Analytics & Reports",
+            "desc": "Visual dashboards with live metrics for bookings, occupancy, expenses, and agent performance."
+          },
+          {
+            "icon": "support",
+            "title": "Integrated Support",
+            "desc": "Built-in helpdesk and staff support tools for internal communication and field assistance."
+          }
+        ]
+      }
+    ],
+    "cta": {
+      "title": "Interested in a Similar E-Portal for Your Organization?",
+      "desc": "Hoggaan’s in-house development team can customize and deploy a dedicated version of this system for travel agencies, ministries, or enterprise clients.",
+      "button": "Contact Our Team"
+    }
+  }
+}

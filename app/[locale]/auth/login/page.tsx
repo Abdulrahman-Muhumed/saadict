@@ -8,9 +8,10 @@ export default async function Page() {
  const supabase = await createClient(); 
 
   // Check current session
-  const { data } = await supabase.auth.getUser();
+  const { data } = await supabase.auth.getClaims();
+  const user = data?.claims;
 
-  if (data?.user) {
+  if (user) {
     // User already logged in → redirect to dashboard
     redirect("/dashboard");
   }

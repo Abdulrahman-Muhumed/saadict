@@ -7,16 +7,20 @@ import { useLocale, useTranslations } from "next-intl";
 import { brand } from "@/components/config/brand";
 import "flag-icons/css/flag-icons.min.css";
 import { usePathname, useRouter } from "@/lib/i18n/navigation";
+import AuthCTA from "@/components/AuthCTA "
 import LangChooser from "./LangChooser";
 import MobileSheet from "./MobileSheet";
 import { useScrollProgress } from "./hooks/useScrollProgress";
 import type { LanguageOption } from "./types";
+
+
 
 export default function HeaderBare() {
   const BRAND_INDIGO = brand.colors.primary;
   const ACCENT = brand.colors.accent;
 
   const t = useTranslations("nav");
+
   const locale = useLocale();
   const pathname = usePathname();
   const router = useRouter();
@@ -83,8 +87,8 @@ export default function HeaderBare() {
       <div className="mx-auto max-w-7xl px-4 transition-all">
         <div
           className={`relative flex items-center justify-between rounded-2xl border backdrop-blur-xl px-4 py-3 transition-all ${scrolled
-              ? "border-slate-200/70 bg-white/60 shadow-2xl dark:bg-neutral-950/80"
-              : "border-slate-200/40 bg-white/20 shadow-xl dark:bg-white/20"
+            ? "border-slate-200/70 bg-white/60 shadow-2xl dark:bg-neutral-950/80"
+            : "border-slate-200/40 bg-white/20 shadow-xl dark:bg-white/20"
             }`}
           style={{
             boxShadow: scrolled
@@ -116,8 +120,8 @@ export default function HeaderBare() {
                   key={link.href}
                   href={link.href}
                   className={`relative rounded-lg px-3 py-2 text-sm font-medium transition ${isActive
-                      ? "text-slate-900 dark:text-white"
-                      : "text-slate-600 hover:text-slate-900 dark:text-neutral-200"
+                    ? "text-slate-900 dark:text-white"
+                    : "text-slate-600 hover:text-slate-900 dark:text-neutral-200"
                     }`}
                 >
                   {link.label}
@@ -136,17 +140,7 @@ export default function HeaderBare() {
 
           {/* RIGHT CLUSTER */}
           <div className="hidden md:flex items-center gap-3">
-            <Link
-              href="/auth/login"
-              className="rounded-full px-4 py-2 text-sm font-semibold text-white shadow-sm hover:opacity-95 transition"
-              style={{
-                background: `linear-gradient(90deg, ${BRAND_INDIGO}, ${ACCENT})`,
-                boxShadow: "0 10px 30px -10px rgba(36,28,114,.5)",
-              }}
-            >
-              {t("login")}
-            </Link>
-
+            <AuthCTA t={t} />
             <LangChooser
               ref={langRef}
               locale={locale}
@@ -154,6 +148,8 @@ export default function HeaderBare() {
               changeLang={changeLang}
             />
           </div>
+
+
 
           {/* MOBILE TOGGLE */}
           <button
@@ -191,4 +187,3 @@ export default function HeaderBare() {
     </header>
   );
 }
-

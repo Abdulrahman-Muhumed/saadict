@@ -179,7 +179,8 @@
     "about": "About Portal",
     "services": "Services",
     "contact": "Help & Support",
-    "login": "Login"
+    "login": "Login",
+    "dashboard": "Dashboard"
   },
   "portalFooter": {
     "brand": "Hoggaan E-Portal",

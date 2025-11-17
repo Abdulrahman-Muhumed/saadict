@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
-import { i18n, Locale } from "@/lib/i18n/config";
+import type { ReactNode } from "react";
+import { i18n, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { TranslationProvider } from "@/lib/i18n/provider";
 
@@ -12,18 +12,21 @@ export default async function LocaleLayout({
   params,
 }: {
   children: ReactNode;
-  params: { locale: Locale };
+  // IMPORTANT: match what Next expects for "/[locale]"
+  params: Promise<{ locale: string }>;
 }) {
+  // Next 15: params is a Promise -> await it
+  const { locale: rawLocale } = await params;
 
-  const locale: Locale =
-    i18n.locales.includes(params.locale)
-      ? params.locale
-      : i18n.defaultLocale;
+  // Safely narrow to your union type
+  const locale: Locale = i18n.locales.includes(rawLocale as Locale)
+    ? (rawLocale as Locale)
+    : i18n.defaultLocale;
 
   const dictionary = await getDictionary(locale);
 
   return (
-    <TranslationProvider locale={locale} dictionary={dictionary} >
+    <TranslationProvider locale={locale} dictionary={dictionary}>
       {children}
     </TranslationProvider>
   );

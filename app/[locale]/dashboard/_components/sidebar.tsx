@@ -66,6 +66,7 @@ const buildSections = (locale: string): NavSection[] => [
         items: [
             { href: `/${locale}/dashboard/pilgrims`, label: "Pilgrims", icon: Users },
             { href: `/${locale}/dashboard/bookings`, label: "Bookings", icon: Plane },
+            { href: `/${locale}/dashboard/housing`, label: "Housing", icon: Plane },
             { href: `/${locale}/dashboard/trips`, label: "Trips", icon: Users },
             { href: `/${locale}/dashboard/tickets`, label: "Tickets", icon: Ticket },
             { href: `/${locale}/dashboard/requests`, label: "Requests", icon: Ticket },

@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 import { createClient } from "@supabase/supabase-js";
 import { brand } from "@/components/config/brand";
 import {
-  Calendar,
   Users,
   Plane,
   Building2,
   ListChecks,
   NotebookText,
+  BarChart3,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -22,16 +22,6 @@ const supabase = createClient(
 const PRIMARY = brand.colors.primary; // e.g. #241c72
 const ACCENT = brand.colors.accent;   // e.g. #F99417
 
-type Trip = {
-  id: number;
-  title: string;
-  start_date: string | null;
-  end_date: string | null;
-  status: "draft" | "active" | "archived";
-  season: string | null;
-  created_at?: string;
-};
-
 type Booking = {
   id: number;
   code?: string | null;
@@ -39,6 +29,13 @@ type Booking = {
   created_at?: string;
   trip_id?: number | null;
   pilgrim_name?: string | null; // if your table stores a display name
+};
+
+type Invoice = {
+  id: number;
+  invoice_number?: string | null;
+  status?: string | null; // paid | issued
+  created_at?: string | null;
 };
 
 type CountBlock = {
@@ -52,12 +49,15 @@ type CountBlock = {
   pendingUmrahReq: number;
   linkedFlights: number;
   linkedHotels: number;
+  totalInvoices: number;
+  invoicesPaid: number;
+  invoicesIssued: number;
 };
 
 export default function PageContent() {
   const [counts, setCounts] = useState<CountBlock | null>(null);
-  const [recentTrips, setRecentTrips] = useState<Trip[]>([]);
   const [recentBookings, setRecentBookings] = useState<Booking[]>([]);
+  const [recentInvoices, setRecentInvoices] = useState<Invoice[]>([]);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState<string | null>(null);
 
@@ -83,6 +83,9 @@ export default function PageContent() {
           umrahPending,
           flightsLinked,
           hotelsLinked,
+          invoicesAll,
+          invoicesPaid,
+          invoicesIssued,
         ] = await Promise.all([
           supabase.from("trips").select("*", { count: "exact", head: true }),
           supabase
@@ -113,6 +116,17 @@ export default function PageContent() {
           supabase
             .from("trip_hotels")
             .select("*", { count: "exact", head: true }),
+          supabase
+            .from("invoices")
+            .select("*", { count: "exact", head: true }),
+          supabase
+            .from("invoices")
+            .select("*", { count: "exact", head: true })
+            .eq("status", "paid"),
+          supabase
+            .from("invoices")
+            .select("*", { count: "exact", head: true })
+            .eq("status", "issued"),
         ]);
 
         const nextCounts: CountBlock = {
@@ -126,14 +140,10 @@ export default function PageContent() {
           pendingUmrahReq: umrahPending.count ?? 0,
           linkedFlights: flightsLinked.count ?? 0,
           linkedHotels: hotelsLinked.count ?? 0,
+          totalInvoices: invoicesAll.count ?? 0,
+          invoicesPaid: invoicesPaid.count ?? 0,
+          invoicesIssued: invoicesIssued.count ?? 0,
         };
-
-        // --- RECENT TRIPS
-        const { data: recentTripsData } = await supabase
-          .from("trips")
-          .select("*")
-          .order("created_at", { ascending: false })
-          .range(0, 4);
 
         // --- RECENT BOOKINGS
         const { data: recentBookingsData } = await supabase
@@ -142,10 +152,17 @@ export default function PageContent() {
           .order("created_at", { ascending: false })
           .range(0, 4);
 
+        // --- RECENT INVOICES
+        const { data: recentInvoicesData } = await supabase
+          .from("invoices")
+          .select("id, invoice_number, status, created_at")
+          .order("created_at", { ascending: false })
+          .range(0, 4);
+
         if (!alive) return;
         setCounts(nextCounts);
-        setRecentTrips(recentTripsData || []);
         setRecentBookings(recentBookingsData || []);
+        setRecentInvoices(recentInvoicesData || []);
         setLoading(false);
       } catch (e: any) {
         if (!alive) return;
@@ -163,54 +180,37 @@ export default function PageContent() {
     if (!counts) return [];
     return [
       {
-        title: "Total Trips",
-        value: counts.totalTrips.toString(),
-        icon: <Calendar className="w-6 h-6" />,
-        gradient: `linear-gradient(135deg, ${PRIMARY}, ${ACCENT})`,
-      },
-      {
-        title: "Active Trips",
-        value: counts.activeTrips.toString(),
-        icon: <ListChecks className="w-6 h-6" />,
-        gradient: `linear-gradient(135deg, ${ACCENT}, ${PRIMARY})`,
-      },
-      {
-        title: "Upcoming Trips",
-        value: counts.upcomingTrips.toString(),
-        icon: <NotebookText className="w-6 h-6" />,
-        gradient: `linear-gradient(135deg, ${PRIMARY}, ${ACCENT})`,
-      },
-      {
-        title: "Total Bookings",
-        value: counts.totalBookings.toString(),
-        icon: <Calendar className="w-6 h-6" />,
-        gradient: `linear-gradient(135deg, ${ACCENT}, ${PRIMARY})`,
-      },
-      {
         title: "Total Pilgrims",
         value: counts.totalPilgrims.toString(),
         icon: <Users className="w-6 h-6" />,
         gradient: `linear-gradient(135deg, ${PRIMARY}, ${ACCENT})`,
       },
       {
+        title: "Total Bookings",
+        value: counts.totalBookings.toString(),
+        icon: <BarChart3 className="w-6 h-6" />,
+        gradient: `linear-gradient(135deg, ${ACCENT}, ${PRIMARY})`,
+      },
+      {
         title: "Pending Umrah Requests",
         value: counts.pendingUmrahReq.toString(),
         icon: <NotebookText className="w-6 h-6" />,
-        gradient: `linear-gradient(135deg, ${ACCENT}, ${PRIMARY})`,
-      },
-      {
-        title: "Linked Flights",
-        value: counts.linkedFlights.toString(),
-        icon: <Plane className="w-6 h-6" />,
         gradient: `linear-gradient(135deg, ${PRIMARY}, ${ACCENT})`,
       },
       {
-        title: "Linked Hotels",
-        value: counts.linkedHotels.toString(),
-        icon: <Building2 className="w-6 h-6" />,
+        title: "Total Invoices",
+        value: counts.totalInvoices.toString(),
+        icon: <ListChecks className="w-6 h-6" />,
         gradient: `linear-gradient(135deg, ${ACCENT}, ${PRIMARY})`,
+        meta: `Paid: ${counts.invoicesPaid} • Issued: ${counts.invoicesIssued}`,
       },
-    ];
+    ] as {
+      title: string;
+      value: string;
+      icon: React.ReactNode;
+      gradient: string;
+      meta?: string;
+    }[];
   }, [counts]);
 
   return (
@@ -226,7 +226,7 @@ export default function PageContent() {
           Hoggaan Dashboard
         </h1>
         <p className="mt-2 text-slate-600 dark:text-slate-400">
-          Live overview of trips, bookings, pilgrims, and linked logistics.
+          Live overview of pilgrims, bookings, Umrah requests, invoices, and logistics.
         </p>
         {err ? (
           <div className="mt-3 rounded-lg border border-red-300/30 bg-red-500/10 px-3 py-2 text-sm text-red-100">
@@ -235,7 +235,7 @@ export default function PageContent() {
         ) : null}
       </motion.div>
 
-      {/* STATS GRID */}
+      {/* STATS GRID (4 cards only) */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {(loading ? skeletonStats : statCards).map((card, i) => (
           <motion.div
@@ -245,7 +245,9 @@ export default function PageContent() {
             transition={{ delay: i * 0.06, duration: 0.45 }}
             className="relative overflow-hidden rounded-2xl p-5 text-white shadow-xl backdrop-blur-xl border border-white/10"
             style={{
-              background: (card as any).gradient || `linear-gradient(135deg, ${PRIMARY}, ${ACCENT})`,
+              background:
+                (card as any).gradient ||
+                `linear-gradient(135deg, ${PRIMARY}, ${ACCENT})`,
               boxShadow: `0 10px 35px -12px ${ACCENT}66`,
             }}
           >
@@ -253,6 +255,9 @@ export default function PageContent() {
               <div className="space-y-1">
                 <p className="text-xs opacity-80">{card.title}</p>
                 <h3 className="text-3xl font-bold">{card.value}</h3>
+                {"meta" in card && card.meta ? (
+                  <p className="text-[11px] opacity-90 mt-1">{card.meta}</p>
+                ) : null}
               </div>
               <div className="p-3 bg-white/10 rounded-xl">
                 {card.icon}
@@ -263,35 +268,149 @@ export default function PageContent() {
         ))}
       </div>
 
+      {/* ANALYTICS / SUMMARY ("graph-like" ratios) */}
+      {counts && (
+        <div className="mt-8 grid gap-6 lg:grid-cols-3">
+          <Card title="Bookings vs Pilgrims (Total)">
+            <AnalyticsBlock>
+              <MetricRow
+                label="Total Bookings"
+                value={counts.totalBookings}
+                max={Math.max(counts.totalBookings, counts.totalPilgrims, 1)}
+              />
+              <MetricRow
+                label="Total Pilgrims"
+                value={counts.totalPilgrims}
+                max={Math.max(counts.totalBookings, counts.totalPilgrims, 1)}
+              />
+            </AnalyticsBlock>
+          </Card>
+
+          <Card title="Invoices Status">
+            <AnalyticsBlock>
+              <MetricRow
+                label="Paid"
+                value={counts.invoicesPaid}
+                max={Math.max(
+                  counts.invoicesPaid,
+                  counts.invoicesIssued,
+                  1
+                )}
+              />
+              <MetricRow
+                label="Issued (Unpaid)"
+                value={counts.invoicesIssued}
+                max={Math.max(
+                  counts.invoicesPaid,
+                  counts.invoicesIssued,
+                  1
+                )}
+              />
+              <div className="mt-3 text-[11px] text-slate-500 dark:text-slate-400">
+                Overall: {counts.totalInvoices} invoices
+              </div>
+            </AnalyticsBlock>
+          </Card>
+
+          <Card title="Trips & Logistics Snapshot">
+            <AnalyticsBlock>
+              <MetricRow
+                label="Active Trips"
+                value={counts.activeTrips}
+                max={Math.max(
+                  counts.activeTrips,
+                  counts.upcomingTrips,
+                  counts.linkedFlights,
+                  counts.linkedHotels,
+                  1
+                )}
+              />
+              <MetricRow
+                label="Upcoming Trips"
+                value={counts.upcomingTrips}
+                max={Math.max(
+                  counts.activeTrips,
+                  counts.upcomingTrips,
+                  counts.linkedFlights,
+                  counts.linkedHotels,
+                  1
+                )}
+              />
+              <MetricRow
+                label="Linked Flights"
+                value={counts.linkedFlights}
+                max={Math.max(
+                  counts.activeTrips,
+                  counts.upcomingTrips,
+                  counts.linkedFlights,
+                  counts.linkedHotels,
+                  1
+                )}
+              />
+              <MetricRow
+                label="Linked Hotels"
+                value={counts.linkedHotels}
+                max={Math.max(
+                  counts.activeTrips,
+                  counts.upcomingTrips,
+                  counts.linkedFlights,
+                  counts.linkedHotels,
+                  1
+                )}
+              />
+            </AnalyticsBlock>
+          </Card>
+        </div>
+      )}
+
       {/* RECENT ACTIVITY */}
       <div className="mt-10 grid gap-6 lg:grid-cols-2">
-        <Card title="Recent Trips" actionHref="/dashboard/trips" actionText="View all">
+        {/* Recent Bookings */}
+        <Card
+          title="Recent Bookings"
+          actionHref="/dashboard/bookings"
+          actionText="View all"
+        >
           {loading ? (
             <ListSkeleton rows={5} />
-          ) : recentTrips.length === 0 ? (
-            <EmptyNote text="No trips yet." />
+          ) : recentBookings.length === 0 ? (
+            <EmptyNote text="No bookings yet." />
           ) : (
             <table className="min-w-full text-sm">
-              <thead className="text-slate-600">
-                <tr className="border-b border-slate-200">
-                  <Th>Title</Th>
-                  <Th>Dates</Th>
+              <thead className="text-slate-600 dark:text-slate-300">
+                <tr className="border-b border-slate-200 dark:border-slate-700">
+                  <Th>Code / Name</Th>
                   <Th>Status</Th>
+                  <Th>Trip</Th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-200">
-                {recentTrips.map((t) => (
-                  <tr key={t.id} className="hover:bg-slate-50/60">
+              <tbody className="divide-y divide-slate-200 dark:divide-slate-700">
+                {recentBookings.map((b) => (
+                  <tr key={b.id} className="hover:bg-slate-50/60 dark:hover:bg-slate-800/60">
                     <td className="px-4 py-3">
-                      <Link href={`/dashboard/trips/${t.id}`} className="text-indigo-700 hover:underline">
-                        {t.title}
-                      </Link>
-                    </td>
-                    <td className="px-4 py-3 font-mono text-xs">
-                      {fmtDate(t.start_date)}{t.end_date ? ` → ${fmtDate(t.end_date)}` : ""}
+                      <div className="font-medium">
+                        {b.code || b.pilgrim_name || `#${b.id}`}
+                      </div>
+                      <div className="text-xs text-slate-500 dark:text-slate-400">
+                        {fmtDateTime(b.created_at)}
+                      </div>
                     </td>
                     <td className="px-4 py-3">
-                      <span className={statusChip(t.status)}>{t.status}</span>
+                      <span className={smallStatus(b.status)}>
+                        {b.status || "—"}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3">
+                      {b.trip_id ? (
+                        <Link
+                          href={`/dashboard/trips/${b.trip_id}`}
+                          className="text-indigo-700 dark:text-indigo-300 hover:underline"
+                        >
+                          Trip #{b.trip_id}
+                        </Link>
+                      ) : (
+                        "—"
+                      )}
                     </td>
                   </tr>
                 ))}
@@ -300,38 +419,46 @@ export default function PageContent() {
           )}
         </Card>
 
-        <Card title="Recent Bookings" actionHref="/dashboard/bookings" actionText="View all">
+        {/* Recent Invoices */}
+        <Card
+          title="Recent Invoices"
+          actionHref="/dashboard/invoices"
+          actionText="View all"
+        >
           {loading ? (
             <ListSkeleton rows={5} />
-          ) : recentBookings.length === 0 ? (
-            <EmptyNote text="No bookings yet." />
+          ) : recentInvoices.length === 0 ? (
+            <EmptyNote text="No invoices yet." />
           ) : (
             <table className="min-w-full text-sm">
-              <thead className="text-slate-600">
-                <tr className="border-b border-slate-200">
-                  <Th>Code / Name</Th>
+              <thead className="text-slate-600 dark:text-slate-300">
+                <tr className="border-b border-slate-200 dark:border-slate-700">
+                  <Th>Invoice</Th>
                   <Th>Status</Th>
-                  <Th>Trip</Th>
+                  <Th>Created</Th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-200">
-                {recentBookings.map((b) => (
-                  <tr key={b.id} className="hover:bg-slate-50/60">
+              <tbody className="divide-y divide-slate-200 dark:divide-slate-700">
+                {recentInvoices.map((inv) => (
+                  <tr
+                    key={inv.id}
+                    className="hover:bg-slate-50/60 dark:hover:bg-slate-800/60"
+                  >
                     <td className="px-4 py-3">
-                      <div className="font-medium">{b.code || b.pilgrim_name || `#${b.id}`}</div>
-                      <div className="text-xs text-slate-500">{fmtDateTime(b.created_at)}</div>
+                      <div className="font-medium">
+                        {inv.invoice_number || `INV-${inv.id}`}
+                      </div>
+                      <div className="text-xs text-slate-500 dark:text-slate-400">
+                        ID: {inv.id}
+                      </div>
                     </td>
                     <td className="px-4 py-3">
-                      <span className={smallStatus(b.status)}>{b.status || "—"}</span>
+                      <span className={invoiceStatusChip(inv.status)}>
+                        {inv.status || "—"}
+                      </span>
                     </td>
-                    <td className="px-4 py-3">
-                      {b.trip_id ? (
-                        <Link href={`/dashboard/trips/${b.trip_id}`} className="text-indigo-700 hover:underline">
-                          Trip #{b.trip_id}
-                        </Link>
-                      ) : (
-                        "—"
-                      )}
+                    <td className="px-4 py-3 text-xs font-mono">
+                      {fmtDateTime(inv.created_at)}
                     </td>
                   </tr>
                 ))}
@@ -358,13 +485,13 @@ function Card({
   children: React.ReactNode;
 }) {
   return (
-    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white dark:bg-neutral-900/60 backdrop-blur-md shadow-lg">
+    <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-neutral-900/60 backdrop-blur-md shadow-lg">
       <div className="flex items-center justify-between px-5 py-3 border-b border-slate-200/60 dark:border-white/10">
         <h3 className="text-base font-semibold">{title}</h3>
         {actionHref ? (
           <Link
             href={actionHref}
-            className="text-xs rounded-lg border border-slate-200 bg-white dark:bg-neutral-900 px-3 py-1.5 hover:bg-slate-50 dark:hover:bg-neutral-800"
+            className="text-xs rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-neutral-900 px-3 py-1.5 hover:bg-slate-50 dark:hover:bg-neutral-800"
           >
             {actionText || "Open"}
           </Link>
@@ -375,9 +502,17 @@ function Card({
   );
 }
 
-function Th({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+function Th({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <th className={`px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide ${className}`}>
+    <th
+      className={`px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide ${className}`}
+    >
       {children}
     </th>
   );
@@ -389,14 +524,54 @@ function EmptyNote({ text }: { text: string }) {
 
 function ListSkeleton({ rows = 5 }: { rows?: number }) {
   return (
-    <div className="divide-y divide-slate-200">
+    <div className="divide-y divide-slate-200 dark:divide-slate-800">
       {Array.from({ length: rows }).map((_, i) => (
-        <div key={i} className="flex items-center justify-between gap-4 py-3">
-          <div className="h-4 w-2/5 rounded bg-slate-200/70 animate-pulse" />
-          <div className="h-4 w-1/4 rounded bg-slate-200/70 animate-pulse" />
-          <div className="h-4 w-1/6 rounded bg-slate-200/70 animate-pulse" />
+        <div
+          key={i}
+          className="flex items-center justify-between gap-4 py-3"
+        >
+          <div className="h-4 w-2/5 rounded bg-slate-200/70 dark:bg-slate-700/70 animate-pulse" />
+          <div className="h-4 w-1/4 rounded bg-slate-200/70 dark:bg-slate-700/70 animate-pulse" />
+          <div className="h-4 w-1/6 rounded bg-slate-200/70 dark:bg-slate-700/70 animate-pulse" />
         </div>
       ))}
+    </div>
+  );
+}
+
+/* ------------------------------- analytics -------------------------------- */
+
+function AnalyticsBlock({ children }: { children: React.ReactNode }) {
+  return <div className="space-y-3 text-sm">{children}</div>;
+}
+
+function MetricRow({
+  label,
+  value,
+  max,
+}: {
+  label: string;
+  value: number;
+  max: number;
+}) {
+  const pct = max > 0 ? Math.round((value / max) * 100) : 0;
+  return (
+    <div className="space-y-1">
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-slate-600 dark:text-slate-300">{label}</span>
+        <span className="font-mono text-[11px] text-slate-700 dark:text-slate-200">
+          {value}
+        </span>
+      </div>
+      <div className="h-2.5 w-full rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+        <div
+          className="h-full rounded-full"
+          style={{
+            width: `${pct}%`,
+            background: `linear-gradient(90deg, ${PRIMARY}, ${ACCENT})`,
+          }}
+        />
+      </div>
     </div>
   );
 }
@@ -406,18 +581,34 @@ function ListSkeleton({ rows = 5 }: { rows?: number }) {
 function statusChip(status?: string | null) {
   const base =
     "inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-medium capitalize ring-1";
-  if (status === "active") return `${base} bg-emerald-50 text-emerald-700 ring-emerald-200`;
-  if (status === "archived") return `${base} bg-slate-100 text-slate-700 ring-slate-200`;
-  if (status === "draft") return `${base} bg-amber-50 text-amber-800 ring-amber-200`;
+  if (status === "active")
+    return `${base} bg-emerald-50 text-emerald-700 ring-emerald-200`;
+  if (status === "archived")
+    return `${base} bg-slate-100 text-slate-700 ring-slate-200`;
+  if (status === "draft")
+    return `${base} bg-amber-50 text-amber-800 ring-amber-200`;
   return `${base} bg-slate-100 text-slate-700 ring-slate-200`;
 }
 
 function smallStatus(status?: string | null) {
   const base =
     "inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium capitalize ring-1";
-  if (status === "confirmed") return `${base} bg-emerald-50 text-emerald-700 ring-emerald-200`;
-  if (status === "pending") return `${base} bg-amber-50 text-amber-800 ring-amber-200`;
-  if (status === "cancelled") return `${base} bg-slate-100 text-slate-700 ring-slate-200`;
+  if (status === "confirmed")
+    return `${base} bg-emerald-50 text-emerald-700 ring-emerald-200`;
+  if (status === "pending")
+    return `${base} bg-amber-50 text-amber-800 ring-amber-200`;
+  if (status === "cancelled")
+    return `${base} bg-slate-100 text-slate-700 ring-slate-200`;
+  return `${base} bg-slate-100 text-slate-700 ring-slate-200`;
+}
+
+function invoiceStatusChip(status?: string | null) {
+  const base =
+    "inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium capitalize ring-1";
+  if (status === "paid")
+    return `${base} bg-emerald-50 text-emerald-700 ring-emerald-200`;
+  if (status === "issued")
+    return `${base} bg-amber-50 text-amber-800 ring-amber-200`;
   return `${base} bg-slate-100 text-slate-700 ring-slate-200`;
 }
 
@@ -428,13 +619,33 @@ function fmtDate(v?: string | null) {
 function fmtDateTime(v?: string | null) {
   if (!v) return "—";
   const d = new Date(v);
-  if (Number.isNaN(d.getTime())) return (v || "").slice(0, 16).replace("T", " ");
-  return `${d.toLocaleDateString()} ${d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
+  if (Number.isNaN(d.getTime()))
+    return (v || "").slice(0, 16).replace("T", " ");
+  return `${d.toLocaleDateString()} ${d.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  })}`;
 }
 
 const skeletonStats = [
-  { title: "Loading…", value: "—", icon: <div className="w-6 h-6 bg-white/30 rounded" /> },
-  { title: "Loading…", value: "—", icon: <div className="w-6 h-6 bg-white/30 rounded" /> },
-  { title: "Loading…", value: "—", icon: <div className="w-6 h-6 bg-white/30 rounded" /> },
-  { title: "Loading…", value: "—", icon: <div className="w-6 h-6 bg-white/30 rounded" /> },
+  {
+    title: "Loading…",
+    value: "—",
+    icon: <div className="w-6 h-6 bg-white/30 rounded" />,
+  },
+  {
+    title: "Loading…",
+    value: "—",
+    icon: <div className="w-6 h-6 bg-white/30 rounded" />,
+  },
+  {
+    title: "Loading…",
+    value: "—",
+    icon: <div className="w-6 h-6 bg-white/30 rounded" />,
+  },
+  {
+    title: "Loading…",
+    value: "—",
+    icon: <div className="w-6 h-6 bg-white/30 rounded" />,
+  },
 ];

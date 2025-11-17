@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowUpDown, ChevronLeft, ChevronRight, Loader2, Download } from "lucide-react";
 
 import { generateBookingPdfAndOpen } from "./BookingPdf";
+import { generateBookingPdfAndOpen2 } from "./BookingPdf2";
 
 const STATUS_COLORS: Record<string, string> = {
     pending: "bg-amber-50 text-amber-800 ring-1 ring-amber-200 dark:bg-amber-900/20 dark:text-amber-300",
@@ -39,18 +40,19 @@ export default function BookingsTable({
 
     const [loading2, setLoading2] = useState(false);
     const [loadingRow, setLoadingRow] = useState<number | null>(null);
+     const [loadingRow2, setLoadingRow2] = useState<number | null>(null);
 
-    const onPrint2 = async (id: any) => {
+    async function onPrint2(id: number) {
         try {
-            setLoading2(true);
-            await generateBookingPdfAndOpen(id);
-        } catch (err) {
-            console.error(err);
-            alert("Failed to generate PDF. Please check the console for details.");
+            setLoadingRow2(id);
+            await generateBookingPdfAndOpen2(id);
+        } catch (e) {
+            console.error(e);
+            alert("Failed to generate PDF");
         } finally {
-            setLoading2(false);
+            setLoadingRow2(null);
         }
-    };
+    }
 
     async function onPrint(id: number) {
         try {
@@ -144,7 +146,29 @@ export default function BookingsTable({
                                                 ) : (
                                                     <>
                                                         <Download className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
-                                                        Download
+                                                    </>
+                                                )}
+                                            </button>
+
+                                            <button
+                                                onClick={() => onPrint2(r.id)}
+                                                disabled={loadingRow2 === r.id}
+                                                className={`inline-flex items-center ml-3 gap-2 rounded-lg border border-slate-200 
+                                                            px-3 py-1.5 text-sm font-medium transition-all
+                                                            ${loadingRow2 === r.id
+                                                        ? "bg-slate-100 dark:bg-black text-slate-500 cursor-wait"
+                                                        : "hover:bg-slate-50 dark:hover:bg-white/10"} 
+                                                             dark:border-white/10 dark:text-white`}
+                                                title="Print booking PDF"
+                                            >
+                                                {loadingRow2 === r.id ? (
+                                                    <>
+                                                        <Loader2 className="h-4 w-4 animate-spin text-indigo-500" />
+                                                        Generating…
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <Download className="h-4 w-4 text-red-900 dark:text-rose-600" />
                                                     </>
                                                 )}
                                             </button>

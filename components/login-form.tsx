@@ -39,9 +39,7 @@ export function LoginForm() {
             router.push("/dashboard");
         } catch (err: unknown) {
             setError(err instanceof Error ? err.message : "Authentication failed");
-        } finally {
-            setIsLoading(false);
-        }
+        } 
     };
 
     return (

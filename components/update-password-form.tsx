@@ -37,7 +37,7 @@ export function UpdatePasswordForm({
       setLoading(false);
     }
 
-    //checkSession();
+    checkSession();
   }, []);
 
   /* ---------------------------------------------
@@ -63,6 +63,15 @@ export function UpdatePasswordForm({
     }
   }
 
+   if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen text-slate-500">
+        <Loader2 className="h-5 w-5 animate-spin" />
+      </div>
+    );
+  }
+
+  if (!allowed) return null;
 
 
   const BRAND_INDIGO = brand.colors.primary;

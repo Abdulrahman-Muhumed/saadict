@@ -3,7 +3,7 @@
 export default function handlePrintInvoice(invoice: any, lines: any[]) {
   const headerLogoUri = "/brand/hg_icon.png";
   const watermarkUri = "/brand/hg_icon_light.png";
-  const stamplogo = "/brand/hoggaan_stamp.png";
+  const stamplogo = "/brand/hoggaan_stamp2.png";
   const hoggan_footer = "/brand/hoggan_footer.png";
 
   const fmt = (n: number) =>
@@ -63,8 +63,8 @@ export default function handlePrintInvoice(invoice: any, lines: any[]) {
     }
     .wrapper { padding: 12mm 15mm; }
     .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
-    .invoice-logo { width: 200px; height: 80px; object-fit: contain; }
-    .invoice-logo2 { width: 180px; height: 130px; object-fit: contain; position: absolute; bottom: 250px; right: 30px; }
+    .invoice-logo { width: 200px; height: 80px; object-fit: contain; margin-top: 10px; }
+    .invoice-logo2 { width: 200px; height: 140px; object-fit: contain; position: absolute; bottom: 250px; right: 30px; }
     .company { text-align: right; font-size: 12px; line-height: 1.7; color: #475569; }
 
     h2 {
@@ -164,7 +164,7 @@ export default function handlePrintInvoice(invoice: any, lines: any[]) {
 
     .watermark {
       position: fixed;
-      top: 55%;
+      top: 51%;
       left: 33%;
       transform: translate(-50%, -50%);
       width: 35%;

@@ -158,7 +158,7 @@ export default function InvoicesClient({ brandPrimary, brandAccent }: Props) {
                             </p>
                         </div>
                         <Link
-                            href="/protected/invoices/new"
+                            href="/dashboard/invoices/new"
                             className="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow hover:bg-white/90"
                         >
                             <Plus className="h-4 w-4" /> New Invoice

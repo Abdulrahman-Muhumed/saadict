@@ -63,15 +63,19 @@ export default function PilgrimsClient() {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="mb-8 rounded-2xl border border-white/10 bg-gradient-to-br from-[var(--brand-primary)] to-[var(--brand-accent)] px-6 py-5 text-white shadow-xl"
-                style={{
+                className="overflow-hidden rounded-3xl border border-white/10 text-white mb-8 " style={{
                     backgroundImage: `linear-gradient(135deg, ${PRIMARY}, ${ACCENT})`,
                 }}
             >
                 <div className="flex flex-wrap items-center justify-between gap-3">
-                    <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
-                        Pilgrims
-                    </h1>
+
+                    <div className="px-5 py-5 md:px-8 md:py-7">
+                        <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Pilgrims</h1>
+                        <p className="mt-1 text-sm text-white/80">
+                            Manage your pilgrims here. You can add, edit, or remove pilgrims as needed.
+                        </p>
+                    </div>
+                    
                     <div className="flex items-center gap-2">
                         <input
                             placeholder="Search name or city…"
@@ -88,7 +92,7 @@ export default function PilgrimsClient() {
                         >
                             <Plus className="h-4 w-4" /> Add Pilgrim
                         </Link>
-                       
+
                     </div>
                 </div>
             </motion.div>

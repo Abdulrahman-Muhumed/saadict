@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import * as React from "react";
+import { createClient } from "@/lib/supabase/client";
 import {
     LayoutDashboard,
     Users,
@@ -56,47 +57,7 @@ const RING =
     "focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/40";
 
 /* Build sections from locale */
-const buildSections = (locale: string): NavSection[] => [
-    {
-        title: "Overview",
-        items: [{ href: `/${locale}/dashboard`, label: "Dashboard", icon: LayoutDashboard }],
-    },
-    {
-        title: "Operations",
-        items: [
-            { href: `/${locale}/dashboard/pilgrims`, label: "Pilgrims", icon: Users },
-            { href: `/${locale}/dashboard/bookings`, label: "Bookings", icon: Plane },
-            { href: `/${locale}/dashboard/housing`, label: "Housing", icon: Plane },
-            { href: `/${locale}/dashboard/trips`, label: "Trips", icon: Users },
-            { href: `/${locale}/dashboard/tickets`, label: "Tickets", icon: Ticket },
-            { href: `/${locale}/dashboard/requests`, label: "Requests", icon: Ticket },
-            { href: `/${locale}/dashboard/hajj`, label: "Hajj", icon: Plane },
-            { href: `/${locale}/dashboard/packages`, label: "Packages", icon: Plane },
-        ],
-    },
-    {
-        title: "Inventory",
-        items: [
-            { href: `/${locale}/dashboard/hotels`, label: "Hotels", icon: Hotel },
-            { href: `/${locale}/dashboard/flight`, label: "Flights", icon: Plane },
-            { href: `/${locale}/dashboard/prices`, label: "Prices", icon: Tags },
-        ],
-    },
-    {
-        title: "Finance",
-        items: [
-            { href: `/${locale}/dashboard/finance`, label: "Financial Overview", icon: BarChart3 },
-            { href: `/${locale}/dashboard/invoices`, label: "Invoices", icon: ReceiptText },
-        ],
-    },
-    {
-        title: "System",
-        items: [
-            { href: `/${locale}/dashboard/notifications`, label: "Notifications", icon: Bell },
-            { href: `/${locale}/dashboard/settings`, label: "Settings", icon: Settings },
-        ],
-    },
-];
+
 
 /* -------------------- Component -------------------- */
 export default function Sidebar({
@@ -106,9 +67,79 @@ export default function Sidebar({
     setCollapsed: setCollapsedProp,
     className,
 }: SidebarProps) {
+
+
+    const [role, setRole] = React.useState<string | null>(null);
+
+    React.useEffect(() => {
+        async function getRole() {
+
+            const supabase = createClient();
+            const { data: { user } } = await supabase.auth.getUser();
+
+            if (!user) return setRole(null);
+            
+            const { data } = await supabase
+                .from("app_users")
+                .select("role")
+                .eq("id", user.id)
+                .single();
+
+            setRole(data?.role || null);
+        }
+
+        getRole();
+    }, []);
+
+
+    const buildSections = (locale: string): NavSection[] => [
+        {
+            title: "Overview",
+            items: [{ href: `/${locale}/dashboard`, label: "Dashboard", icon: LayoutDashboard }],
+        },
+        {
+            title: "Operations",
+            items: [
+                { href: `/${locale}/dashboard/pilgrims`, label: "Pilgrims", icon: Users },
+                { href: `/${locale}/dashboard/bookings`, label: "Bookings", icon: Plane },
+                { href: `/${locale}/dashboard/housing`, label: "Housing", icon: Plane },
+                { href: `/${locale}/dashboard/trips`, label: "Trips", icon: Users },
+                { href: `/${locale}/dashboard/tickets`, label: "Tickets", icon: Ticket },
+                { href: `/${locale}/dashboard/requests`, label: "Requests", icon: Ticket },
+                { href: `/${locale}/dashboard/hajj`, label: "Hajj", icon: Plane },
+                { href: `/${locale}/dashboard/packages`, label: "Packages", icon: Plane },
+            ],
+        },
+        {
+            title: "Inventory",
+            items: [
+                { href: `/${locale}/dashboard/hotels`, label: "Hotels", icon: Hotel },
+                { href: `/${locale}/dashboard/flight`, label: "Flights", icon: Plane },
+                { href: `/${locale}/dashboard/prices`, label: "Prices", icon: Tags },
+            ],
+        },
+        {
+            title: "Finance",
+            items: [
+                { href: `/${locale}/dashboard/finance`, label: "Financial Overview", icon: BarChart3 },
+                { href: `/${locale}/dashboard/invoices`, label: "Invoices", icon: ReceiptText },
+            ],
+        },
+        {
+            title: "System",
+            items: [
+                role === "admin"
+                    ? { href: `/${locale}/dashboard/users`, label: "Users", icon: Users }
+                    : null,
+                { href: `/${locale}/dashboard/notifications`, label: "Notifications", icon: Bell },
+                { href: `/${locale}/dashboard/settings`, label: "Settings", icon: Settings },
+            ].filter(Boolean) as NavItem[],
+        },
+    ];
+
     const pathname = usePathname();
 
-    const sections = React.useMemo(() => buildSections(locale), [locale]);
+    const sections = React.useMemo(() => buildSections(locale), [locale, role]);
     const flatItems = React.useMemo(() => sections.flatMap((s) => s.items), [sections]);
 
     /* Collapsed state (controlled or local) */
@@ -116,6 +147,8 @@ export default function Sidebar({
     const isControlled = typeof collapsedProp === "boolean" && !!setCollapsedProp;
     const collapsed = isControlled ? (collapsedProp as boolean) : collapsedLocal;
     const setCollapsed = isControlled ? (setCollapsedProp as typeof setCollapsedLocal) : setCollapsedLocal;
+
+
 
     /* Persist collapsed preference */
     React.useEffect(() => {
@@ -270,7 +303,7 @@ export default function Sidebar({
                                     {collapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
                                     {collapsed ? "Expand" : "Collapse"}
                                 </button>
-                                
+
                             </div>
                         </div>
                     </div>

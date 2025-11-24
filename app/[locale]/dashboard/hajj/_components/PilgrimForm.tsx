@@ -59,7 +59,7 @@ export default function PilgrimForm({
         </label>
         <input
           type="text"
-          value={form.passport_number}
+          value={form.passport_number || ""}
           onChange={(e) => setForm({ ...form, passport_number: e.target.value })}
           required
           className="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-neutral-900 px-3 py-2 text-sm text-slate-800 dark:text-slate-100 outline-none focus:ring-2 focus:ring-indigo-500/40"
@@ -88,6 +88,7 @@ export default function PilgrimForm({
           <input
             type="number"
             min="0"
+            step="any"
             value={form.paid}
             onChange={(e) => setForm({ ...form, paid: Number(e.target.value) })}
             className="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-neutral-900 px-3 py-2 text-sm text-slate-800 dark:text-slate-100 outline-none focus:ring-2 focus:ring-indigo-500/40"
@@ -100,6 +101,7 @@ export default function PilgrimForm({
           <input
             type="number"
             min="0"
+            step="any"
             value={form.total}
             onChange={(e) => setForm({ ...form, total: Number(e.target.value) })}
             className="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-neutral-900 px-3 py-2 text-sm text-slate-800 dark:text-slate-100 outline-none focus:ring-2 focus:ring-indigo-500/40"

@@ -85,19 +85,19 @@ export default function PilgrimTable({
                         onClick={() => onView(r)}
                         className="inline-flex items-center gap-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-neutral-950 px-2.5 py-1.5 text-xs hover:bg-slate-50 dark:hover:bg-neutral-900 transition"
                       >
-                        <Eye className="h-4 w-4" /> View
+                        <Eye className="h-4 w-4" /> 
                       </button>
                       <button
                         onClick={() => onEdit(r)}
                         className="inline-flex items-center gap-1 rounded-lg bg-blue-600 px-2.5 py-1.5 text-xs text-white hover:bg-blue-700 transition"
                       >
-                        <Pencil className="h-4 w-4" /> Edit
+                        <Pencil className="h-4 w-4" /> 
                       </button>
                       <button
                         onClick={() => onDelete(r)}
                         className="inline-flex items-center gap-1 rounded-lg bg-red-600 px-2.5 py-1.5 text-xs text-white hover:bg-red-700 transition"
                       >
-                        <Trash2 className="h-4 w-4" /> Delete
+                        <Trash2 className="h-4 w-4" /> 
                       </button>
                     </div>
                   </td>

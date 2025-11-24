@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
+import { createClient } from "@/lib/supabase/client";
 import { Users, ChevronLeft, ChevronRight } from "lucide-react";
 
 import HajjHeader from "./_components/HajjHeader";
@@ -13,11 +13,10 @@ import Toast from "./_components/Toast";
 import RequestsList from "./_components/RequestsList";
 import PilgrimForm from "./_components/PilgrimForm";
 
+import { exportHajjExcel } from "./_components/exportExcel";
+
 /* ─────────────────────────── Supabase ─────────────────────────── */
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+const supabase = createClient();
 
 /* ─────────────────────────── Consts / helpers ─────────────────────────── */
 const ACTIVE_STATUSES = ["approved", "confirmed"];
@@ -239,208 +238,267 @@ export default function PageContent() {
   }
 
   /* ─────────────────────────── Print (with / without money) ─────────────────────────── */
-function buildPrintableHtml(rows: any[], withMoney: boolean) {
-  const headerLogoUri = "/brand/hg_icon.png";
-  const watermarkUri = "/brand/hg_icon_light.png";
-  const dateNow = new Date().toLocaleDateString();
-  const timeNow = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-  const reportTitle = "Hajj 2026 Pilgrims List";
-  const reportType = withMoney ? "2026 Hajj Report (With Amounts)" : "2026 Hajj | Pilgrims List";
+  async function buildPrintableHtml(rows: any[], withMoney: boolean) {
 
-  // 🧮 Totals
-  const totalPaid = rows.reduce((sum, r) => sum + (r.paid ?? 0), 0);
-  const totalRemaining = rows.reduce(
-    (sum, r) => sum + Math.max((r.total ?? 0) - (r.paid ?? 0), 0),
-    0
-  );
+    async function preloadImage(url: string) {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.src = url;
+        img.onload = resolve;
+        img.onerror = resolve;
+      });
+    }
 
-  const itemsHTML = rows
-    .map(
-      (r, i) => `
+
+    const headerLogoUri = "/brand/hg_icon.png";
+    const watermarkUri = "/brand/hg_icon_light.png";
+
+    await Promise.all([
+      preloadImage(headerLogoUri),
+      preloadImage(watermarkUri),
+    ]);
+
+
+    const dateNow = new Date().toLocaleDateString();
+    const timeNow = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+    const reportTitle = "Hajj 2026 Pilgrims List";
+    const reportType = withMoney ? "2026 Hajj Report (With Amounts)" : "2026 Hajj | Pilgrims List";
+
+    // 🧮 Totals
+    const totalPaid = rows.reduce((sum, r) => sum + (r.paid ?? 0), 0);
+    const totalRemaining = rows.reduce(
+      (sum, r) => sum + Math.max((r.total ?? 0) - (r.paid ?? 0), 0),
+      0
+    );
+
+
+
+    const itemsHTML = rows
+      .map(
+        (r, i) => `
         <tr>
           <td style="width:4%; text-align:center;">${i + 1}</td>
           <td style="width:26%;">${r.full_name || ""}</td>
           <td style="width:18%;">${r.passport_number || ""}</td>
           <td style="width:15%;">${r.phone_number || "—"}</td>
-          ${
-            withMoney
-              ? `<td style="width:10%; text-align:right;">${fmtMoney(r.paid)}</td>
+          ${withMoney
+            ? `<td style="width:10%; text-align:right;">${fmtMoney(r.paid)}</td>
                  <td style="width:10%; text-align:right;">${fmtMoney(
-                   Math.max((r.total ?? 0) - (r.paid ?? 0), 0)
-                 )}</td>`
-              : ``
+              Math.max((r.total ?? 0) - (r.paid ?? 0), 0)
+            )}</td>`
+            : ``
           }
         </tr>`
-    )
-    .join("");
+      )
+      .join("");
 
-  // 🧾 Totals row (only if withMoney)
-  const totalsRow = withMoney
-    ? `
+    // 🧾 Totals row (only if withMoney)
+    const totalsRow = withMoney
+      ? `
       <tr style="background:#e7f3ff;font-weight:600;border-top:2px solid #94a3b8;">
         <td colspan="4" style="text-align:right;padding:10px 6px;">TOTALS</td>
         <td style="text-align:right;padding:10px 6px;">${fmtMoney(totalPaid)}</td>
         <td style="text-align:right;padding:10px 6px;">${fmtMoney(totalRemaining)}</td>
       </tr>
     `
-    : "";
+      : "";
 
-  return `
-    <style>
-      * { box-sizing: border-box; }
-      body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        color: #1e293b;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
-      @page {
-        size: Letter portrait;
-        margin: 7.5mm;
-      }
-      .wrapper {
-        width: 210mm;
-        max-width: 210mm;
-        margin: 0 auto;
-        padding: 12mm 15mm;
-        background: white;
-      }
-      .top {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-      }
-      .invoice-logo {
-        width: 140px;
-        height: 48px;
-        object-fit: contain;
-        margin-top: 6px;
-      }
-      .company-info {
-        text-align: right;
-        font-size: 12px;
-        line-height: 1.6;
-      }
-      .company-info strong {
-        font-size: 13px;
-        color: #241c72;
-      }
-      h2 {
-        text-align: center;
-        font-size: 20px;
-        font-weight: 700;
-        color: #241c72;
-        margin-top: 50px;
-        text-transform: uppercase;
-      }
-      .meta-row {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 10px;
-        font-size: 12px;
-        color: #475569;
-      }
-      .meta-row div span {
-        font-weight: 600;
-        color: #1e293b;
-      }
-      table {
-        width: 100%;
-        table-layout: fixed;
-        border-collapse: collapse;
-        font-size: 12px;
-      }
-      th {
-        padding: 8px 6px;
-        text-align: left;
-        border-bottom: 1px solid #cbd5e1;
-        background: #ddebfa !important;
-        font-weight: 600;
-      }
-      td {
-        padding: 8px 6px;
-        border-bottom: 1px solid #eef2f7;
-        word-wrap: break-word;
-      }
-      tr:nth-child(even) td { background: #f9fbff; }
-      .watermark {
-        position: fixed;
-        top: 55%;
-        left: 30%;
-        transform: translate(-50%, -50%);
-        width: 30%;
-        opacity: 0.06;
-        pointer-events: none;
-      }
-      @media print {
-        thead { display: table-header-group; }
-        tfoot { display: table-footer-group; }
-        tr { page-break-inside: avoid; }
-      }
-    </style>
+    return `
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #1e293b;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    background: #fff;
+  }
 
-    <div class="watermark"><img src="${watermarkUri}" /></div>
+  @page {
+    size: A4 portrait;
+    margin: 10mm 6mm 10mm 6mm;
+  }
 
-    <div class="wrapper">
-      <!-- HEADER -->
-      <div class="top">
-        <img src="${headerLogoUri}" class="invoice-logo" />
-        <div class="company-info">
-          <strong>Hoggaan Travels</strong><br/>
-          HODON, TALEX, TCC, A43<br/>
-          MOGADISHU, SOMALIA<br/>
-          INFO@HOGGAANTRAVEL.COM
-        </div>
-      </div>
+  .wrapper {
+    width: 100%;
+    padding: 8mm 10mm;
+    background: white;
+  }
 
-      <h2>${reportTitle}</h2>
+  /* HEADER SECTION */
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
 
-      <!-- META INFO -->
-      <div class="meta-row">
-        <div>
-          <span>Report Type:</span> ${reportType}<br/>
-          <span>Date:</span> ${dateNow}
-        </div>
-        <div style="text-align:right;">
-          <span>Printed On:</span> ${dateNow}, ${timeNow}<br/>
-          <span>Mode:</span> ${withMoney ? "With Money" : "Without Money"}
-        </div>
-      </div>
+  .invoice-logo {
+    width: 150px;
+    height: 45px;
+    object-fit: contain;
+  }
 
-      <!-- TABLE -->
-      <table>
-        <thead>
-          <tr>
-            <th style="width:4%; text-align:center;">#</th>
-            <th style="width:26%;">Name</th>
-            <th style="width:18%;">Passport</th>
-            <th style="width:15%;">Phone</th>
-            ${
-              withMoney
-                ? `<th style="width:10%; text-align:right;">Paid</th>
-                   <th style="width:10%; text-align:right;">Remaining</th>`
-                : ``
-            }
-          </tr>
-        </thead>
-        <tbody>
-          ${
-            itemsHTML ||
-            `<tr><td colspan="${withMoney ? 6 : 4}" style="text-align:center; color:#64748b;">No pilgrims found</td></tr>`
-          }
-          ${totalsRow}
-        </tbody>
-      </table>
+  .company-info {
+    text-align: right;
+    font-size: 11px;
+    line-height: 1.35;
+    color: #475569;
+  }
+
+  .company-info strong {
+    font-size: 13px;
+    color: #241c72;
+    font-weight: 700;
+  }
+
+  /* TITLE */
+  h2 {
+    text-align: center;
+    font-size: 19px;
+    font-weight: 700;
+    color: #241c72;
+    margin: 38px 0 16px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+  }
+
+  /* META INFO */
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #475569;
+    margin-bottom: 12px;
+    line-height: 1.35;
+  }
+
+  .meta-row span {
+    font-weight: 600;
+    color: #1e293b;
+  }
+
+  /* TABLE */
+  table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-size: 11px;
+    margin-top: 4px;
+  }
+
+  th {
+    padding: 7px 5px;
+    text-align: left;
+    border-bottom: 1px solid #cbd5e1;
+    background: #e9f2ff !important;
+    font-weight: 600;
+    color: #1e293b;
+  }
+
+  th:nth-child(1) { text-align: center; }
+  td:nth-child(1) { text-align: center; }
+
+  td {
+    padding: 7px 5px;
+    border-bottom: 1px solid #eef2f7;
+    color: #334155;
+    word-wrap: break-word;
+  }
+
+  tr:nth-child(even) td { background: #f7faff; }
+  tr:hover td { background: #f1f5fb; }
+
+  /* TOTALS ROW */
+  .totals-row td {
+    background: #d7e8ff !important;
+    font-weight: 700;
+    border-top: 2px solid #94a3b8;
+  }
+
+  /* WATERMARK */
+  .watermark {
+    position: fixed;
+    top: 53%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    width: 32%;
+    opacity: 0.05;
+    pointer-events: none;
+  }
+
+  @media print {
+    thead { display: table-header-group; }
+    tfoot { display: table-footer-group; }
+    tr { page-break-inside: avoid; }
+  }
+</style>
+
+<div class="watermark"><img src="${watermarkUri}" /></div>
+
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="top">
+    <img src="${headerLogoUri}" class="invoice-logo" />
+    <div class="company-info">
+      <strong>Hoggaan Travels</strong><br/>
+      HODON, TALEX, TCC, A43<br/>
+      Mogadishu, Somalia<br/>
+      info@hoggaantravel.com
     </div>
-  `.trim();
-}
+  </div>
 
+  <!-- TITLE -->
+  <h2>${reportTitle}</h2>
 
+  <!-- META INFO -->
+  <div class="meta-row">
+    <div>
+      <span>Report Type:</span> ${reportType}<br/>
+      <span>Date:</span> ${dateNow}
+    </div>
+    <div style="text-align:right;">
+      <span>Printed On:</span> ${dateNow}, ${timeNow}<br/>
+      <span>Mode:</span> ${withMoney ? "With Money" : "Without Money"}
+    </div>
+  </div>
 
+  <!-- TABLE -->
+  <table>
+    <thead>
+      <tr>
+        <th style="width:4%;">#</th>
+        <th style="width:26%;">Name</th>
+        <th style="width:18%;">Passport</th>
+        <th style="width:15%;">Phone</th>
+        ${withMoney ? `
+        <th style="width:10%; text-align:right;">Paid</th>
+        <th style="width:10%; text-align:right;">Remaining</th>` : ``}
+      </tr>
+    </thead>
+    <tbody>
+      ${itemsHTML ||
+      `<tr><td colspan="${withMoney ? 6 : 4}" style="text-align:center; padding:10px; color:#64748b;">No pilgrims found</td></tr>`
+      }
 
-  function handlePrint(rows: any[], withMoney: boolean) {
-    const html = buildPrintableHtml(rows, withMoney);
+      ${withMoney ? `
+      <tr class="totals-row">
+        <td colspan="4" style="text-align:right;">TOTALS</td>
+        <td style="text-align:right;">${fmtMoney(totalPaid)}</td>
+        <td style="text-align:right;">${fmtMoney(totalRemaining)}</td>
+      </tr>` : ``}
+    </tbody>
+  </table>
+
+</div>
+`.trim();
+
+  }
+
+  async function handlePrint(rows: any[], withMoney: boolean) {
+    const html = await buildPrintableHtml(rows, withMoney);
     const iframe = document.createElement("iframe");
     iframe.style.position = "fixed";
     iframe.style.right = "0";
@@ -450,9 +508,11 @@ function buildPrintableHtml(rows: any[], withMoney: boolean) {
     iframe.style.border = "none";
     document.body.appendChild(iframe);
     const doc = iframe.contentWindow?.document;
-    doc?.open();
-    doc?.write(html);
-    doc?.close();
+    if (doc) {
+      doc.open();
+      doc.write(html);
+      doc.close();
+    }
     iframe.contentWindow?.focus();
     iframe.contentWindow?.print();
     setTimeout(() => document.body.removeChild(iframe), 1200);
@@ -470,6 +530,7 @@ function buildPrintableHtml(rows: any[], withMoney: boolean) {
         onRequests={() => setRequestsOpen(true)}
         onPrintWithMoney={() => handlePrint(filtered, true)}
         onPrintWithoutMoney={() => handlePrint(filtered, false)}
+        onDownloadExcel={() => exportHajjExcel(filtered)}
       />
 
       {/* Stats */}

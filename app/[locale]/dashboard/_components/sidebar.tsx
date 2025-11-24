@@ -78,7 +78,7 @@ export default function Sidebar({
             const { data: { user } } = await supabase.auth.getUser();
 
             if (!user) return setRole(null);
-            
+
             const { data } = await supabase
                 .from("app_users")
                 .select("role")
@@ -188,80 +188,84 @@ export default function Sidebar({
     const [drawerOpen, setDrawerOpen] = React.useState(false);
 
     /* -------------------- MOBILE TOP BAR + DRAWER -------------------- */
+    /* -------------------- MOBILE TOP BAR + DRAWER (NEW) -------------------- */
     if (mobile) {
         return (
-            <div
-                className={cx(
-                    "flex h-14 items-center justify-between border-b border-white/10 bg-[#0b1020]/95 px-4 text-slate-100",
-                    "backdrop-blur supports-[backdrop-filter]:bg-[#0b1020]/80",
-                    className
-                )}
-            >
-                <button
-                    onClick={() => setDrawerOpen(true)}
-                    aria-label="Open menu"
+            <>
+                {/* Top bar */}
+                <div
                     className={cx(
-                        "inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-sm hover:bg-white/10",
-                        RING
+                        "flex h-14 w-full items-center justify-between border-b",
+                        "bg-white/90 dark:bg-neutral-900/90 backdrop-blur",
+                        "px-4 shadow-sm",
+                        className
                     )}
                 >
-                    <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: PRIMARY }} />
-                    Menu
-                </button>
+                    {/* Menu button */}
+                    <button
+                        onClick={() => setDrawerOpen(true)}
+                        className="flex items-center gap-2 rounded-lg border border-slate-300 dark:border-slate-700 px-3 py-1.5 text-sm text-slate-700 dark:text-slate-200 bg-white dark:bg-neutral-800 hover:bg-slate-50 dark:hover:bg-neutral-700 transition"
+                    >
+                        <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: PRIMARY }} />
+                        Menu
+                    </button>
 
-                <Link href={`/${locale}/dashboard`} className="text-sm font-semibold tracking-tight">
-                    Hoggaan Dashboard
-                </Link>
+                    {/* Brand */}
+                    <div className="font-semibold text-slate-800 dark:text-slate-100 text-sm">
+                        Hoggaan Dashboard
+                    </div>
 
-                {/* Drawer */}
+                    <div className="w-8" /> {/* empty spacer for balance */}
+                </div>
+
+                {/* Drawer overlay */}
                 {drawerOpen && (
-                    <div className="fixed inset-0 z-50">
+                    <div className="fixed inset-0 z-50 lg:hidden">
                         <div
-                            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+                            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
                             onClick={() => setDrawerOpen(false)}
                         />
+
+                        {/* Drawer Panel */}
                         <div
                             className={cx(
-                                "absolute left-0 top-0 h-full w-[85%] max-w-[320px] border-r border-white/10 bg-[#0b1020] shadow-2xl",
-                                "grid grid-rows-[auto_1fr_auto]"
+                                "absolute left-0 top-0 h-full w-[82%] max-w-xs",
+                                "bg-white dark:bg-neutral-900 shadow-2xl border-r border-slate-200 dark:border-neutral-700",
+                                "grid grid-rows-[auto_1fr_auto] animate-slideIn"
                             )}
                         >
-                            {/* Drawer header */}
-                            <div className="flex h-14 items-center justify-between border-b border-white/10 px-4">
-                                <div className="flex items-center gap-2">
-                                    <Globe size={18} className="text-slate-200" />
-                                    <span className="text-sm font-semibold">Navigation</span>
+                            {/* Header */}
+                            <div className="flex h-14 items-center justify-between border-b border-slate-200 dark:border-neutral-800 px-4">
+                                <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
+                                    <Globe size={17} />
+                                    <span className="text-sm font-medium">Navigation</span>
                                 </div>
                                 <button
                                     onClick={() => setDrawerOpen(false)}
-                                    className="text-slate-300 hover:text-white"
-                                    aria-label="Close menu"
+                                    className="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
                                 >
                                     ✕
                                 </button>
                             </div>
 
-                            {/* Drawer body */}
-                            <div className="min-h-0 overflow-y-auto p-3 [scrollbar-width:thin] [scrollbar-color:#334155_transparent]">
+                            {/* Body */}
+                            <div className="overflow-y-auto px-3 py-2 space-y-4 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-slate-400/40">
                                 {sections.map((section) => {
                                     const openSection = openMap[section.title];
                                     return (
-                                        <div key={section.title} className="mb-3">
+                                        <div key={section.title}>
                                             <button
                                                 onClick={() => toggleSection(section.title)}
-                                                className={cx(
-                                                    "flex w-full items-center justify-between rounded-md px-3 py-2 text-[11px] font-semibold uppercase tracking-wide text-slate-400",
-                                                    "hover:bg-white/5"
-                                                )}
+                                                className="flex w-full items-center justify-between text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400 px-2 py-1.5 hover:bg-slate-100/40 dark:hover:bg-white/10 rounded"
                                             >
                                                 <span>{section.title}</span>
-                                                <span className="text-slate-400">{openSection ? "−" : "+"}</span>
+                                                <span>{openSection ? "−" : "+"}</span>
                                             </button>
 
                                             <div
                                                 className={cx(
-                                                    "overflow-hidden transition-all duration-300",
-                                                    openSection ? "max-h-[1000px] opacity-100 mt-1" : "max-h-0 opacity-0"
+                                                    "transition-all overflow-hidden",
+                                                    openSection ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0"
                                                 )}
                                             >
                                                 {section.items.map(({ href, label, icon: Icon }) => {
@@ -271,17 +275,15 @@ export default function Sidebar({
                                                             key={href}
                                                             href={href}
                                                             onClick={() => setDrawerOpen(false)}
-                                                            aria-current={active ? "page" : undefined}
                                                             className={cx(
-                                                                "group relative mb-1.5 flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition",
-                                                                active ? "bg-white/10 text-white" : "text-slate-200 hover:bg-white/5"
+                                                                "flex items-center gap-3 rounded-lg px-3 py-2 mt-1 transition",
+                                                                active
+                                                                    ? "bg-indigo-600 text-white"
+                                                                    : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-neutral-800"
                                                             )}
                                                         >
-                                                            <Icon
-                                                                size={18}
-                                                                className={active ? "text-white" : "text-slate-400 group-hover:text-slate-200"}
-                                                            />
-                                                            <span className="font-medium">{label}</span>
+                                                            <Icon size={18} />
+                                                            <span>{label}</span>
                                                         </Link>
                                                     );
                                                 })}
@@ -291,26 +293,23 @@ export default function Sidebar({
                                 })}
                             </div>
 
-                            {/* Drawer footer */}
-                            <div className="border-t border-white/10 p-3 grid grid-cols-2 gap-2">
+                            {/* Footer */}
+                            <div className="border-t border-slate-200 dark:border-neutral-800 p-3 bg-slate-50 dark:bg-neutral-800">
                                 <button
                                     onClick={() => setCollapsed((v) => !v)}
-                                    className={cx(
-                                        "inline-flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-slate-100 hover:bg-white/10",
-                                        RING
-                                    )}
+                                    className="w-full flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm bg-slate-200 dark:bg-neutral-700 text-slate-800 dark:text-slate-100 hover:bg-slate-300 dark:hover:bg-neutral-600 transition"
                                 >
                                     {collapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
-                                    {collapsed ? "Expand" : "Collapse"}
+                                    {collapsed ? "Expand menu" : "Collapse menu"}
                                 </button>
-
                             </div>
                         </div>
                     </div>
                 )}
-            </div>
+            </>
         );
     }
+
 
     /* -------------------- DESKTOP SIDEBAR -------------------- */
     return (

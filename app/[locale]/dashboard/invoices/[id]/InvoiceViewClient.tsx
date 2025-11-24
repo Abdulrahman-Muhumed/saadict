@@ -262,11 +262,11 @@ export default function InvoiceViewClient() {
                             <button
                                 onClick={() => router.back()}
                                 className="
-                        inline-flex items-center gap-1 
-                        mb-2
-                        text-sm text-white/80 
-                        hover:text-white transition
-                    "
+                                        inline-flex items-center gap-1 
+                                        mb-2
+                                        text-sm text-white/80 
+                                        hover:text-white transition
+                                    "
                             >
                                 <ArrowLeft className="h-4 w-4" />
                                 Back
@@ -286,11 +286,11 @@ export default function InvoiceViewClient() {
                             <button
                                 onClick={() => setConfirmOpen(true)}
                                 className="
-                        inline-flex items-center gap-2 rounded-lg 
-                        bg-red-600 hover:bg-red-700 
-                        dark:bg-red-700 dark:hover:bg-red-800 
-                        px-3 py-2 text-xs font-medium text-white transition
-                    "
+                                    inline-flex items-center gap-2 rounded-lg 
+                                    bg-red-600 hover:bg-red-700 
+                                    dark:bg-red-700 dark:hover:bg-red-800 
+                                    px-3 py-2 text-xs font-medium text-white transition
+                                "
                             >
                                 <Trash2 className="h-4 w-4" /> Delete
                             </button>
@@ -298,11 +298,11 @@ export default function InvoiceViewClient() {
                             <button
                                 onClick={openEdit}
                                 className="
-                        inline-flex items-center gap-2 rounded-lg 
-                        bg-neutral-900 hover:bg-neutral-800 
-                        dark:bg-neutral-800 dark:hover:bg-neutral-700 
-                        px-3 py-2 text-xs font-medium text-white transition
-                    "
+                                        inline-flex items-center gap-2 rounded-lg 
+                                        bg-neutral-900 hover:bg-neutral-800 
+                                        dark:bg-neutral-800 dark:hover:bg-neutral-700 
+                                        px-3 py-2 text-xs font-medium text-white transition
+                                    "
                             >
                                 <Pencil className="h-4 w-4" /> Edit
                             </button>
@@ -310,11 +310,11 @@ export default function InvoiceViewClient() {
                             <button
                                 onClick={() => PdfInvoice(invoice, lines)}
                                 className="
-                        inline-flex items-center gap-2 rounded-lg 
-                        bg-indigo-600 hover:bg-indigo-700 
-                        dark:bg-indigo-700 dark:hover:bg-indigo-800 
-                        px-3 py-2 text-xs font-medium text-white transition
-                    "
+                                        inline-flex items-center gap-2 rounded-lg 
+                                        bg-indigo-600 hover:bg-indigo-700 
+                                        dark:bg-indigo-700 dark:hover:bg-indigo-800 
+                                        px-3 py-2 text-xs font-medium text-white transition
+                                    "
                             >
                                 <Printer className="h-4 w-4" /> Print
                             </button>

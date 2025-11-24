@@ -16,7 +16,7 @@ export default function Pagination({
   setPage: (p: number) => void;
 }) {
   return (
-    <div className="mt-4 flex items-center justify-between border-t border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 rounded-b-2xl">
+    <div className="mt-4 flex items-center justify-between border-t border-slate-200 bg-slate-50 dark:bg-stone-800 px-4 py-3 text-slate-900 rounded-b-2xl">
       <div className="text-xs text-slate-500">
         Showing {(page - 1) * pageSize + 1}–
         {Math.min(page * pageSize, total)} of {total}

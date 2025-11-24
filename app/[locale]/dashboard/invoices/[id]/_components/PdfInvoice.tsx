@@ -1,6 +1,17 @@
 "use client";
 
-export default function handlePrintInvoice(invoice: any, lines: any[]) {
+export default async function handlePrintInvoice(invoice: any, lines: any[]) {
+
+
+  async function preloadImage(url: string) {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.src = url;
+      img.onload = resolve;
+      img.onerror = resolve;
+    });
+  }
+
   const headerLogoUri = "/brand/hg_icon.png";
   const watermarkUri = "/brand/hg_icon_light.png";
   const stamplogo = "/brand/hoggaan_stamp2.png";
@@ -29,6 +40,14 @@ export default function handlePrintInvoice(invoice: any, lines: any[]) {
   const amountDue = Math.max(0, totals.grand - amountPaid);
   const status = invoice.status || "unpaid";
 
+  await Promise.all([
+    preloadImage(headerLogoUri),
+    preloadImage(watermarkUri),
+    preloadImage(stamplogo),
+    preloadImage(hoggan_footer),
+  ]);
+
+
   // 🧾 Rows
   const itemsHTML = (lines || [])
     .map(
@@ -37,10 +56,9 @@ export default function handlePrintInvoice(invoice: any, lines: any[]) {
         <td style="font-size:12px; color:black;">${l.item_name || ""}</td>
         <td style="font-size:12px; color:black;">${l.description || ""}</td>
         <td style="text-align:right; font-size:12px; color:black;">${fmt(
-          l.unit_price
-        )}</td>
-        <td style="text-align:center; font-size:12px; color:black;">${
-          l.qty || 0
+        l.unit_price
+      )}</td>
+        <td style="text-align:center; font-size:12px; color:black;">${l.qty || 0
         }</td>
         <td style="text-align:right; font-size:12px; color:black;">${fmt(
           (l.qty || 0) * l.unit_price
@@ -190,11 +208,10 @@ export default function handlePrintInvoice(invoice: any, lines: any[]) {
   <div class="wrapper">
     <div class="top">
       <div><img src="${headerLogoUri}" class="invoice-logo" /></div>
-      ${
-        status === "paid"
-          ? `<div><img src="${stamplogo}" class="invoice-logo2" /></div>`
-          : ""
-      }
+      ${status === "paid"
+      ? `<div><img src="${stamplogo}" class="invoice-logo2" /></div>`
+      : ""
+    }
       <div class="company">
         <p>
           <strong>Hoggaan Travels</strong><br/>
@@ -245,27 +262,24 @@ export default function handlePrintInvoice(invoice: any, lines: any[]) {
           line-height:1.7;
           font-size:13px;
           color:#1e293b;">
-          <div><span style="font-weight:500;">Invoice No.:</span> ${
-            invoice.invoice_number || invoice.number || invoice.id
-          }</div>
-          <div><span style="font-weight:500;">Invoice Date:</span> ${
-            invoice.issue_date
-              ? new Date(invoice.issue_date).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })
-              : ""
-          }</div>
-          <div><span style="font-weight:500;">Due Date:</span> ${
-            invoice.due_date
-              ? new Date(invoice.due_date).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })
-              : ""
-          }</div>
+          <div><span style="font-weight:500;">Invoice No.:</span> ${invoice.invoice_number || invoice.number || invoice.id
+    }</div>
+          <div><span style="font-weight:500;">Invoice Date:</span> ${invoice.issue_date
+      ? new Date(invoice.issue_date).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+      : ""
+    }</div>
+          <div><span style="font-weight:500;">Due Date:</span> ${invoice.due_date
+      ? new Date(invoice.due_date).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+      : ""
+    }</div>
       </div>
     </div>
 
@@ -280,10 +294,9 @@ export default function handlePrintInvoice(invoice: any, lines: any[]) {
         </tr>
       </thead>
       <tbody>
-        ${
-          itemsHTML ||
-          `<tr><td colspan="5" style="text-align:center; color:#94a3b8; padding:12px;">No items</td></tr>`
-        }
+        ${itemsHTML ||
+    `<tr><td colspan="5" style="text-align:center; color:#94a3b8; padding:12px;">No items</td></tr>`
+    }
       </tbody>
     </table>
 
@@ -295,10 +308,9 @@ export default function handlePrintInvoice(invoice: any, lines: any[]) {
         <tr><td><strong>Amount Due</strong></td><td style="color:black;"><strong>$ ${fmt(amountDue)}</strong></td></tr>
     </table>
 
-    ${
-      status === "unpaid" || status === "void" || status === "issued"
-        ? `<div class="due-status">This invoice remains unpaid</div>`
-        : ""
+    ${status === "unpaid" || status === "void" || status === "issued"
+      ? `<div class="due-status">This invoice remains unpaid</div>`
+      : ""
     }
 
     <div class="payment-details">

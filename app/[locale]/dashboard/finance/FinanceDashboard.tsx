@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { createClient } from "@supabase/supabase-js";
+import { createClient } from "@/lib/supabase/client";
 import {
   Wallet,
   Banknote,
@@ -11,22 +11,19 @@ import {
   BarChart3,
   PieChart,
   CalendarDays,
-  Users,
-  Ticket,
 } from "lucide-react";
 
 import { brand } from "@/components/config/brand";
 import KpiCard from "./_components/KpiCard";
 import DataTable from "./_components/DataTable";
 import { BarChart, DonutChart } from "./_components/Charts";
+import { FinancePilgrimsTab } from "./_components/FinancePilgrimsTab";
+import { FinanceTicketsTab } from "./_components/FinanceTicketsTab";
 
 /* ------------------------------------------------------------------ */
 /* Supabase Client                                                    */
 /* ------------------------------------------------------------------ */
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+const supabase = createClient();
 
 /* ------------------------------------------------------------------ */
 /* Utility Helpers                                                    */
@@ -43,9 +40,9 @@ const sumBy = <T,>(arr: T[], fn: (v: T) => number) =>
 const fmtD = (iso?: string) =>
   iso
     ? new Date(iso).toLocaleDateString(undefined, {
-        month: "short",
-        day: "numeric",
-      })
+      month: "short",
+      day: "numeric",
+    })
     : "—";
 
 const lastNMonths = (n: number) => {
@@ -223,11 +220,10 @@ export default function FinanceDashboard() {
                     onClick={() =>
                       setActiveTab(tab.id as "overview" | "pilgrims" | "tickets")
                     }
-                    className={`relative rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
-                      activeTab === tab.id
-                        ? "text-white"
-                        : "text-white/70 hover:text-white"
-                    }`}
+                    className={`relative rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${activeTab === tab.id
+                      ? "text-white"
+                      : "text-white/70 hover:text-white"
+                      }`}
                   >
                     {activeTab === tab.id && (
                       <motion.div
@@ -245,11 +241,10 @@ export default function FinanceDashboard() {
                   <button
                     key={m}
                     onClick={() => setMonths(m)}
-                    className={`px-2.5 py-1 rounded-md transition-colors ${
-                      months === m
-                        ? "bg-white/30 text-white font-medium"
-                        : "bg-white/10 hover:bg-white/20"
-                    }`}
+                    className={`px-2.5 py-1 rounded-md transition-colors ${months === m
+                      ? "bg-white/30 text-white font-medium"
+                      : "bg-white/10 hover:bg-white/20"
+                      }`}
                   >
                     {m}m
                   </button>
@@ -275,7 +270,9 @@ export default function FinanceDashboard() {
             ) : (
               <>
                 {activeTab === "overview" && (
-                  <div className="grid grid-cols-1 gap-5 lg:grid-cols-4">
+                  <div className="grid grid-cols-1 gap-6 lg:grid-cols-4">
+
+                    {/* KPIs */}
                     <KpiCard
                       title="Total Revenue"
                       value={revenue}
@@ -302,8 +299,14 @@ export default function FinanceDashboard() {
                       color="text-red-400"
                     />
 
+                    {/* Revenue Trend */}
                     <div className="lg:col-span-2">
-                      <div className="rounded-2xl bg-white dark:bg-slate-950  shadow-md p-5">
+                      <div className="
+        rounded-3xl border border-white/10
+        bg-gradient-to-br from-white/70 to-white/40
+        dark:from-[#0b0f1a]/50 dark:to-[#0b0f1a]/20
+        shadow-xl backdrop-blur-xl p-5
+      ">
                         <div className="mb-4 flex items-center gap-2 text-sm text-muted-foreground">
                           <BarChart3 className="h-4 w-4" />
                           Revenue Trend
@@ -316,17 +319,24 @@ export default function FinanceDashboard() {
                       </div>
                     </div>
 
-                    <div className="rounded-2xl bg-white dark:bg-slate-950 shadow-md p-5">
+                    {/* Revenue Mix */}
+                    <div className="
+      rounded-3xl border border-white/10
+      bg-gradient-to-br from-white/70 to-white/40
+      dark:from-[#0b0f1a]/50 dark:to-[#0b0f1a]/20
+      shadow-xl backdrop-blur-xl p-5
+    ">
                       <div className="mb-4 flex items-center gap-2 text-sm text-muted-foreground">
                         <PieChart className="h-4 w-4" />
                         Revenue Mix
                       </div>
+
                       <div className="flex flex-col items-center justify-center gap-4">
                         <DonutChart
                           values={[tRevenue, vRevenue]}
                           colors={["#22d3ee", "#f59e0b"]}
                         />
-                        <div className="flex flex-col gap-1 text-xs text-neutral-300">
+                        <div className="flex flex-col gap-1 text-xs text-slate-700 dark:text-slate-300">
                           <div className="flex items-center gap-2">
                             <div className="h-2 w-2 rounded-full bg-[#22d3ee]" />
                             Tickets: ${money(tRevenue)}
@@ -339,13 +349,20 @@ export default function FinanceDashboard() {
                       </div>
                     </div>
 
-                    <div className="rounded-2xl bg-white dark:bg-slate-950 shadow-md p-5">
+                    {/* Recent Invoices */}
+                    <div className="
+      rounded-3xl border border-white/10
+      bg-gradient-to-br from-white/70 to-white/40
+      dark:from-[#0b0f1a]/50 dark:to-[#0b0f1a]/20
+      shadow-xl backdrop-blur-xl p-5
+    ">
                       <div className="mb-4 flex items-center gap-2 text-sm text-muted-foreground">
                         <CalendarDays className="h-4 w-4" />
                         Recent Invoices
                       </div>
+
                       <DataTable
-                        rows={recentInvoices}
+                        rows={recentInvoices.slice(0, 5)}   // 🔥 LIMIT TO 5
                         columns={[
                           {
                             key: "invoice_number",
@@ -361,11 +378,10 @@ export default function FinanceDashboard() {
                             title: "Status",
                             render: (r) => (
                               <span
-                                className={`text-xs font-medium ${
-                                  isPaid(r.status)
-                                    ? "text-green-400"
+                                className={`text-xs font-medium ${isPaid(r.status)
+                                    ? "text-green-500"
                                     : "text-amber-400"
-                                }`}
+                                  }`}
                               >
                                 {r.status}
                               </span>
@@ -375,6 +391,15 @@ export default function FinanceDashboard() {
                       />
                     </div>
                   </div>
+                )}
+
+
+                {activeTab === "pilgrims" && (
+                  <FinancePilgrimsTab months={months} />
+                )}
+
+                {activeTab === "tickets" && (
+                  <FinanceTicketsTab months={months} />
                 )}
               </>
             )}

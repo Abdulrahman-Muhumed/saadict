@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { Plus, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { notFound } from "next/navigation";
 
 const supabase = createClient();
 
@@ -17,6 +18,8 @@ export default function UsersPage() {
     const [openAdd, setOpenAdd] = useState(false);
     const [newEmail, setNewEmail] = useState("");
     const [newRole, setNewRole] = useState("employee");
+
+    notFound();
 
 
     useEffect(() => {

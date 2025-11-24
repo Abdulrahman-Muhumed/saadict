@@ -533,7 +533,6 @@ function EditDrawer({
                     form.charged_amount === null || form.charged_amount === undefined
                         ? null
                         : Number(form.charged_amount),
-                currency: form.currency || "USD",
                 visa_cost:
                     form.visa_cost === null || form.visa_cost === undefined
                         ? null

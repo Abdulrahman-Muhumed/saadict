@@ -12,6 +12,7 @@ export default function HajjHeader({
   onRequests,
   onPrintWithMoney,
   onPrintWithoutMoney,
+  onDownloadExcel,
 }: {
   q: string;
   setQ: (v: string) => void;
@@ -20,6 +21,7 @@ export default function HajjHeader({
   onRequests: () => void;
   onPrintWithMoney: () => void;
   onPrintWithoutMoney: () => void;
+  onDownloadExcel: () => void;
 }) {
 
   const headerA = brand.colors.primary;
@@ -79,9 +81,8 @@ export default function HajjHeader({
             >
               <Plus className="h-4 w-4" /> Add Pilgrim
               <ChevronDown
-                className={`h-4 w-4 transition-transform ${
-                  open ? "rotate-180" : ""
-                }`}
+                className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""
+                  }`}
               />
             </button>
 
@@ -115,6 +116,13 @@ export default function HajjHeader({
                 >
                   <Printer className="h-4 w-4" /> Print without money
                 </button>
+                <button
+                  onClick={onDownloadExcel}
+                  className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm hover:bg-slate-50"
+                >
+                  <Printer className="h-4 w-4" /> Download Excel
+                </button>
+               
               </div>
             )}
           </div>

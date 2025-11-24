@@ -24,6 +24,7 @@ export default function PilgrimsClient() {
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(true);
     const [q, setQ] = useState("");
+    const [refresh, setRefresh] = useState(0);
 
     const totalPages = useMemo(
         () => Math.max(1, Math.ceil(count / PAGE_SIZE)),
@@ -54,7 +55,28 @@ export default function PilgrimsClient() {
             setCount(total || 0);
             setLoading(false);
         })();
-    }, [page, q]);
+    }, [page, q, refresh]);
+
+
+    async function updateVisaStatus(id: string, status: "issued" | "not_issued") {
+        await supabase.from("pilgrims").update({
+            visa_issue_status: status,
+            billed_at: status === "issued" ? new Date().toISOString() : null
+        }).eq("id", id);
+        
+        setRefresh((x) => x + 1);
+    }
+
+    async function updatePaymentStatus(id: string, status: "paid" | "not_paid") {
+
+        await supabase.from("pilgrims").update({
+            payment_status: status,
+            issued_at: status === "paid" ? new Date().toISOString() : null
+        }).eq("id", id);
+
+        setRefresh((x) => x + 1);
+
+    }
 
     return (
         <div className="w-full">
@@ -75,7 +97,7 @@ export default function PilgrimsClient() {
                             Manage your pilgrims here. You can add, edit, or remove pilgrims as needed.
                         </p>
                     </div>
-                    
+
                     <div className="flex items-center gap-2">
                         <input
                             placeholder="Search name or city…"
@@ -88,7 +110,7 @@ export default function PilgrimsClient() {
                         />
                         <Link
                             href="pilgrims/new"
-                            className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white hover:bg-white/15"
+                            className="inline-flex mr-2 items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white hover:bg-white/15"
                         >
                             <Plus className="h-4 w-4" /> Add Pilgrim
                         </Link>
@@ -98,7 +120,13 @@ export default function PilgrimsClient() {
             </motion.div>
 
             {/* Table */}
-            <PilgrimsTable rows={rows} loading={loading} />
+
+            <PilgrimsTable
+                rows={rows}
+                loading={loading}
+                onVisaChange={updateVisaStatus}
+                onPaymentChange={updatePaymentStatus}
+            />
 
             {/* Pagination */}
             {totalPages > 1 && (
@@ -113,3 +141,6 @@ export default function PilgrimsClient() {
         </div>
     );
 }
+
+
+

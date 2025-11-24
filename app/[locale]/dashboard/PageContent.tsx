@@ -43,7 +43,8 @@ type CountBlock = {
   activeTrips: number;
   upcomingTrips: number;
   totalPilgrims: number;
-  activePilgrims: number;
+  malePilgrims: number;
+  femalePilgrims: number;
   totalBookings: number;
   confirmedBookings: number;
   pendingUmrahReq: number;
@@ -77,7 +78,8 @@ export default function PageContent() {
           tripsActive,
           tripsUpcoming,
           pilgrimsAll,
-          pilgrimsActive,
+          pilgrimsMale,
+          pilgrimsFemale,
           bookingsAll,
           bookingsConfirmed,
           umrahPending,
@@ -100,7 +102,11 @@ export default function PageContent() {
           supabase
             .from("pilgrims")
             .select("*", { count: "exact", head: true })
-            .eq("status", "active"),
+            .eq("gender", "m"),
+          supabase
+            .from("pilgrims")
+            .select("*", { count: "exact", head: true })
+            .eq("gender", "f"),
           supabase.from("bookings").select("*", { count: "exact", head: true }),
           supabase
             .from("bookings")
@@ -134,7 +140,8 @@ export default function PageContent() {
           activeTrips: tripsActive.count ?? 0,
           upcomingTrips: tripsUpcoming.count ?? 0,
           totalPilgrims: pilgrimsAll.count ?? 0,
-          activePilgrims: pilgrimsActive.count ?? 0,
+          malePilgrims: pilgrimsMale.count ?? 0,
+          femalePilgrims: pilgrimsFemale.count ?? 0,
           totalBookings: bookingsAll.count ?? 0,
           confirmedBookings: bookingsConfirmed.count ?? 0,
           pendingUmrahReq: umrahPending.count ?? 0,
@@ -182,6 +189,7 @@ export default function PageContent() {
       {
         title: "Total Pilgrims",
         value: counts.totalPilgrims.toString(),
+        value2: `Male: ${counts.malePilgrims} / Female: ${counts.femalePilgrims}`,
         icon: <Users className="w-6 h-6" />,
         gradient: `linear-gradient(135deg, ${PRIMARY}, ${ACCENT})`,
       },
@@ -213,6 +221,7 @@ export default function PageContent() {
     }[];
   }, [counts]);
 
+
   return (
     <section className="min-h-screen">
       {/* HEADER */}
@@ -237,7 +246,7 @@ export default function PageContent() {
 
       {/* STATS GRID (4 cards only) */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {(loading ? skeletonStats : statCards).map((card, i) => (
+        {(loading ? skeletonStats : statCards).map((card: any, i) => (
           <motion.div
             key={card.title + i}
             initial={{ opacity: 0, y: 15 }}
@@ -255,10 +264,18 @@ export default function PageContent() {
               <div className="space-y-1">
                 <p className="text-xs opacity-80">{card.title}</p>
                 <h3 className="text-3xl font-bold">{card.value}</h3>
+
+                {("value2" in card) && card.value2 && (
+                  <p className="text-sm font-semibold opacity-90">{card.value2}</p>
+                )}
+
+
                 {"meta" in card && card.meta ? (
                   <p className="text-[11px] opacity-90 mt-1">{card.meta}</p>
                 ) : null}
+
               </div>
+
               <div className="p-3 bg-white/10 rounded-xl">
                 {card.icon}
               </div>

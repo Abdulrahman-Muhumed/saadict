@@ -1,32 +1,23 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState, useTransition } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
-import { Link, usePathname, useRouter } from "@/lib/i18n/navigation";
+import { Link, usePathname } from "@/lib/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { brand } from "@/components/config/brand";
-import LangChooser from "./LangChooser";
 import MobileSheet from "./MobileSheet";
 import { useScrollProgress } from "./hooks/useScrollProgress";
-import type { LanguageOption } from "./types";
 import { useTheme } from "next-themes";
 
 export default function HeaderBare() {
   const t = useTranslations("nav");
   const locale = useLocale();
   const pathname = usePathname();
-  const router = useRouter();
   const { scrolled } = useScrollProgress();
-  const [open, setOpen] = useState(false);
-  const [isPending, startTransition] = useTransition();
-
   const { theme } = useTheme();
+  const [open, setOpen] = useState(false);
 
-  const LANGUAGES: LanguageOption[] = [
-    { code: "en", label: "English", flag: "fi fi-gb" },
-  ];
-
-  // REAL HORNBOX NAVIGATION
+  // Navigation (memoized)
   const navLinks = useMemo(
     () => [
       { href: "/", label: "Home" },
@@ -35,42 +26,24 @@ export default function HeaderBare() {
       { href: "/industries", label: "Industries" },
       { href: "/global-network", label: "Global Network" },
       { href: "/projects", label: "Projects" },
-      { href: "/contact", label: "Contact" },
     ],
     []
   );
 
+  // Active highlight (optimized)
   const activeHref = useMemo(() => {
+    if (!pathname) return "/";
     const exact = navLinks.find((l) => l.href === pathname);
     if (exact) return exact.href;
+
     const deep = navLinks.find(
-      (l) => l.href !== "/" && pathname?.startsWith(l.href)
+      (l) => l.href !== "/" && pathname.startsWith(l.href)
     );
     return deep?.href ?? "/";
   }, [pathname, navLinks]);
 
-  const changeLang = (nextLocale: string) => {
-    if (nextLocale === locale) return;
-    startTransition(() => router.replace(pathname, { locale: nextLocale }));
-  };
-
+  // Close mobile menu on route change
   useEffect(() => setOpen(false), [pathname]);
-
-  // Close dropdown on outside click
-  const langRef = useRef<HTMLDetailsElement | null>(null);
-  useEffect(() => {
-    const onDocClick = (e: MouseEvent) => {
-      if (
-        langRef.current &&
-        (langRef.current as any).open &&
-        !langRef.current.contains(e.target as Node)
-      ) {
-        (langRef.current as any).open = false;
-      }
-    };
-    document.addEventListener("mousedown", onDocClick);
-    return () => document.removeEventListener("mousedown", onDocClick);
-  }, []);
 
   return (
     <header className="sticky top-0 z-[60]">
@@ -79,11 +52,10 @@ export default function HeaderBare() {
         <div
           className={`
             flex items-center justify-between px-5 py-3 mt-3
-            rounded-xl border transition-all 
-            ${
-              scrolled
-                ? "bg-white/90 dark:bg-black/90 border-black/10 dark:border-white/10 shadow-md backdrop-blur-xl"
-                : "bg-white/50 dark:bg-black/40 border-black/10 dark:border-white/10 backdrop-blur-xl"
+            rounded-xl border transition-all duration-300
+            ${scrolled
+              ? "bg-white/90 dark:bg-black/90 border-black/10 dark:border-white/10 shadow-sm backdrop-blur-xl"
+              : "bg-white/50 dark:bg-black/40 border-black/10 dark:border-white/10 backdrop-blur-lg"
             }
           `}
         >
@@ -94,7 +66,7 @@ export default function HeaderBare() {
               alt="HornBox"
               width={42}
               height={42}
-              className="h-10 w-auto"
+              className="h-10 w-auto select-none"
               priority
             />
             <span className="font-semibold text-[17px] tracking-tight text-black dark:text-white">
@@ -111,11 +83,10 @@ export default function HeaderBare() {
                   key={link.href}
                   href={link.href}
                   className={`
-                    relative px-4 py-2 text-sm font-medium transition
-                    ${
-                      active
-                        ? "text-black dark:text-white"
-                        : "text-black/70 hover:text-black dark:text-white/70 dark:hover:text-white"
+                    relative px-4 py-2 text-sm font-medium transition-colors
+                    ${active
+                      ? "text-black dark:text-white"
+                      : "text-black/70 hover:text-black dark:text-white/70 dark:hover:text-white"
                     }
                   `}
                 >
@@ -132,22 +103,27 @@ export default function HeaderBare() {
                 </Link>
               );
             })}
-          </nav>
+            <Link
+              href="/contact"
+              className="
+                hidden md:inline-block mr-3
+                bg-yellow-400 text-black 
+                px-5 py-2.5 
+                rounded-lg 
+                hover:bg-yellow-300 
+                transition-colors
+              "
+            >
+              Contact US
+            </Link>
 
-          {/* ACTIONS */}
-          <div className="hidden md:flex items-center gap-3">
-            <LangChooser
-              ref={langRef}
-              locale={locale}
-              languages={LANGUAGES}
-              changeLang={changeLang}
-            />
-          </div>
+          </nav>
 
           {/* MOBILE BUTTON */}
           <button
             onClick={() => setOpen((v) => !v)}
-            className="md:hidden h-10 w-10 flex items-center justify-center rounded-lg hover:bg-black/10 dark:hover:bg-white/10"
+            aria-label="Toggle Menu"
+            className="md:hidden h-10 w-10 flex items-center justify-center rounded-lg hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
           >
             {open ? (
               <svg className="h-6 w-6" stroke="currentColor" strokeWidth="2" fill="none">
@@ -168,13 +144,8 @@ export default function HeaderBare() {
         onClose={() => setOpen(false)}
         brandIndigo={brand.colors.primary}
         accent={brand.colors.accent}
-        t={(k) => t(k as any)}
         pathname={pathname}
         navLinks={navLinks}
-        locale={locale}
-        languages={LANGUAGES}
-        changeLang={changeLang}
-        isMyId={false}
       />
     </header>
   );

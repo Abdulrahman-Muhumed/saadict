@@ -9,6 +9,7 @@ import LangChooser from "./LangChooser";
 import MobileSheet from "./MobileSheet";
 import { useScrollProgress } from "./hooks/useScrollProgress";
 import type { LanguageOption } from "./types";
+import { useTheme } from "next-themes";
 
 export default function HeaderBare() {
   const t = useTranslations("nav");
@@ -19,10 +20,10 @@ export default function HeaderBare() {
   const [open, setOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
 
+  const { theme } = useTheme();
+
   const LANGUAGES: LanguageOption[] = [
     { code: "en", label: "English", flag: "fi fi-gb" },
-    { code: "so", label: "Somali", flag: "fi fi-so" },
-    { code: "ar", label: "العربية", flag: "fi fi-sa" },
   ];
 
   // REAL HORNBOX NAVIGATION
@@ -89,7 +90,7 @@ export default function HeaderBare() {
           {/* LOGO */}
           <Link href="/" className="flex items-center gap-3">
             <Image
-              src={brand.logo.light}
+              src={theme === "dark" ? brand.logo.dark : brand.logo.light}
               alt="HornBox"
               width={42}
               height={42}

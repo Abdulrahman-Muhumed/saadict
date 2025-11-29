@@ -1,5 +1,6 @@
 "use client";
 
+import { brand } from "@/components/config/brand";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Clock, CornerRightUp, Send, Building2 } from "lucide-react";
 import Image from "next/image";
@@ -66,17 +67,17 @@ export default function ContactPage() {
             {
               icon: Phone,
               title: "Phone Support",
-              desc: "+252 61 XXX XXXX • +254 7XX XXX XXX",
+              desc: brand.social.phoneNumber + " | " + brand.social.phoneNumber2,
             },
             {
               icon: Mail,
               title: "Email Us",
-              desc: "operations@hornboxlogistics.com",
+              desc: brand.social.email,
             },
             {
               icon: MapPin,
               title: "Visit Office",
-              desc: "Mogadishu • Nairobi • Djibouti",
+              desc: brand.social.location,
             },
           ].map((item, i) => {
             const Icon = item.icon;
@@ -164,26 +165,19 @@ export default function ContactPage() {
               <ul className="mt-6 space-y-5">
                 <li className={`${TEXT_MUTED} flex gap-4`}>
                   <MapPin size={20} className="text-yellow-500 dark:text-yellow-300 mt-1" />
-                  Mogadishu – Port Supply Base & Airport Cargo
+                  {brand.social.location}
                 </li>
-                <li className={`${TEXT_MUTED} flex gap-4`}>
-                  <MapPin size={20} className="text-yellow-500 dark:text-yellow-300 mt-1" />
-                  Nairobi – Regional Hub & Project Logistics
-                </li>
-                <li className={`${TEXT_MUTED} flex gap-4`}>
-                  <MapPin size={20} className="text-yellow-500 dark:text-yellow-300 mt-1" />
-                  Djibouti – Maritime Gateway & Heavy-Lift Corridor
-                </li>
+                
               </ul>
             </div>
 
             <div className={`${PANEL} ${BORDER_YELLOW} p-10 rounded-3xl`}>
               <h3 className={`text-2xl font-extrabold ${TEXT_DARK}`}>Working Hours</h3>
               <ul className="mt-6 space-y-4 text-lg">
-                <li className={TEXT_MUTED}>Monday – Friday: 8:00am – 6:00pm</li>
-                <li className={TEXT_MUTED}>Saturday: 9:00am – 4:00pm</li>
+                <li className={TEXT_MUTED}>Saturday – Friday: 8:00am – 6:00pm</li>
+                <li className={TEXT_MUTED}>Thursday: 8:00am – 6:00pm</li>
                 <li className="text-yellow-500 dark:text-yellow-300 font-semibold">
-                  24/7 support for project cargo & emergency logistics
+                  Active support for project cargo & emergency logistics
                 </li>
               </ul>
             </div>
@@ -208,7 +202,7 @@ export default function ContactPage() {
           </p>
 
           <a
-            href="tel:+252610000000"
+            href={`tel:${brand.social.phoneNumber.replace(/\s+/g, '')}`}
             className="mt-8 inline-flex items-center gap-3 px-10 py-5 rounded-xl bg-yellow-500 hover:bg-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-200 text-black font-bold text-lg shadow-xl shadow-yellow-500/50 transition transform hover:scale-[1.05]"
           >
             Call Operations Desk <CornerRightUp size={18} />

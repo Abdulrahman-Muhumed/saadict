@@ -94,7 +94,7 @@ export default function FooterContent() {
               </span>
             </div>
 
-            <p className="mt-4 text-sm text-white/85 leading-relaxed max-w-xs">
+            <p className="mt-4 text-sm text-white/85 leading-relaxed max-w-xs text-justify">
               Global freight forwarding & logistics partner delivering integrated
               ocean, air, road, warehousing, and customs solutions across 195+ destinations.
             </p>
@@ -116,8 +116,6 @@ export default function FooterContent() {
 
             <NavGroup title="Quick Links">
               <NavItem href="/contact" accent={ACCENT}>Contact</NavItem>
-              <NavItem href="/track" accent={ACCENT}>Track Shipment</NavItem>
-              <NavItem href="/legal/terms" accent={ACCENT}>Terms & Policies</NavItem>
             </NavGroup>
           </div>
 
@@ -141,7 +139,7 @@ export default function FooterContent() {
                     className="group relative inline-flex items-center gap-1"
                   >
                     <span className="relative">
-                      info@hornboxllc.com
+                      {brand.social.email}
                       <span
                         className="pointer-events-none absolute inset-x-0 -bottom-1 h-[2px] origin-left scale-x-0
                         transition-transform duration-300"
@@ -158,20 +156,20 @@ export default function FooterContent() {
 
                 <li className="flex items-center gap-3">
                   <Phone className="h-4 w-4 text-white/70" />
-                  <span>+252 (XX) XXX XXXX</span>
+                  <span>{brand.social.phoneNumber}</span>
                 </li>
 
                 <li className="flex items-center gap-3">
                   <MapPin className="h-4 w-4 text-white/70" />
                   <span>
                     HornBox Headquarters — <br />
-                    (Add your official address here)
+                    {brand.social.location}
                   </span>
                 </li>
 
                 <li className="flex items-center gap-3">
                   <Globe className="h-4 w-4 text-white/70" />
-                  <span>English • العربية • Soomaali</span>
+                  <span>English</span>
                 </li>
               </ul>
             </div>
@@ -181,10 +179,10 @@ export default function FooterContent() {
         {/* ───────── BOTTOM BAR ───────── */}
         <div className="border-t border-white/10">
           <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row items-center justify-between text-xs text-white/70">
-            <p>© {YEAR} HornBox Logistics LLC — All Rights Reserved.</p>
+            <p>© {YEAR} {brand.name} — All Rights Reserved.</p>
 
             <p className="mt-2 md:mt-0">
-              Built with ♥ by{" "}
+              Built by{" "}
               <a
                 href="https://aimmj.vercel.app"
                 className="font-semibold hover:text-white transition"

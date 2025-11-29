@@ -21,6 +21,7 @@ import {
   Loader,
 } from "lucide-react";
 import Image from "next/image";
+import {Link} from "@/lib/i18n/navigation";
 
 // --- Data ---
 const SERVICES = [
@@ -328,12 +329,12 @@ export default function ServicesPage() {
               tailoring bespoke solutions for unique challenges.
             </p>
             <div className="flex flex-wrap gap-4">
-              <button className="bg-yellow-400 text-black px-6 py-3 rounded-lg font-bold hover:bg-yellow-300 transition-colors">
+              <Link
+                href="/contact"
+                className="bg-yellow-400 text-black px-6 py-3 rounded-lg font-bold hover:bg-yellow-300 transition-colors inline-block"
+              >
                 Contact Sales Team
-              </button>
-              <button className="border border-neutral-600 px-6 py-3 rounded-lg font-semibold hover:bg-white/5 transition-colors">
-                View Case Studies
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -494,9 +495,9 @@ function RequestModal({
   };
 
   const handleBackdropClick = () => {
-      if (!isSubmitting) {
-          onClose();
-      }
+    if (!isSubmitting) {
+      onClose();
+    }
   };
 
   return (

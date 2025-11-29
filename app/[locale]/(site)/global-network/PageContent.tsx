@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 
 import GlobalNetworkHero from "./_components/GlobalNetworkHero";
-
+import {Link} from "@/lib/i18n/navigation";
 // BRAND SYSTEM
 const TEXT_DARK = "text-slate-900 dark:text-white";
 const TEXT_MUTED = "text-slate-600 dark:text-neutral-400";
@@ -328,11 +328,11 @@ export default function GlobalNetworkPage() {
                 Have a special route or complex logistics request?
               </h2>
               <p className={`mt-3 text-lg ${TEXT_MUTED}`}>
-                Connect with our Tier-1 Strategic Logistics Control Team — operational 24/7.
+                Connect with our Tier-1 Strategic Logistics Control Team.
               </p>
             </div>
 
-            <a
+            <Link
               href="/contact"
               className="
                 inline-flex items-center gap-3 px-8 py-4 rounded-xl
@@ -343,9 +343,10 @@ export default function GlobalNetworkPage() {
               "
             >
               Contact HornBox <CornerRightUp size={18} />
-            </a>
+            </Link>
           </div>
         </section>
+        
       </motion.div>
     </main>
   );

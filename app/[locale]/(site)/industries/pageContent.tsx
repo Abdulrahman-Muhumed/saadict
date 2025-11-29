@@ -334,7 +334,7 @@ export default function IndustriesPage() {
                         href="/contact"
                         className="mt-8 inline-flex items-center gap-2 rounded-xl bg-yellow-400 px-8 py-3.5 text-base font-bold text-black shadow-md hover:bg-yellow-300 transition uppercase tracking-wider"
                     >
-                        Initiate a Project Consultation
+                        Contact Our Team
                         <ArrowRight size={18} />
                     </a>
                 </motion.div>

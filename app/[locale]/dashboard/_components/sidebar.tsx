@@ -95,45 +95,14 @@ export default function Sidebar({
     const buildSections = (locale: string): NavSection[] => [
         {
             title: "Overview",
-            items: [{ href: `/${locale}/dashboard`, label: "Dashboard", icon: LayoutDashboard }],
+            items: [{ href: `/${locale}/`, label: "Home", icon: LayoutDashboard }],
         },
         {
             title: "Operations",
             items: [
-                { href: `/${locale}/dashboard/pilgrims`, label: "Pilgrims", icon: Users },
-                { href: `/${locale}/dashboard/bookings`, label: "Bookings", icon: Plane },
-                { href: `/${locale}/dashboard/housing`, label: "Housing", icon: Plane },
-                { href: `/${locale}/dashboard/trips`, label: "Trips", icon: Users },
-                { href: `/${locale}/dashboard/tickets`, label: "Tickets", icon: Ticket },
-                { href: `/${locale}/dashboard/requests`, label: "Requests", icon: Ticket },
-                { href: `/${locale}/dashboard/hajj`, label: "Hajj", icon: Plane },
-                { href: `/${locale}/dashboard/packages`, label: "Packages", icon: Plane },
+                { href: `/${locale}/`, label: "Home", icon: Users },
+               
             ],
-        },
-        {
-            title: "Inventory",
-            items: [
-                { href: `/${locale}/dashboard/hotels`, label: "Hotels", icon: Hotel },
-                { href: `/${locale}/dashboard/flight`, label: "Flights", icon: Plane },
-                { href: `/${locale}/dashboard/prices`, label: "Prices", icon: Tags },
-            ],
-        },
-        {
-            title: "Finance",
-            items: [
-                { href: `/${locale}/dashboard/finance`, label: "Financial Overview", icon: BarChart3 },
-                { href: `/${locale}/dashboard/invoices`, label: "Invoices", icon: ReceiptText },
-            ],
-        },
-        {
-            title: "System",
-            items: [
-                role === "admin"
-                    ? { href: `/${locale}/dashboard/users`, label: "Users", icon: Users }
-                    : null,
-                { href: `/${locale}/dashboard/notifications`, label: "Notifications", icon: Bell },
-                { href: `/${locale}/dashboard/settings`, label: "Settings", icon: Settings },
-            ].filter(Boolean) as NavItem[],
         },
     ];
 

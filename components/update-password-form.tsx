@@ -6,10 +6,13 @@ import { createClient } from "@/lib/supabase/client";
 import { Loader2, Lock, ArrowRight } from "lucide-react";
 import { brand } from "@/components/config/brand";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 export function UpdatePasswordForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
+
+  notFound();
   const router = useRouter();
   const supabase = createClient();
 

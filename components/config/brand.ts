@@ -1,16 +1,16 @@
 // src/config/brand.ts
 
 export const brand = {
-  name: "Hoggaan Travels",
+  name: "HornBox LLC",
   colors: {
-    primary: "#241c72", // deep indigo
-    accent: "#F99417",  // warm orange
+    primary: "#1A1A1A",   // deep industrial black
+    accent: "#FFC233",    // modern premium yellow (not cheap neon)
   },
   logo: {
-    light: "/brand/hg_icon_light.png",  // update once you have them in /public/images
-    dark: "/brand/hg_icon_dark.png",
-    square: "/brand/hg_icon_light.jpg",
-    nav_logo: "/brand/hg_icon_light.png",
+    light: "/brand/hornbox_logo.png",  // update once you have them in /public/images
+    dark: "/brand/hornbox_logo.png",
+    square: "/brand/hornbox_logo.png",
+    nav_logo: "/brand/hornbox_logo.png",
   },
   social: {
     whatsapp: "https://wa.me/252619100000",

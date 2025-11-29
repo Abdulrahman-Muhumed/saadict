@@ -8,6 +8,7 @@ import LoaderOverlay from "@/components/LoaderOverlay";
 import { brand } from "@/components/config/brand";
 import { usePathname } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import { notFound } from "next/navigation";
 
 const ACCENT = brand?.colors?.accent ?? "#F99417";
 
@@ -16,6 +17,8 @@ export default function ProtectedLayout({
 }: {
     children: React.ReactNode;
 }) {
+
+    notFound();
     const [collapsed, setCollapsed] = useState(false);
     const [loading, setLoading] = useState(false);
     const [showConfirm, setShowConfirm] = useState(false);

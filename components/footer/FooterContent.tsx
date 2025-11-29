@@ -4,30 +4,29 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
-import { useTranslations } from "next-intl";
 import { brand } from "@/components/config/brand";
 import {
   Mail,
-  ShieldCheck,
-  Lock,
-  Cpu,
+  Phone,
+  MapPin,
   ArrowUpRight,
-  Building2,
   Globe,
+  ShieldCheck,
 } from "lucide-react";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 
 export default function FooterContent() {
-  const t = useTranslations("portalFooter");
-  const PRIMARY = useMemo(() => brand.colors.primary ?? "#241c72", []);
-  const ACCENT = useMemo(() => brand.colors.accent ?? "#F99417", []);
   const YEAR = new Date().getFullYear();
 
-  /* --- track if footer is visible --- */
+  const PRIMARY = brand.colors.primary ?? "#1A1A1A"; // black
+  const ACCENT = brand.colors.accent ?? "#FFC233"; // yellow
+
+  /* Track footer visibility */
   const [footerVisible, setFooterVisible] = useState(false);
   useEffect(() => {
     const footer = document.querySelector("footer");
     if (!footer) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => setFooterVisible(entry.isIntersecting),
       { threshold: 0.1 }
@@ -46,33 +45,26 @@ export default function FooterContent() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 80, opacity: 0 }}
             transition={{ type: "spring", stiffness: 260, damping: 25 }}
-            className="fixed bottom-3 left-3 md:left-20 lg:left-24 z-50 w-[95%] max-w-7xl -translate-x-1/2 px-4"
+            className="fixed bottom-1 left-0 z-50  max-w-7xl -translate-x-1/2 px-4"
           >
             <div
-              className="flex h-12 items-center justify-between rounded-2xl border border-white/20 
-              bg-[#F99417]/50 text-xs font-semibold 
-              shadow-lg backdrop-blur-md dark:bg-neutral-950/80 dark:text-neutral-300 px-5"
+              className="flex h-12 items-center justify-between rounded-2xl px-5
+              dark:bg-black/80 bg-white/80 backdrop-blur-xl border border-white/10
+              text-xs text-white shadow-lg"
             >
-              {/* Left */}
-              <div className="flex items-center gap-3">
-                <span
-                  className="h-5 w-5 rounded-md bg-center bg-cover"
-                  style={{ backgroundImage: `url(${brand.logo.nav_logo})` }}
+              <div className="flex mr-5">
+                <Image
+                  src={brand.logo.light}
+                  alt="HornBox Logo"
+                  width={24}
+                  height={24}
+                  className="opacity-90"
                 />
-                <span className="text-sm">
-                  © {YEAR} {brand.name}
-                </span>
               </div>
 
-              {/* Right */}
               <div className="flex items-center gap-4">
-                <Link
-                  href="/contact"
-                  className="hidden sm:inline text-slate-700 dark:text-neutral-400 hover:text-[var(--accent)] transition-colors"
-                >
-                  {t("support.title")}
-                </Link>
-                <div className="w-px h-5 bg-neutral-300 dark:bg-neutral-700" />
+               
+                <div className="w-px h-4 bg-white/30" />
                 <ThemeSwitcher />
               </div>
             </div>
@@ -82,113 +74,119 @@ export default function FooterContent() {
 
       {/* ───────── MAIN FOOTER ───────── */}
       <footer
-        className="w-full text-white border-t border-white/10 relative z-40 dark:bg-neutral-900 bg-[#241c72]"
+        className="w-full text-white relative z-40"
+        style={{ background: PRIMARY }}
       >
-        {/* MAIN CONTENT */}
         <section className="max-w-7xl mx-auto px-6 py-16 grid gap-12 md:grid-cols-3">
-          {/* ── BRAND SIDE ── */}
+          {/* ── BRAND COLUMN ── */}
           <div>
             <div className="flex items-center gap-3">
               <Image
                 src={brand.logo.light}
-                alt={t("brand")}
-                width={44}
-                height={44}
-                className="h-11 w-auto"
+                alt="HornBox Logo"
+                width={48}
+                height={48}
+                className="h-12 w-auto"
                 priority
               />
               <span className="text-lg font-semibold tracking-tight">
-                {t("brand")}
+                {brand.name}
               </span>
             </div>
-            <p className="mt-4 text-sm leading-relaxed text-white/85 max-w-xs">
-              {t("description")}
+
+            <p className="mt-4 text-sm text-white/85 leading-relaxed max-w-xs">
+              Global freight forwarding & logistics partner delivering integrated
+              ocean, air, road, warehousing, and customs solutions across 195+ destinations.
             </p>
+
             <div className="mt-6 flex flex-wrap gap-2">
-              <Badge icon={<ShieldCheck size={13} />} text={t("badges.verified")} />
-              <Badge icon={<Lock size={13} />} text={t("badges.secure")} />
+              <Badge icon={<ShieldCheck size={13} />} text="Verified Partner" />
             </div>
           </div>
 
-          {/* ── NAV LINKS ── */}
+          {/* ── NAVIGATION GROUPS ── */}
           <div className="grid sm:grid-cols-2 gap-10">
-            <NavGroup title={t("groups.platform")}>
-              <NavItem href="/about" accent={ACCENT}>
-                {t("links.about")}
-              </NavItem>
-              <NavItem href="/services" accent={ACCENT}>
-                {t("links.services")}
-              </NavItem>
-              <NavItem href="/contact" accent={ACCENT}>
-                {t("links.support")}
-              </NavItem>
-              <NavItem href="/auth/login" accent={ACCENT}>
-                {t("links.login")}
-              </NavItem>
+            <NavGroup title="Company">
+              <NavItem href="/about" accent={ACCENT}>About Us</NavItem>
+              <NavItem href="/services" accent={ACCENT}>Services</NavItem>
+              <NavItem href="/industries" accent={ACCENT}>Industries</NavItem>
+              <NavItem href="/network" accent={ACCENT}>Global Network</NavItem>
+              <NavItem href="/projects" accent={ACCENT}>Projects</NavItem>
             </NavGroup>
 
-            <NavGroup title={t("groups.resources")}>
-              <NavItem href="https://hoggaantravels.com" accent={ACCENT}>
-                {t("links.main")}
-              </NavItem>
+            <NavGroup title="Quick Links">
+              <NavItem href="/contact" accent={ACCENT}>Contact</NavItem>
+              <NavItem href="/track" accent={ACCENT}>Track Shipment</NavItem>
+              <NavItem href="/legal/terms" accent={ACCENT}>Terms & Policies</NavItem>
             </NavGroup>
           </div>
 
           {/* ── CONTACT BOX ── */}
           <div>
             <div
-              className="rounded-2xl p-6 backdrop-blur-lg"
+              className="rounded-2xl p-6 backdrop-blur-lg border border-white/10"
               style={{
-                background:
-                  "linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06))",
-                boxShadow: "inset 0 0 0 1px rgba(255,255,255,.14)",
+                background: "linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03))",
               }}
             >
-              <h4 className="text-sm font-semibold tracking-tight mb-3">
-                {t("support.title")}
+              <h4 className="text-sm font-semibold tracking-tight mb-4">
+                Contact Us
               </h4>
+
               <ul className="space-y-3 text-sm text-white/90">
                 <li className="flex items-center gap-3">
                   <Mail className="h-4 w-4 text-white/70" />
                   <a
-                    href="mailto:support@hoggaantravels.com"
+                    href="mailto:info@hornboxllc.com"
                     className="group relative inline-flex items-center gap-1"
                   >
                     <span className="relative">
-                      support@hoggaantravels.com
+                      info@hornboxllc.com
                       <span
-                        className="pointer-events-none absolute inset-x-0 -bottom-1 h-[2px] origin-left scale-x-0 transition-transform duration-300"
+                        className="pointer-events-none absolute inset-x-0 -bottom-1 h-[2px] origin-left scale-x-0
+                        transition-transform duration-300"
                         style={{
                           background: `linear-gradient(90deg, transparent, ${ACCENT}, transparent)`,
                         }}
                       />
                     </span>
-                    <ArrowUpRight className="h-3.5 w-3.5 opacity-0 -translate-x-1 translate-y-1 scale-75 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:scale-100" />
+                    <ArrowUpRight className="h-4 w-4 opacity-0 -translate-x-1 translate-y-1 scale-75
+                    transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1
+                    group-hover:-translate-y-1 group-hover:scale-100" />
                   </a>
                 </li>
+
                 <li className="flex items-center gap-3">
-                  <Building2 className="h-4 w-4 text-white/70" />
-                  <span>{t("support.address")}</span>
+                  <Phone className="h-4 w-4 text-white/70" />
+                  <span>+252 (XX) XXX XXXX</span>
                 </li>
+
+                <li className="flex items-center gap-3">
+                  <MapPin className="h-4 w-4 text-white/70" />
+                  <span>
+                    HornBox Headquarters — <br />
+                    (Add your official address here)
+                  </span>
+                </li>
+
                 <li className="flex items-center gap-3">
                   <Globe className="h-4 w-4 text-white/70" />
-                  <span>{t("support.languages")}</span>
+                  <span>English • العربية • Soomaali</span>
                 </li>
               </ul>
             </div>
           </div>
         </section>
 
-        {/* ───────── BOTTOM ───────── */}
+        {/* ───────── BOTTOM BAR ───────── */}
         <div className="border-t border-white/10">
-          <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row items-center justify-between text-xs text-white/80">
-            <p>{t("legal.rights", { year: YEAR })}</p>
+          <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row items-center justify-between text-xs text-white/70">
+            <p>© {YEAR} HornBox Logistics LLC — All Rights Reserved.</p>
+
             <p className="mt-2 md:mt-0">
-              {t("legal.builtWith")}{" "}
+              Built with ♥ by{" "}
               <a
-                href="https://aimmj.vercel.app/"
-                target="_blank"
-                rel="noreferrer"
+                href="https://aimmj.vercel.app"
                 className="font-semibold hover:text-white transition"
               >
                 Aimmj
@@ -201,14 +199,15 @@ export default function FooterContent() {
   );
 }
 
-/* ---------- SUBCOMPONENTS ---------- */
+/* ---------- SUB COMPONENTS ---------- */
+
 function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
     <span
       className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-semibold"
       style={{
-        background: "rgba(255,255,255,.10)",
-        boxShadow: "inset 0 0 0 1px rgba(255,255,255,.15)",
+        background: "rgba(255,255,255,.12)",
+        boxShadow: "inset 0 0 0 1px rgba(255,255,255,.2)",
       }}
     >
       {icon}
@@ -226,7 +225,7 @@ function NavGroup({
 }) {
   return (
     <div>
-      <h5 className="text-sm font-semibold tracking-tight text-white/95">
+      <h5 className="text-sm font-semibold tracking-tight text-white">
         {title}
       </h5>
       <ul className="mt-3 space-y-2 text-sm text-white/85">{children}</ul>
@@ -252,13 +251,16 @@ function NavItem({
         <span className="relative">
           {children}
           <span
-            className="pointer-events-none absolute inset-x-0 -bottom-1 h-[2px] origin-left scale-x-0 transition-transform duration-300"
+            className="pointer-events-none absolute inset-x-0 -bottom-1 h-[2px] origin-left scale-x-0
+            transition-transform duration-300"
             style={{
               background: `linear-gradient(90deg, transparent, ${accent}, transparent)`,
             }}
           />
         </span>
-        <ArrowUpRight className="h-3 w-3 opacity-0 -translate-x-1 translate-y-1 scale-75 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:scale-100" />
+        <ArrowUpRight className="h-3.5 w-3.5 opacity-0 -translate-x-1 translate-y-1 scale-75
+        transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1
+        group-hover:-translate-y-1 group-hover:scale-100" />
       </Link>
     </li>
   );

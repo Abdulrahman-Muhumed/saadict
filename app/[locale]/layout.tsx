@@ -2,6 +2,9 @@ import type { ReactNode } from "react";
 import { i18n, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { TranslationProvider } from "@/lib/i18n/provider";
+import PageTransitionProvider from "@/components/global/PageTransitionProvider";
+import ScrollTop from "@/components/global/ScrollTop";
+
 
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ locale }));
@@ -27,7 +30,10 @@ export default async function LocaleLayout({
 
   return (
     <TranslationProvider locale={locale} dictionary={dictionary}>
-      {children}
+      <PageTransitionProvider>
+        {children}
+        <ScrollTop />
+      </PageTransitionProvider>
     </TranslationProvider>
   );
 }

@@ -5,7 +5,7 @@ import HomeContent from "@/components/home/HomeContent";
 export default function Home() {
 
   return (
-    <main className="min-h-full ">
+    <main className=" relative">
       
       <HeroSection />
       <HomeContent />

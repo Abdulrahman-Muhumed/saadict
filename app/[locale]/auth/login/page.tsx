@@ -1,9 +1,11 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { LoginForm } from "@/components/login-form";
-
+import { notFound } from "next/navigation";
 
 export default async function Page() {
+
+  notFound();
 
  const supabase = await createClient(); 
 
@@ -18,7 +20,7 @@ export default async function Page() {
 
   return (
     <div className="w-full">
-      <LoginForm />
+      
     </div>
   );
 }

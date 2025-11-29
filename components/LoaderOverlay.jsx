@@ -1,10 +1,10 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import Image from "next/image"; // Keeping Image for the central element
+import { brand } from "./config/brand";
 
-const PRIMARY = "#241c72"; // brand indigo
-const ACCENT = "#F99417"; // brand orange
+const PRIMARY = brand.colors.primary; // brand indigo
+const ACCENT = brand.colors.accent; // brand orange
 
 // Animation variants for the entire bar container
 const containerVariants = {

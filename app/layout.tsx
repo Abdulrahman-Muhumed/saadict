@@ -5,21 +5,33 @@ import { brand } from "@/components/config/brand";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Hoggaan E-Portal",
-  description: "The official Hoggaan digital portal for pilgrims.",
+  title: "HornBox LLC",
+  description:
+    "HornBox LLC is a global freight forwarding and logistics provider offering ocean, air, road transport, customs clearance, warehousing, and project cargo solutions across 195+ destinations.",
   icons: {
     icon: brand.logo.light,
     apple: brand.logo.light,
   },
   keywords: [
-    "Hoggaan Portal",
-    "Hajj management system",
-    "Umrah portal",
-    "pilgrim ID",
-    "booking verification",
-    "travel dashboard",
+    "HornBox Logistics",
+    "HornBox LLC",
+    "Freight Forwarding",
+    "Ocean Freight",
+    "Air Freight",
+    "Road Transport",
+    "Warehousing",
+    "Customs Clearance",
+    "Project Cargo",
+    "3PL",
+    "4PL",
+    "Supply Chain",
+    "Logistics Services",
+    "Global Network",
+    "Cargo Shipping",
+    "Import Export",
   ],
 };
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

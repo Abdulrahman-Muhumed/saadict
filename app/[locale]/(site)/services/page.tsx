@@ -1,9 +1,10 @@
 import PageContent from "./pageContent";
+import { brand } from "@/components/config/brand";
 
 export const metadata = {
-  title: "E-Portal Services | Hoggaan Travels",
+  title: `Services | ${brand.name} `,
   description:
-    "Explore the key modules and digital tools available in the Hoggaan E-Portal.",
+    "Explore HornBox LLC's comprehensive logistics services, including ocean freight, air freight, road transport, customs clearance, warehousing, and project cargo solutions tailored to your supply chain needs.",
 };
 
 export default function ServicesPage() {

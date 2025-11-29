@@ -1,10 +1,13 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { notFound } from "next/navigation";
 
 export default async function Page({
   searchParams,
 }: {
   searchParams: Promise<{ error: string }>;
 }) {
+
+  notFound();
   const params = await searchParams;
 
   return (

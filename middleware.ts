@@ -2,7 +2,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { i18n } from "@/lib/i18n/config";
-import { updateSession } from "@/lib/supabase/middleware";
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -28,10 +27,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // 3. Handle Supabase session updates
-  const response = await updateSession(request);
-
-  return response;
+  return NextResponse.next();
 }
 
 export const config = {

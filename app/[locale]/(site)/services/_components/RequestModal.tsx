@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Loader } from "lucide-react";
-
+import Image from "next/image";
 type RequestModalProps = {
   isOpen: boolean;
   service: any;
@@ -65,7 +65,7 @@ export default function RequestModal({ isOpen, service, onClose }: RequestModalP
         </motion.div>
       </motion.div>
 
-      <h3 className="text-xl font-bold font-mono text-yellow-400 mb-1">PROCESSING | FLUX INITIATED</h3>
+      <h3 className="text-xl font-bold font-mono text-yellow-400 mb-1">PROCESSING | YOUR REQUEST</h3>
       <p className="text-sm text-neutral-400">Authenticating request...</p>
 
       <div className="mt-6 w-full h-1 bg-neutral-800 rounded-full">
@@ -87,9 +87,7 @@ export default function RequestModal({ isOpen, service, onClose }: RequestModalP
       >
         <div className="absolute inset-0 rounded-full border-4 border-green-400" />
         <div className="absolute inset-0 flex items-center justify-center">
-          <svg className="w-10 h-10 text-green-400" fill="none" strokeWidth="2" stroke="currentColor">
-            <path d="M5 13l4 4L19 7" />
-          </svg>
+          <Image src="/services/sent.png" alt="Success" width={30} height={30} />
         </div>
       </motion.div>
 
@@ -111,9 +109,7 @@ export default function RequestModal({ isOpen, service, onClose }: RequestModalP
       >
         <div className="absolute inset-0 rounded-full border-4 border-red-400" />
         <div className="absolute inset-0 flex items-center justify-center">
-          <svg className="w-10 h-10 text-red-400" fill="none" strokeWidth="2" stroke="currentColor">
-            <path d="M6 6l12 12M6 18L18 6" />
-          </svg>
+          <Image src="/services/warning.png" alt="Error" width={30} height={30} />
         </div>
       </motion.div>
 

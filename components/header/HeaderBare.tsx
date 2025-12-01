@@ -3,15 +3,12 @@
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { Link, usePathname } from "@/lib/i18n/navigation";
-import { useLocale, useTranslations } from "next-intl";
 import { brand } from "@/components/config/brand";
 import { useScrollProgress } from "./hooks/useScrollProgress";
 import MobileSheet from "./MobileSheet";
 import { useTheme } from "next-themes";
 
 export default function HeaderBare() {
-  const t = useTranslations("nav");
-  const locale = useLocale();
   const pathname = usePathname();
   const { scrolled } = useScrollProgress();
   const { theme } = useTheme();

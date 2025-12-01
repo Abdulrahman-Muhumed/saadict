@@ -13,7 +13,7 @@ function customerTemplate(company: string, service: string, serviceCode: string)
       <table width="100%" cellspacing="0" cellpadding="0" style="padding:40px 0;">
         <tr>
           <td align="center">
-            <table width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#111111;border-radius:12px;overflow:hidden;border:1px solid #1f1f1f;">
+            <table width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;border-radius:12px;overflow:hidden;border:1px solid #1f1f1f;">
 
               <tr>
                 <td style="padding:30px 40px;text-align:center;background:#0d0d0d;border-bottom:1px solid #1f1f1f;">
@@ -71,7 +71,7 @@ function salesTemplate(company: string, email: string, details: string, service:
       <table width="100%" cellspacing="0" cellpadding="0" style="padding:40px 0;">
         <tr>
           <td align="center">
-            <table width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#111111;border-radius:12px;overflow:hidden;border:1px solid #1f1f1f;">
+            <table width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;border-radius:12px;overflow:hidden;border:1px solid #1f1f1f;">
 
               <tr>
                 <td style="padding:30px 40px;text-align:center;background:#0d0d0d;border-bottom:1px solid #1f1f1f;">

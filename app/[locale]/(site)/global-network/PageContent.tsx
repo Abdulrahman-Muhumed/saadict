@@ -158,32 +158,27 @@ export default function GlobalNetworkPage() {
                 {
                   title: "Horn of Africa → Asia",
                   desc: "China • Singapore • India • Vietnam • Malaysia",
-                  img: "/global/corridor_asia.jpg",
+                  img: "/network/img1.png",
                 },
                 {
                   title: "Horn of Africa → Middle East",
                   desc: "UAE • Saudi Arabia • Qatar • Oman • Kuwait",
-                  img: "/global/corridor_me.jpg",
+                  img: "/network/img2.png",
                 },
                 {
                   title: "Horn of Africa → Europe",
                   desc: "Turkey • UK • Italy • Germany • Netherlands",
-                  img: "/global/corridor_eu.jpg",
+                  img: "/network/img3.png",
                 },
                 {
                   title: "Horn of Africa → East Africa",
                   desc: "Kenya • Uganda • Tanzania • Rwanda • South Sudan",
-                  img: "/global/corridor_ea.jpg",
-                },
-                {
-                  title: "Horn of Africa → Americas",
-                  desc: "USA • Canada • Brazil • Mexico • Chile",
-                  img: "/global/corridor_us.jpg",
+                  img: "/network/img4.png",
                 },
                 {
                   title: "Horn of Africa → Global Projects",
                   desc: "Energy • Humanitarian • Industrial Logistics",
-                  img: "/global/corridor_projects.jpg",
+                  img: "/network/img5.png",
                 },
               ].map((c, i) => (
                 <motion.div

@@ -149,7 +149,7 @@ export default function IndustriesPage() {
             {/* ========================================================= */}
             {/* HERO / INTRO */}
             {/* ========================================================= */}
-            <section className="bg-white dark:bg-neutral-900 pt-32 pb-20 border-b border-neutral-200 dark:border-neutral-800">
+            <section className="bg-white dark:bg-neutral-900 pt-16 md:pt-28 pb-32 border-b border-neutral-200 dark:border-neutral-800">
                 <div className="max-w-7xl mx-auto px-8">
                     <motion.div {...fadeUp(0)} className="max-w-4xl">
                         <p className="inline-flex items-center gap-2 rounded-full 
@@ -233,7 +233,7 @@ export default function IndustriesPage() {
             <section className="max-w-7xl mx-auto px-8 pb-24">
                 <motion.div {...fadeUp(0.05)} className="mb-10 max-w-5xl">
                     <h2 className="text-3xl md:text-4xl font-bold mb-3">
-                        Sector-Specific Case Studies
+                        Sector-Specific
                     </h2>
                     <p className="text-lg text-neutral-600 dark:text-neutral-400">
                         Select a category to see how we apply specialized knowledge to different business needs.

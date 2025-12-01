@@ -61,7 +61,7 @@ const StatBox = ({
                 {title}
             </p>
         </div>
-        <p className="text-2xl md:text-3xl font-extrabold text-white">{value}</p>
+        <p className="text-md md:text-3xl font-extrabold text-white">{value}</p>
     </div>
 );
 
@@ -100,7 +100,7 @@ const ClarityVisual = () => {
                             value="1,402"
                             icon={<TrendingUp size={20} className="text-yellow-400" />}
                         />
-                        <StatBox
+                        <StatBox    
                             title="Latency Index"
                             value="< 12ms"
                             icon={<Zap size={20} className="text-yellow-400" />}

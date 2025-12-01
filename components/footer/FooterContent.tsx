@@ -14,9 +14,13 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { ThemeSwitcher } from "@/components/theme-switcher";
+import { usePathname } from "next/navigation";
 
 export default function FooterContent() {
   const YEAR = new Date().getFullYear();
+
+  const pathname = usePathname();
+  const isProjectsPage = pathname.startsWith("/en/projects");
 
   const PRIMARY = brand.colors.primary ?? "#1A1A1A"; // black
   const ACCENT = brand.colors.accent ?? "#FFC233"; // yellow
@@ -38,39 +42,31 @@ export default function FooterContent() {
   return (
     <>
       {/* ───────── FLOATING STRIP ───────── */}
-      <AnimatePresence>
-        {!footerVisible && (
-          <motion.div
-            initial={{ y: 80, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 80, opacity: 0 }}
-            transition={{ type: "spring", stiffness: 260, damping: 25 }}
-            className="fixed bottom-1 left-0 z-50  max-w-7xl -translate-x-1/2 px-4"
-          >
-            <div
-              className="flex h-12 items-center justify-between rounded-2xl px-5
+
+      {!isProjectsPage &&
+        <AnimatePresence>
+          {!footerVisible && (
+            <motion.div
+              initial={{ y: 80, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 80, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 260, damping: 25 }}
+              className="fixed bottom-3 left-0 z-50  max-w-7xl -translate-x-1/2 px-4"
+            >
+              <div
+                className="flex h-12 items-center justify-between rounded-2xl px-5
               dark:bg-black/80 bg-white/80 backdrop-blur-xl border border-white/10
               text-xs text-white shadow-lg"
-            >
-              <div className="flex mr-5">
-                <Image
-                  src={brand.logo.light}
-                  alt="HornBox Logo"
-                  width={24}
-                  height={24}
-                  className="opacity-90"
-                />
-              </div>
-
-              <div className="flex items-center gap-4">
-               
-                <div className="w-px h-4 bg-white/30" />
+              >
                 <ThemeSwitcher />
+
               </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+      }
+
 
       {/* ───────── MAIN FOOTER ───────── */}
       <footer

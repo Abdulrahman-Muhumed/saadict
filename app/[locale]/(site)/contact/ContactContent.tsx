@@ -1,9 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import { brand } from "@/components/config/brand";
-import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Clock, CornerRightUp, Send, Building2 } from "lucide-react";
-import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mail, Phone, MapPin, Send, CornerRightUp } from "lucide-react";
 
 const fadeUp = (delay = 0) => ({
   hidden: { opacity: 0, y: 24 },
@@ -22,46 +22,111 @@ const TEXT_DARK = "text-slate-900 dark:text-white";
 const TEXT_MUTED = "text-slate-600 dark:text-neutral-400";
 const BORDER_YELLOW = "border-yellow-500/30 dark:border-yellow-500/20";
 const PANEL =
-  "bg-white/80 dark:bg-neutral-900/70 backdrop-blur-xl border shadow-2xl shadow-black/10 dark:shadow-yellow-500/10 transition-all duration-300";
+  "bg-white/80 dark:bg-neutral-900/70 backdrop-blur-xl border shadow-2xl shadow-black/10 dark:shadow-yellow-500/10";
 const INPUT =
   "w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-neutral-900/60 border border-slate-300 dark:border-neutral-700 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-neutral-500 focus:ring-2 focus:ring-yellow-400 outline-none";
 
 export default function ContactPage() {
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  async function submitForm(e: any) {
+    e.preventDefault();
+    setStatus("loading");
+
+    const form = new FormData(e.target);
+
+    const payload = {
+      name: form.get("name"),
+      email: form.get("email"),
+      company: form.get("company"),
+      service: form.get("service"),
+      message: form.get("message"),
+    };
+
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    });
+
+    const data = await res.json();
+
+    if (data.ok) {
+      setStatus("success");
+      setTimeout(() => setStatus("idle"), 2500);
+      e.target.reset();
+    } else {
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 2500);
+    }
+  }
+
+  /* ------------------------- Loader ------------------------- */
+  const LoaderUI = () => (
+    <div className="flex flex-col items-center justify-center py-10">
+      <motion.div
+        className="w-16 h-16 relative mb-4"
+        animate={{ rotate: 360 }}
+        transition={{ repeat: Infinity, duration: 1.2, ease: "linear" }}
+      >
+        <div className="absolute inset-0 rounded-full border-4 border-yellow-400 opacity-60" />
+        <div className="absolute inset-2 rounded-full bg-yellow-400" />
+      </motion.div>
+      <p className="text-yellow-400 font-semibold text-sm tracking-wide">Sending message…</p>
+    </div>
+  );
+
+  /* ------------------------- Success ------------------------- */
+  const SuccessUI = () => (
+    <div className="flex flex-col items-center justify-center py-10 text-center">
+      <div className="w-16 h-16 rounded-full border-4 border-green-400 flex items-center justify-center mb-4">
+        <svg className="w-8 h-8 text-green-400" fill="none" strokeWidth="2" stroke="currentColor">
+          <path d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <p className="text-green-400 font-semibold text-sm">Message Sent Successfully</p>
+      <p className="text-neutral-400 text-xs mt-1">Our team will reply shortly.</p>
+    </div>
+  );
+
+  /* ------------------------- Error ------------------------- */
+  const ErrorUI = () => (
+    <div className="flex flex-col items-center justify-center py-10 text-center">
+      <div className="w-16 h-16 rounded-full border-4 border-red-400 flex items-center justify-center mb-4">
+        <svg className="w-8 h-8 text-red-400" fill="none" strokeWidth="2" stroke="currentColor">
+          <path d="M6 6l12 12M6 18L18 6" />
+        </svg>
+      </div>
+      <p className="text-red-400 font-semibold text-sm">Failed to Send Message</p>
+      <p className="text-neutral-400 text-xs mt-1">Please try again.</p>
+    </div>
+  );
+
   return (
     <main className="flex flex-col">
 
-      {/* ------------------------------------------------ */}
-      {/* HERO SECTION */}
-      {/* ------------------------------------------------ */}
-      <section className="relative overflow-hidden">
+      {/* HERO */}
+      <section className="relative overflow-hidden px-6 py-24 text-center">
+        <motion.h1
+          variants={fadeUp(0)}
+          initial="hidden"
+          animate="show"
+          className="text-5xl md:text-5xl font-extrabold"
+        >
+          Contact <span className="text-yellow-400">HornBox Logistics</span>
+        </motion.h1>
 
-        <div className="max-w-7xl mx-auto px-6 md:px-8 py-32 lg:py-32 text-center">
-          <motion.h1
-            variants={fadeUp(0)}
-            initial="hidden"
-            animate="show"
-            className="text-5xl md:text-6xl font-extrabold text-foreground"
-          >
-            Talk to <span className="text-yellow-400">HornBox Logistics</span>
-          </motion.h1>
-
-          <motion.p
-            variants={fadeUp(0.15)}
-            initial="hidden"
-            animate="show"
-            className="mt-6 text-xl text-foreground max-w-3xl mx-auto"
-          >
-            Whether you're shipping containers, managing heavy-lift cargo,
-            or building a major project — our experts respond within minutes.
-          </motion.p>
-        </div>
+        <motion.p
+          variants={fadeUp(0.15)}
+          initial="hidden"
+          animate="show"
+          className="mt-6 text-xl text-neutral-600 dark:text-neutral-300 max-w-3xl mx-auto"
+        >
+          Our logistics specialists are available 7 days a week.
+        </motion.p>
       </section>
 
-      {/* ------------------------------------------------ */}
-      {/* QUICK CONTACT OPTIONS */}
-      {/* ------------------------------------------------ */}
       <section className="">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 grid md:grid-cols-3 gap-10">
+        <div className="max-w-7xl mx-auto px-8 pb-20 grid md:grid-cols-3 gap-10">
 
           {[
             {
@@ -103,112 +168,89 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ------------------------------------------------ */}
-      {/* CONTACT FORM + DETAILS */}
-      {/* ------------------------------------------------ */}
-      <section className="py-20 md:py-32">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 grid lg:grid-cols-2 gap-16">
+      {/* FORM + INFO */}
+      <section className="pb-32 px-6 md:px-8 max-w-7xl mx-auto grid lg:grid-cols-2 gap-16">
 
-          {/* ================== LEFT: FORM ================== */}
-          <motion.div
-            variants={fadeUp(0)}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            className={`${PANEL} ${BORDER_YELLOW} p-10 rounded-3xl`}
-          >
-            <h2 className={`text-3xl font-extrabold ${TEXT_DARK}`}>Send us a message</h2>
-            <p className={`mt-2 text-lg ${TEXT_MUTED}`}>
-              Our logistics team will respond instantly.
-            </p>
+        {/* LEFT — FORM */}
+        <div className={`${PANEL} ${BORDER_YELLOW} p-10 rounded-3xl`}>
+          <h2 className={`text-3xl font-extrabold ${TEXT_DARK}`}>Send us a message</h2>
+          <p className={`mt-2 text-lg ${TEXT_MUTED}`}>We typically reply within minutes.</p>
 
-            <form className="mt-10 space-y-6">
+          <div className="mt-10">
 
-              <input type="text" placeholder="Your Name" className={INPUT} />
-              <input type="email" placeholder="Email Address" className={INPUT} />
-              <input type="text" placeholder="Company Name" className={INPUT} />
-              <input type="text" placeholder="Service Required (Freight, Project, etc.)" className={INPUT} />
+            <AnimatePresence mode="wait">
+              {status === "loading" && <LoaderUI />}
+              {status === "success" && <SuccessUI />}
+              {status === "error" && <ErrorUI />}
 
-              <textarea
-                rows={5}
-                placeholder="Tell us about your shipment/project"
-                className={`${INPUT} resize-none`}
-              ></textarea>
+              {status === "idle" && (
+                <motion.form
+                  key="form"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  onSubmit={submitForm}
+                  className="space-y-6"
+                >
+                  <input name="name" type="text" placeholder="Your Name" className={INPUT} required />
+                  <input name="email" type="email" placeholder="Email Address" className={INPUT} required />
+                  <input name="company" type="text" placeholder="Company Name" className={INPUT} />
 
-              <button
-                type="submit"
-                className="
-                  inline-flex items-center gap-3 px-8 py-4 rounded-xl
-                  bg-yellow-500 hover:bg-yellow-400
-                  dark:bg-yellow-300 dark:hover:bg-yellow-200
-                  text-black font-bold shadow-lg shadow-yellow-500/30
-                  transition
-                "
-              >
-                Send Message <Send size={18} />
-              </button>
+                  <input
+                    name="service"
+                    type="text"
+                    placeholder="Service Required (Freight, Customs, Project, etc.)"
+                    className={INPUT}
+                  />
 
-            </form>
-          </motion.div>
+                  <textarea
+                    name="message"
+                    rows={5}
+                    placeholder="Tell us about your shipment or project"
+                    className={`${INPUT} resize-none`}
+                    required
+                  ></textarea>
 
-          {/* ================== RIGHT: INFO PANEL ================== */}
-          <motion.div
-            variants={fadeUp(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            className="space-y-10"
-          >
-            <div className={`${PANEL} ${BORDER_YELLOW} p-10 rounded-3xl`}>
-              <h3 className={`text-2xl font-extrabold ${TEXT_DARK}`}>Offices & Operations</h3>
+                  <button
+                    type="submit"
+                    className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-yellow-500 hover:bg-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-200 text-black font-bold shadow-lg shadow-yellow-500/30 transition"
+                  >
+                    Send Message <Send size={18} />
+                  </button>
+                </motion.form>
+              )}
+            </AnimatePresence>
 
-              <ul className="mt-6 space-y-5">
-                <li className={`${TEXT_MUTED} flex gap-4`}>
-                  <MapPin size={20} className="text-yellow-500 dark:text-yellow-300 mt-1" />
-                  {brand.social.location}
-                </li>
-                
-              </ul>
-            </div>
-
-            <div className={`${PANEL} ${BORDER_YELLOW} p-10 rounded-3xl`}>
-              <h3 className={`text-2xl font-extrabold ${TEXT_DARK}`}>Working Hours</h3>
-              <ul className="mt-6 space-y-4 text-lg">
-                <li className={TEXT_MUTED}>Saturday – Friday: 8:00am – 6:00pm</li>
-                <li className={TEXT_MUTED}>Thursday: 8:00am – 6:00pm</li>
-                <li className="text-yellow-500 dark:text-yellow-300 font-semibold">
-                  Active support for project cargo & emergency logistics
-                </li>
-              </ul>
-            </div>
-          </motion.div>
-
+          </div>
         </div>
+
+        {/* RIGHT — INFO */}
+        <div className="space-y-10">
+          <div className={`${PANEL} ${BORDER_YELLOW} p-10 rounded-3xl`}>
+            <h3 className={`text-2xl font-extrabold ${TEXT_DARK}`}>Offices & Operations</h3>
+
+            <ul className="mt-6 space-y-5">
+              <li className={`${TEXT_MUTED} flex gap-4`}>
+                <MapPin size={20} className="text-yellow-500 mt-1" />
+                {brand.social.location}
+              </li>
+            </ul>
+          </div>
+
+          <div className={`${PANEL} ${BORDER_YELLOW} p-10 rounded-3xl`}>
+            <h3 className={`text-2xl font-extrabold ${TEXT_DARK}`}>Working Hours</h3>
+            <ul className="mt-6 space-y-4 text-lg">
+              <li className={TEXT_MUTED}>Saturday – Friday: 8:00am – 6:00pm</li>
+              <li className={TEXT_MUTED}>Thursday: 8:00am – 6:00pm</li>
+              <li className="text-yellow-500 font-semibold">
+                Emergency logistics & project cargo support available.
+              </li>
+            </ul>
+          </div>
+        </div>
+
       </section>
 
-      {/* ------------------------------------------------ */}
-      {/* FINAL CTA */}
-      {/* ------------------------------------------------ */}
-      <section className="py-24">
-        <div
-          className={`max-w-6xl mx-auto px-6 md:px-8 p-12 rounded-3xl ${PANEL} ${BORDER_YELLOW} shadow-2xl shadow-yellow-500/10 text-center`}
-        >
-          <h2 className={`text-3xl md:text-4xl font-extrabold ${TEXT_DARK}`}>
-            Need immediate coordination?
-          </h2>
-
-          <p className={`mt-3 text-lg ${TEXT_MUTED} max-w-2xl mx-auto`}>
-            Our operations desk responds instantly to all urgent cargo, air charters, and project requests.
-          </p>
-
-          <a
-            href={`tel:${brand.social.phoneNumber.replace(/\s+/g, '')}`}
-            className="mt-8 inline-flex items-center gap-3 px-10 py-5 rounded-xl bg-yellow-500 hover:bg-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-200 text-black font-bold text-lg shadow-xl shadow-yellow-500/50 transition transform hover:scale-[1.05]"
-          >
-            Call Operations Desk <CornerRightUp size={18} />
-          </a>
-        </div>
-      </section>
+     
     </main>
   );
 }

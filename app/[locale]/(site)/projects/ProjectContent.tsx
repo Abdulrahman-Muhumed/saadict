@@ -233,17 +233,19 @@ export default function ProjectsPage() {
                         style={{
                             backgroundImage: "url('/projects/bg_2.jpg')",
                             filter: "brightness(0.5) contrast(1.1)" // Darkens and enhances contrast for readability
+                            
                         }}
                     />
                 </div>
 
+
                 {/* ---------------------------------------------------- */}
                 {/* 2. MAIN CONTENT (Centered) */}
                 {/* ---------------------------------------------------- */}
-                
+
                 <div className="max-w-7xl mx-auto px-6 md:px-8 py-32 lg:py-32 grid lg:grid-cols-1 gap-20  text-center relative z-10 flex-grow items-center justify-center">
-                    
-                  <motion.div
+
+                    <motion.div
                         initial="hidden"
                         animate="show"
                         variants={{ show: { transition: { staggerChildren: 0.1 } } }}
@@ -281,12 +283,18 @@ export default function ProjectsPage() {
                             variants={fadeUp(0.3)}
                             className="mt-10 flex justify-center gap-4"
                         >
-                            <button className="px-8 py-3 text-lg font-bold rounded-lg bg-yellow-500 text-gray-900 hover:bg-yellow-400 transition shadow-lg">
-                                Request Quote
+                            <button
+                                onClick={() => {
+                                    const el = document.getElementById("projects-section");
+                                    if (el) {
+                                        el.scrollIntoView({ behavior: "smooth" });
+                                    }
+                                }}
+                                className="px-8 py-3 text-lg font-medium rounded-lg border border-gray-400 text-white hover:border-yellow-500 transition"
+                            >
+                                Explore Projects
                             </button>
-                            <button className="px-8 py-3 text-lg font-medium rounded-lg border border-gray-400 text-white hover:border-yellow-500 transition">
-                                Explore Services
-                            </button>
+
                         </motion.div>
 
 
@@ -420,7 +428,7 @@ export default function ProjectsPage() {
             {/* ================================================== */}
             {/* SECTION: FEATURED PROJECTS GRID */}
             {/* ================================================== */}
-            <section className="py-24 md:py-32">
+            <section className="py-24 md:py-32" id="projects-section">
                 <div className="max-w-7xl mx-auto px-6 md:px-8">
 
                     <motion.h2
@@ -430,7 +438,7 @@ export default function ProjectsPage() {
                         viewport={{ once: true, amount: 0.3 }}
                         className={`text-4xl md:text-5xl font-extrabold text-center ${TEXT_DARK}`}
                     >
-                        Pioneering Projects & Case Studies
+                        Pioneering Projects
                     </motion.h2>
 
                     <motion.p
@@ -449,21 +457,21 @@ export default function ProjectsPage() {
                                 title: "Djibouti Port Expansion Support",
                                 category: "Infrastructure & Heavy Lift",
                                 desc: "Oversized gantry crane components, marine coordination & precision phased delivery for major port upgrade.",
-                                img: "/projects/p1.jpg",
+                                img: "/projects/pro1.png",
                                 delay: 0.2,
                             },
                             {
                                 title: "Somalia Wind Corridor Project",
                                 category: "Energy & Renewables",
                                 desc: "Management and secure transport of 50m+ turbine blades and nacelles via cross-border heavy-haul corridors.",
-                                img: "/projects/p2.jpg",
+                                img: "/projects/pro2.png",
                                 delay: 0.3,
                             },
                             {
                                 title: "East Africa Humanitarian Aid Chain",
                                 category: "Relief & Time-Critical",
                                 desc: "Emergency deployment of 10,000+ tons of essential supplies across East Africa with zero-tolerance for delay.",
-                                img: "/projects/p3.jpg",
+                                img: "/projects/pro3.png",
                                 delay: 0.4,
                             },
                         ].map((p, i) => (
@@ -482,9 +490,7 @@ export default function ProjectsPage() {
                                     <p className={`text-xs font-semibold uppercase tracking-widest ${TEXT_YELLOW} mb-1`}>{p.category}</p>
                                     <h3 className={`text-xl font-bold ${TEXT_DARK}`}>{p.title}</h3>
                                     <p className={`mt-2 text-sm ${TEXT_MUTED}`}>{p.desc}</p>
-                                    <a href="#" className={`mt-4 inline-flex items-center text-sm font-semibold ${TEXT_YELLOW} hover:text-yellow-600 dark:hover:text-yellow-400 transition`}>
-                                        View Case Study <CornerRightUp size={14} className="ml-1" />
-                                    </a>
+
                                 </div>
                             </motion.div>
                         ))}

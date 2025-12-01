@@ -8,7 +8,7 @@ export const brand = {
   },
   logo: {
     light: "/brand/hornbox_logo1.png",  
-    dark: "/brand/hornbox_logo2.jpg",
+    dark: "/brand/hornbox_logo2.png",
     square: "/brand/hornbox_logo.png",
     nav_logo: "/brand/hornbox_logo.png",
   },

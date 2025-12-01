@@ -4,7 +4,7 @@ import { getDictionary } from "@/lib/i18n/dictionaries";
 import { TranslationProvider } from "@/lib/i18n/provider";
 import PageTransitionProvider from "@/components/global/PageTransitionProvider";
 import ScrollTop from "@/components/global/ScrollTop";
-
+import { Analytics } from "@vercel/analytics/next";
 
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ locale }));
@@ -32,6 +32,7 @@ export default async function LocaleLayout({
     <TranslationProvider locale={locale} dictionary={dictionary}>
       <PageTransitionProvider>
         {children}
+        <Analytics />
         <ScrollTop />
       </PageTransitionProvider>
     </TranslationProvider>

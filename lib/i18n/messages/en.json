@@ -49,94 +49,6 @@
             "monitoring": "Continuous"
           }
         }
-      },
-      "chips": [
-        {
-          "title": "Since 2020",
-          "subtitle": "Experience"
-        },
-        {
-          "title": "Licensed",
-          "subtitle": "& Insured"
-        },
-        {
-          "title": "On Time",
-          "subtitle": "Support"
-        }
-      ],
-      "why": {
-        "title": "Why Hoggaan Travels",
-        "desc": "Trusted, comfortable, and expertly guided experiences for pilgrims and families.",
-        "cards": [
-          {
-            "title": "Trusted",
-            "desc": "Transparent pricing & clear itineraries."
-          },
-          {
-            "title": "Comfort",
-            "desc": "Curated hotels & smooth transport."
-          },
-          {
-            "title": "Guidance",
-            "desc": "On-ground support and ritual help."
-          },
-          {
-            "title": "Experience",
-            "desc": "Multi-season partners & ops."
-          }
-        ]
-      },
-      "process": {
-        "title": "Hoggaan Travels",
-        "desc": "Your journey, step by step",
-        "step1": "Visa",
-        "step2": "Flight",
-        "step3": "Hotel",
-        "step4": "Rituals",
-        "step5": "Return"
-      },
-      "cta": {
-        "title": "Ready to plan your pilgrimage?",
-        "desc": "Contact us — we’ll help you choose the right dates and package.",
-        "button": "Contact Us"
-      },
-      "services": {
-        "title": "Our Services",
-        "desc": "A unified platform for Travel services & logistics."
-      },
-      "features": {
-        "badge": "Core Features",
-        "title": "Everything you need for a seamless digital pilgrimage",
-        "desc": "The Hoggaan E-Portal connects pilgrims, agents, and administrators through one secure system — for travel, documents, and payments.",
-        "items": {
-          "id": {
-            "title": "Digital Pilgrim ID",
-            "desc": "Access your personalized ID, print cards, and verify your booking instantly."
-          },
-          "data": {
-            "title": "Centralized Data",
-            "desc": "All bookings, documents, and traveler details securely stored and synced in real-time."
-          },
-          "payments": {
-            "title": "Payments & Invoices",
-            "desc": "Track transactions, invoices, and receipts with full transparency at every step."
-          },
-          "access": {
-            "title": "Verified Access",
-            "desc": "Multi-role authentication keeps pilgrims, agents, and admins on the right access level."
-          },
-          "updates": {
-            "title": "24/7 Updates",
-            "desc": "Stay informed with instant alerts, travel schedules, and document status updates."
-          },
-          "support": {
-            "title": "Integrated Support",
-            "desc": "Reach your travel administrator or the Hoggaan team directly from within the portal."
-          }
-        },
-        "ctaTitle": "Begin your journey with Hoggaan E-Portal",
-        "ctaDesc": "Log in to access your digital tools or verify your booking status now.",
-        "ctaLogin": "Login"
       }
     },
     "whoweare": {
@@ -1889,6 +1801,19 @@
       "description": "Our automated service request Form is currently undergoing final update. We are fine-tuning the deployment steps to ensure every project starts with absolute precision.",
       "backButton": "Return to Services",
       "metadata": "Coming Soon"
+    },
+     "hero": {
+      "badge": "System Request",
+      "title": "Initialize your",
+      "titleAccent": "project brief",
+      "titleEnd": ".",
+      "description": "Provide the technical requirements and business goals to generate a structured scope of work and implementation timeline.",
+      "metrics": {
+        "protocolSteps": "Protocol Steps",
+        "serviceModules": "Service Modules",
+        "estimateEngine": "Estimate Engine",
+        "active": "Active"
+      }
     }
   }
 }

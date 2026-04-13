@@ -2,8 +2,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { brand } from "@/components/config/brand";
-import { serviceRequestSteps, requestedServices } from "@/lib/ServiceRequest/serviceRequestSteps";
+import {
+  serviceRequestSteps,
+  requestedServices,
+} from "@/lib/ServiceRequest/serviceRequestSteps";
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -11,52 +15,64 @@ const fadeUp = {
 };
 
 export default function ServiceRequestHero() {
+  const t = useTranslations("serviceRequest.hero");
   const primaryColor = brand?.colors?.primary || "#f97316";
 
   const metrics = [
-    { label: "Protocol Steps", value: serviceRequestSteps.length },
-    { label: "Service Modules", value: requestedServices.length },
-    { label: "Estimate Engine", value: "Active" },
+    {
+      label: t("metrics.protocolSteps"),
+      value: serviceRequestSteps.length,
+    },
+    {
+      label: t("metrics.serviceModules"),
+      value: requestedServices.length,
+    },
+    {
+      label: t("metrics.estimateEngine"),
+      value: t("metrics.active"),
+    },
   ];
 
   return (
-    <section className="relative pt-32 pb-16 overflow-hidden  border-b border-slate-200 dark:border-white/[0.05]">
-      {/* Background Technical Grid */}
+    <section className="relative overflow-hidden border-b border-slate-200 pt-32 pb-16 dark:border-white/[0.05]">
       <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] [background-image:linear-gradient(to_right,#888_1px,transparent_1px),linear-gradient(to_bottom,#888_1px,transparent_1px)] [background-size:64px_64px]" />
-      
-      <div className="relative z-10 max-w-4xl mx-auto px-8 text-center">
+
+      <div className="relative z-10 mx-auto max-w-4xl px-8 text-center">
         <motion.div
           variants={fadeUp}
           initial="initial"
           animate="animate"
           transition={{ duration: 0.6 }}
         >
-          {/* Badge */}
-          <div className="inline-flex items-center gap-3 px-3 py-1 rounded-full border border-slate-200 dark:border-white/10 bg-slate-50/50 dark:bg-white/[0.02] mb-8">
-            <div className="h-1.5 w-1.5 rounded-full animate-pulse" style={{ backgroundColor: primaryColor }} />
+          <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-slate-200 bg-slate-50/50 px-3 py-1 dark:border-white/10 dark:bg-white/[0.02]">
+            <div
+              className="h-1.5 w-1.5 animate-pulse rounded-full"
+              style={{ backgroundColor: primaryColor }}
+            />
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
-              System Request
+              {t("badge")}
             </span>
           </div>
 
-          {/* Main Title */}
-          <h1 className="text-4xl md:text-6xl font-semibold tracking-tight text-slate-900 dark:text-white leading-[1.1]">
-            Initialize your <span style={{ color: primaryColor }}>project brief</span>.
+          <h1 className="text-4xl font-semibold leading-[1.1] tracking-tight text-slate-900 dark:text-white md:text-6xl">
+            {t("title")}{" "}
+            <span style={{ color: primaryColor }}>{t("titleAccent")}</span>
+            {t("titleEnd")}
           </h1>
 
-          <p className="mt-6 text-base md:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            Provide the technical requirements and business goals to generate a 
-            structured scope of work and implementation timeline.
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-600 dark:text-slate-400 md:text-lg">
+            {t("description")}
           </p>
 
-          {/* Centered Industrial Metrics */}
-          <div className="mt-12 flex flex-wrap justify-center gap-8 md:gap-16 border-t border-slate-100 dark:border-white/[0.05] pt-12">
+          <div className="mt-12 flex flex-wrap justify-center gap-8 border-t border-slate-100 pt-12 dark:border-white/[0.05] md:gap-16">
             {metrics.map((item) => (
               <div key={item.label} className="flex flex-col items-center">
-                <span className="text-3xl font-mono font-light text-slate-900 dark:text-white tracking-tighter">
-                  {typeof item.value === 'number' ? String(item.value).padStart(2, '0') : item.value}
+                <span className="font-mono text-3xl font-light tracking-tighter text-slate-900 dark:text-white">
+                  {typeof item.value === "number"
+                    ? String(item.value).padStart(2, "0")
+                    : item.value}
                 </span>
-                <span className="text-[10px] uppercase tracking-[0.15em] font-bold text-slate-400 mt-2">
+                <span className="mt-2 text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400">
                   {item.label}
                 </span>
               </div>

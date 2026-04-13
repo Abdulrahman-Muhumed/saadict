@@ -16,10 +16,15 @@ import { brand } from "../config/brand";
 import { Link } from "@/lib/i18n/navigation";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { useLocale } from "next-intl";
+
 type SectorKey = "enterprise" | "systems" | "security";
 
 export default function HeroSection() {
     const t = useTranslations("home.hero");
+
+    const locale = useLocale();
+    const isRTL = locale === "ar";
 
     const SECTORS: Record<
         SectorKey,
@@ -79,13 +84,14 @@ export default function HeroSection() {
 
                 {/* --- ABSOLUTE POINTING HAND --- */}
                 <div
-                    className="hidden -scale-x-100 lg:block absolute z-20 left-[50%] top-24 -translate-x-1/2 pointer-events-none"
+                    className={`hidden lg:block absolute z-20 left-[55%] top-[40%] -translate-x-1/2 pointer-events-none ${isRTL ? "scale-x-100" : "-scale-x-100"
+                        }`}
                 >
                     <Image
-                        src="/home/hero.png" 
+                        src="/home/hero.png"
                         alt="Pointing Hand"
-                        width={400}
-                        height={400}
+                        width={200}
+                        height={200}
                     />
                 </div>
 

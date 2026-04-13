@@ -10,31 +10,44 @@ export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ locale }));
 }
 
+function isValidLocale(locale: string): locale is Locale {
+  return i18n.locales.includes(locale as Locale);
+}
+
+function getDirection(locale: Locale): "ltr" | "rtl" {
+  return locale === "ar" ? "rtl" : "ltr";
+}
+
 export default async function LocaleLayout({
   children,
   params,
 }: {
   children: ReactNode;
-  // IMPORTANT: match what Next expects for "/[locale]"
   params: Promise<{ locale: string }>;
 }) {
-  // Next 15: params is a Promise -> await it
   const { locale: rawLocale } = await params;
 
-  // Safely narrow to your union type
-  const locale: Locale = i18n.locales.includes(rawLocale as Locale)
-    ? (rawLocale as Locale)
+  const locale: Locale = isValidLocale(rawLocale)
+    ? rawLocale
     : i18n.defaultLocale;
 
   const dictionary = await getDictionary(locale);
+  const dir = getDirection(locale);
 
   return (
     <TranslationProvider locale={locale} dictionary={dictionary}>
-      <PageTransitionProvider>
-        {children}
-        <Analytics />
-        <ScrollTop />
-      </PageTransitionProvider>
+      <div
+        lang={locale}
+        dir={dir}
+        className="min-h-screen"
+        suppressHydrationWarning
+      >
+        <PageTransitionProvider>
+          {children}
+          <Analytics />
+          <ScrollTop />
+        </PageTransitionProvider>
+      </div>
     </TranslationProvider>
   );
 }

@@ -169,6 +169,7 @@ export default function HeaderEngineered() {
             accent={brand.colors.accent}
             pathname={pathname}
             navLinks={navLinks}
+            resourceLinks={resourceLinks}
           />
         )}
       </AnimatePresence>

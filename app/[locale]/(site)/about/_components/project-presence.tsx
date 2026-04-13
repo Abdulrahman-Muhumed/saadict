@@ -23,7 +23,7 @@ export default function AboutProjectPresence() {
     const totalProjects = projects.length;
 
     const activeProjects = projects.filter(
-      (project) => project.status === "In Development" || project.status === "Internal"
+      (project) => project.statKey === "In Development" || project.statKey === "Internal"
     ).length;
 
     const websiteProjects = projects.filter((project) => {
@@ -36,11 +36,9 @@ export default function AboutProjectPresence() {
     }).length;
 
     const mobileProjects = projects.filter((project) => {
-      const title = project.title?.toLowerCase() || "";
-      const desc = project.shortDescription?.toLowerCase() || "";
+      const title = project.website?.toLowerCase() || "";
       return (
-        title.includes("mobile") || desc.includes("mobile") ||
-        title.includes("app") || desc.includes("app")
+        title.includes("#")
       );
     }).length;
 

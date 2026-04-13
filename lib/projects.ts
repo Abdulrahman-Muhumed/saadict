@@ -2,7 +2,8 @@ export type Project = {
   id: string;
   slug: string;
   tKey: string;        // Refers to projects.list.[id]
-  catKey: string;      // Refers to projects.categories.[key]
+  catKey: string;  
+  category: string;    // Refers to projects.categories.[key]
   statKey: string;     // Refers to projects.statuses.[key]
   year: number;
   website: string;
@@ -20,6 +21,7 @@ export const projects: Project[] = [
     slug: "finance-saadict-platform",
     tKey: "saad-finance-platform",
     catKey: "financial_saas",
+    category: "platform",
     statKey: "live",
     year: 2025,
     website: "https://finance.saadict.com",
@@ -34,6 +36,7 @@ export const projects: Project[] = [
     slug: "hoggaan-travels-website",
     tKey: "hoggaan-travels-website",
     catKey: "corporate",
+    category: "website",
     statKey: "live",
     year: 2024,
     website: "https://hoggaantravels.com",
@@ -46,6 +49,7 @@ export const projects: Project[] = [
     slug: "hoggaan-umrah-portal",
     tKey: "hoggaan-portal",
     catKey: "umrah",
+    category: "portal",
     statKey: "live",
     year: 2025,
     website: "https://portal.hoggaantravels.com/",
@@ -59,6 +63,7 @@ export const projects: Project[] = [
     slug: "hornbox-website",
     tKey: "hornbox-website",
     catKey: "corporate",
+    category: "website",
     statKey: "live",
     year: 2025,
     website: "https://www.hornboxllc.com",
@@ -71,6 +76,7 @@ export const projects: Project[] = [
     slug: "sun-aratinga-website",
     tKey: "sun-aratinga-website",
     catKey: "energy",
+    category: "website",
     statKey: "live",
     year: 2026,
     website: "https://sunaratinga.com",
@@ -83,6 +89,7 @@ export const projects: Project[] = [
     slug: "east-hides-website",
     tKey: "east-hides-website",
     catKey: "trading",
+    category: "website",
     statKey: "upcoming",
     year: 2025,
     website: "https://www.east-hides.com/",
@@ -95,6 +102,7 @@ export const projects: Project[] = [
     slug: "anaam-digital-website",
     tKey: "anaam-digital-website",
     catKey: "agency",
+    category: "website",
     statKey: "coming_soon",
     year: 2025,
     website: "https://www.anaamdigital.com",
@@ -108,6 +116,7 @@ export const projects: Project[] = [
     tKey: "ysws",
     catKey: "hotel_app",
     statKey: "released",
+    category: "platform", 
     year: 2022,
     website: "#",
     coverImage: "/projects/ysws.png",

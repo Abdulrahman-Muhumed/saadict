@@ -1,23 +1,22 @@
 // src/config/brand.ts
 
 export const brand = {
-  name: "HornBox LLC",
+  name: "Saad ICT",
   colors: {
-    primary: "#1A1A1A",   // deep industrial black
-    accent: "#FFC233",    // modern premium yellow (not cheap neon)
+    primary: "#24365C",   // deep premium dark (more modern than pure black)
+    accent: "#4C8FC4",    // 
   },
   logo: {
-    light: "/brand/hornbox_logo1.png",  
-    dark: "/brand/hornbox_logo2.png",
-    square: "/brand/hornbox_logo.png",
-    nav_logo: "/brand/hornbox_logo.png",
+    light: "/brand/saad_logo_light.jpg",
+    dark: "/brand/saad_logo_dark.png",
+    square: "/brand/saad_logo_light2.png",
+    nav_logo: "/brand/saad_logo_light.png",
   },
   social: {
-    whatsapp: "https://wa.me/252612888886",
-    email: "info@hornboxllc.com",
-    phoneNumber: "+252 61 2888886",
-    phoneNumber2: "+254 61 9582275",
-    location: "TCC Building 4th Floor, Talex Road, Hodan District, Mogadishu, Somalia"
+    whatsapp: "https://wa.me/252610395112",
+    email: "info@saadict.com",
+    phoneNumber: "+252 61 0395112",
+    location: "Mogadishu, Somalia",
   },
 } as const;
 

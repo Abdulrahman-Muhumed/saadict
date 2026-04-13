@@ -1,13 +1,13 @@
 "use client";
+
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { ArrowUp, Box } from "lucide-react"; // Importing 'Box' for logistics feel
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowUp, Code } from "lucide-react";
 
 export default function ScrollTop() {
   const [visible, setVisible] = useState(false);
   const [progress, setProgress] = useState(0);
-  // State to track if the scroll-to-top action is currently running
-  const [isScrolling, setIsScrolling] = useState(false); 
+  const [isScrolling, setIsScrolling] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -16,124 +16,129 @@ export default function ScrollTop() {
       const percent = (scrolled / height) * 100;
 
       setProgress(percent);
-      setVisible(scrolled > 200);
-      
-      // If we were scrolling and we've reached the top, stop the loading state
-      if (isScrolling && scrolled === 0) {
-        setIsScrolling(false);
-      }
+      setVisible(scrolled > 300);
+
+      if (scrolled === 0) setIsScrolling(false);
     };
 
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, [isScrolling]); // Dependency on isScrolling to check scroll position after click
+  }, []);
 
   const scrollTop = () => {
-    if (isScrolling) return; // Prevent multiple clicks
-    
-    setIsScrolling(true); // Start the loading/scrolling state
-    
+    if (isScrolling) return;
+    setIsScrolling(true);
     window.scrollTo({ top: 0, behavior: "smooth" });
-    
-    // Fallback: If 'smooth' behavior completes, ensure isScrolling is false.
-    // In a real application, you might use an IntersectionObserver or a Promise-based 
-    // smooth scroll library for more reliable completion tracking.
-    const scrollEndCheck = setInterval(() => {
-        if (window.scrollY === 0) {
-            setIsScrolling(false);
-            clearInterval(scrollEndCheck);
-        }
-    }, 100);
   };
-
-  // --- Framer Motion Variants for the Inner Button/Icon ---
-  const iconVariants = {
-    // Rotate the 'Box' symbol as a dynamic loader when scrolling
-    loading: {
-      rotate: 360,
-      transition: {
-        repeat: Infinity,
-        duration: 0.8,
-        ease: "linear",
-      },
-    },
-    // Standard state: just a slight lift on hover
-    default: {
-      rotate: 0,
-      scale: 1,
-      transition: { duration: 0.2 },
-    }
-  };
-
-  // Determine the stroke color based on whether we are actively scrolling
-  const progressStrokeColor = isScrolling ? "#FF9900" : "#00338D"; // Orange/Yellow for loading, Deep Blue for progress
-
-  // Determine the icon and the main button background color
-  const buttonBgClass = isScrolling 
-    ? "bg-gray-700 hover:bg-gray-600" // Gray/dark background for loading
-    : "bg-gradient-to-br from-[#00338D] to-[#00A3FF] hover:from-[#0047b3] hover:to-[#00bfff]"; // Logistics Deep Blue Gradient
 
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.7 }}
-      animate={{ opacity: visible ? 1 : 0, scale: visible ? 1 : 0.7 }}
-      transition={{ duration: 0.25 }}
-      className="fixed bottom-6 right-6 z-[9999] cursor-pointer"
-      onClick={scrollTop}
-    >
-      <div className="relative">
-        {/* Progress Ring / Loader Ring */}
-        <svg
-          className={`w-12 h-12 rotate-[-90deg] ${isScrolling ? 'animate-spin-slow' : ''}`} // Add a slower spin for the background ring if scrolling
-          viewBox="0 0 36 36"
+    <AnimatePresence>
+      {visible && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5, rotate: -45 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          exit={{ opacity: 0, scale: 0.5, rotate: 45 }}
+          className="fixed bottom-3 right-2 z-[9999]"
+          onClick={scrollTop}
         >
-          <path
-            d="M18 2 a 16 16 0 1 1 0 32 a 16 16 0 1 1 0 -32"
-            fill="none"
-            stroke="rgba(100,100,100,0.2)" // Lighter gray background for logistics feel
-            strokeWidth="3"
-          />
-          <motion.path
-            d="M18 2 a 16 16 0 1 1 0 32 a 16 16 0 1 1 0 -32"
-            fill="none"
-            stroke={progressStrokeColor} // Dynamic stroke color
-            strokeWidth="3"
-            // If scrolling, show a 10% dash to mimic a classic loader gap
-            // Otherwise, show the progress based on scroll position
-            strokeDasharray={isScrolling ? "10, 90" : `${progress}, 100`}
-            className="transition-all duration-200"
-            strokeLinecap="round"
-            initial={false} // Ensure Framer Motion manages updates
-            animate={{ stroke: progressStrokeColor, strokeDasharray: isScrolling ? "10, 90" : `${progress}, 100` }}
-            transition={{ duration: 0.2 }}
-          />
-        </svg>
-
-        {/* Button */}
-        <motion.button
-          whileHover={{ scale: isScrolling ? 1 : 1.1 }} // Disable hover scale if scrolling
-          whileTap={{ scale: isScrolling ? 1 : 0.95 }}
-          className={`
-            absolute inset-0 flex items-center justify-center
-            rounded-full
-            ${buttonBgClass} 
-            text-white shadow-xl backdrop-blur-xl
-            border border-white/20 transition-colors duration-300
-          `}
-        >
-          <motion.span
+          {/* Reduced size from h-20 w-20 to h-16 w-16 */}
+          <div className="relative group cursor-pointer h-16 w-16 flex items-center justify-center">
             
-            animate={isScrolling ? "loading" : "default"} // Apply dynamic rotation if scrolling
-          >
-            {/* Display a 'Box' icon when loading, or the 'ArrowUp' when ready */}
-            {isScrolling ? (
-                <Box size={20} className="text-[#FF9900]" /> // Orange Box for a logistics 'package in transit' feel
-            ) : (
-                <ArrowUp size={20} />
-            )}
-          </motion.span>
-        </motion.button>
-      </div>
-    </motion.div>
+            {/* 1. DYNAMIC THEME-AWARE GLOW */}
+            <motion.div 
+              animate={{ 
+                scale: isScrolling ? [1, 1.4, 1] : [1, 1.1, 1],
+                opacity: isScrolling ? [0.4, 0.7, 0.4] : [0.1, 0.2, 0.1] 
+              }}
+              transition={{ duration: 3, repeat: Infinity }}
+              className="absolute inset-0 rounded-full blur-2xl transition-colors duration-700
+                bg-[#241c72]/30 dark:bg-white/10"
+            />
+
+            {/* 2. TRIPLE-RING ARCHITECTURE */}
+            <svg className="absolute inset-0 w-full h-full rotate-[-90deg]" viewBox="0 0 100 100">
+              {/* Outer Rail */}
+              <circle
+                cx="50" cy="50" r="46"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1"
+                strokeDasharray="2, 4"
+                className="text-black/10 dark:text-white/10"
+              />
+
+              {/* Kinetic Dash */}
+              <motion.circle
+                cx="50" cy="50" r="46"
+                fill="none"
+                stroke={isScrolling ? "#F36A0A" : "#241c72"}
+                strokeWidth="2"
+                strokeDasharray="15, 120"
+                className="dark:stroke-white/40"
+                animate={{ rotate: 360 }}
+                transition={{ duration: isScrolling ? 1 : 8, repeat: Infinity, ease: "linear" }}
+              />
+              
+              {/* Main Progress Ring */}
+              <motion.circle
+                cx="50" cy="50" r="38"
+                fill="none"
+                stroke={isScrolling ? "#F36A0A" : "#241c72"}
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeDasharray="238.76"
+                animate={{ 
+                  strokeDashoffset: 238.76 - (238.76 * progress) / 100,
+                  stroke: isScrolling ? "#F36A0A" : (progress > 99 ? "#F36A0A" : "#241c72")
+                }}
+                className="dark:stroke-white transition-colors duration-500"
+              />
+            </svg>
+
+            {/* 3. COMMAND CORE */}
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              /* Removed 'transition-all duration-700' to fix hover lag */
+              className={`
+                relative z-10 w-11 h-11 rounded-full
+                flex items-center justify-center
+                backdrop-blur-2xl border
+                bg-white/90 border-black/5 
+                dark:bg-black/80 dark:border-white/10 dark:shadow-none
+              `}
+            >
+              <div className="absolute inset-0 opacity-[0.05] dark:opacity-[0.15] pointer-events-none overflow-hidden rounded-full">
+                <div className="h-full w-full bg-[radial-gradient(#000_1px,transparent_1px)] dark:bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:6px_6px]" />
+              </div>
+
+              <motion.div
+                animate={isScrolling ? { 
+                  scale: [1, 1.2, 1],
+                  filter: ["blur(0px)", "blur(1px)", "blur(0px)"]
+                } : {}}
+                transition={{ duration: 0.8, repeat: Infinity }}
+              >
+                {isScrolling ? (
+                  <Code size={18} className="text-[#F36A0A] fill-[#F36A0A]/20" />
+                ) : (
+                  <ArrowUp size={18} className="text-[#241c72] dark:text-white" />
+                )}
+              </motion.div>
+
+              {/* Status Indicator */}
+              <div className="absolute top-2 left-1/2 -translate-x-1/2 flex gap-[2px]">
+                 <motion.div 
+                    animate={{ opacity: [0.3, 1, 0.3] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    className={`w-[2px] h-[2px] rounded-full ${isScrolling ? 'bg-[#0ad0f3]' : 'bg-[#241c72] dark:bg-white'}`} 
+                 />
+              </div>
+            </motion.button>
+
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

@@ -4,31 +4,22 @@ import { ThemeProvider } from "next-themes";
 import { brand } from "@/components/config/brand";
 import "./globals.css";
 
+
 export const metadata: Metadata = {
-  title: "HornBox LLC",
+  title: brand.name,
   description:
-    "HornBox LLC is a global freight forwarding and logistics provider offering ocean, air, road transport, customs clearance, warehousing, and project cargo solutions across 195+ destinations.",
+    "Saad ICT is a Somalia-based / Global technology company specializing in the design and development of modern digital systems.",
   icons: {
     icon: brand.logo.light,
     apple: brand.logo.light,
   },
   keywords: [
-    "HornBox Logistics",
-    "HornBox LLC",
-    "Freight Forwarding",
-    "Ocean Freight",
-    "Air Freight",
-    "Road Transport",
-    "Warehousing",
-    "Customs Clearance",
-    "Project Cargo",
-    "3PL",
-    "4PL",
-    "Supply Chain",
-    "Logistics Services",
-    "Global Network",
-    "Cargo Shipping",
-    "Import Export",
+    "Saad ICT",
+    "Technology Company",
+    "Digital Systems",
+    "Software Development",
+    "Cloud Computing",
+    "Cybersecurity",
   ],
 };
 

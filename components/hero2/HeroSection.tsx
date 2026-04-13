@@ -1,303 +1,259 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, Variants } from "framer-motion";
+import { motion, AnimatePresence, } from "framer-motion";
+import {
+    ArrowUpRight,
+    Fingerprint,
+    Cpu,
+    Shield,
+    Zap,
+    Activity,
+    PieChart
+} from "lucide-react";
+import WordFlip from "./WordFlip";
+import { brand } from "../config/brand";
+import { Link } from "@/lib/i18n/navigation";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { ArrowRight, Ship, Plane, Truck, Globe2 } from "lucide-react";
-
-const container: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.14, duration: 0.5 },
-  },
-};
-
-const item: Variants = {
-  hidden: { opacity: 0, y: 18 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6 },
-  },
-};
-
-type ModeKey = "ocean" | "air" | "road";
-
-const KPI_DEF = [
-  { key: "transit" as const, title: "Transit" },
-  { key: "onTime" as const, title: "On-time" },
-  { key: "projects" as const, title: "Projects" },
-];
-
-type KpiKey = (typeof KPI_DEF)[number]["key"];
-
-type ModeConfig = {
-  label: string;
-  summary: string;
-  transit: string;
-  onTime: string;
-  projects: string;
-};
-
-const MODE_CONFIG: Record<ModeKey, ModeConfig> = {
-  ocean: {
-    label: "Ocean",
-    summary: "Core lanes: Jebel Ali, Mombasa, Djibouti, Jeddah.",
-    transit: "12–28d",
-    onTime: "97%",
-    projects: "18",
-  },
-  air: {
-    label: "Air",
-    summary: "Express routes via DXB, DOH, IST, ADD.",
-    transit: "1–5d",
-    onTime: "99%",
-    projects: "9",
-  },
-  road: {
-    label: "Road",
-    summary: "Regional moves: Somalia, Kenya, Ethiopia, GCC.",
-    transit: "2–10d",
-    onTime: "95%",
-    projects: "36",
-  },
-};
+type SectorKey = "enterprise" | "systems" | "security";
 
 export default function HeroSection() {
-  const [activeMode, setActiveMode] = useState<ModeKey>("ocean");
-  const [lastUpdated, setLastUpdated] = useState(0);
+    const t = useTranslations("home.hero");
 
-  const [isMobile, setIsMobile] = useState(false);
+    const SECTORS: Record<
+        SectorKey,
+        {
+            label: string;
+            tagline: string;
+            stats: { label: string; value: string }[];
+            icon: any;
+        }
+    > = {
+        enterprise: {
+            label: t("sectors.enterprise.label"),
+            tagline: t("sectors.enterprise.tagline"),
+            icon: Zap,
+            stats: [
+                { label: "Deployment", value: t("sectors.enterprise.stats.deployment") },
+                { label: "Structure", value: t("sectors.enterprise.stats.structure") },
+                { label: "Impact", value: t("sectors.enterprise.stats.impact") },
+            ],
+        },
 
+        systems: {
+            label: t("sectors.systems.label"),
+            tagline: t("sectors.systems.tagline"),
+            icon: Cpu,
+            stats: [
+                { label: "Architecture", value: t("sectors.systems.stats.architecture") },
+                { label: "Experience", value: t("sectors.systems.stats.experience") },
+                { label: "Stability", value: t("sectors.systems.stats.stability") },
+            ],
+        },
 
-  // Simulated "live" ticker
-  useEffect(() => {
-    const id = setInterval(() => {
-      setLastUpdated((sec) => (sec >= 55 ? 0 : sec + 5));
-    }, 5000);
-    return () => clearInterval(id);
-  }, []);
+        security: {
+            label: t("sectors.security.label"),
+            tagline: t("sectors.security.tagline"),
+            icon: Shield,
+            stats: [
+                { label: "Access", value: t("sectors.security.stats.access") },
+                { label: "Encryption", value: t("sectors.security.stats.encryption") },
+                { label: "Monitoring", value: t("sectors.security.stats.monitoring") },
+            ],
+        },
+    };
 
-  useEffect(() => {
-    // Define matchMedia query
-    const mq = window.matchMedia("(max-width: 768px)");
+    const [activeSector, setActiveSector] = useState<SectorKey>("systems");
+    const [timestamp, setTimestamp] = useState("");
 
-    // Set initial value
-    setIsMobile(mq.matches);
+    useEffect(() => {
+        setTimestamp(new Date().toISOString());
+        const interval = setInterval(() => setTimestamp(new Date().toISOString()), 1000);
+        return () => clearInterval(interval);
+    }, []);
 
-    // Update when viewport changes
-    const handler = () => setIsMobile(mq.matches);
-    mq.addEventListener("change", handler);
+    return (
+        <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden transition-colors duration-500 pt-24">
+            <div className="relative z-10 max-w-7xl w-full mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center py-12 md:py-20">
 
-    return () => mq.removeEventListener("change", handler);
-  }, []);
-
-  const src = isMobile ? "/home/vid2.mp4" : "/home/vid1.mp4";
-
-  const mode = MODE_CONFIG[activeMode];
-
-  return (
-    <section className="relative min-h-[100vh] -mt-[80px] pt-[80px] overflow-hidden">
-      {/* ========================================================= */}
-      {/*  FULL BACKGROUND WITH DARK/LIGHT AWARE OVERLAYS           */}
-      {/* ========================================================= */}
-      <div className=" inset-0 -z-10">
-        <div className=" w-full h-full">
-          {/* Base Background vid */}
-          <video
-            key={src} // important: forces reload when src changes
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="object-fill absolute top-0 object-center opacity-95 dark:opacity-[0.8]"
-          >
-            <source src={src} type="video/mp4" />
-            Your browser does not support HTML5 video.
-          </video>
-
-
-          {/* Light Mode Overlay */}
-          <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px] dark:hidden" />
-
-          {/* Dark Mode Overlay */}
-          <div className="absolute inset-0 hidden dark:block bg-black/50 backdrop-blur-[2px]" />
-
-
-        </div>
-      </div>
-
-      {/* ========================================================= */}
-      {/*  HERO CONTENT                                             */}
-      {/* ========================================================= */}
-      <div className="relative z-10 mx-auto max-w-7xl min-h-[88vh] flex flex-col lg:flex-row items-center justify-between gap-16 px-8 py-20">
-        {/* LEFT SIDE */}
-        <motion.div
-          variants={container}
-          initial="hidden"
-          animate="visible"
-          className="max-w-xl"
-        >
-          {/* Badge */}
-          <motion.div
-            variants={item}
-            className="inline-flex items-center gap-2 rounded-full border border-black/20 bg-white/70 px-4 py-1.5 text-xs font-semibold text-black/80 backdrop-blur dark:border-white/20 dark:bg-black/40 dark:text-white/90"
-          >
-            <span className="h-2 w-2 rounded-full bg-yellow-400 dark:bg-yellow-300" />
-            HORN OF AFRICA • GLOBAL LOGISTICS
-          </motion.div>
-
-
-          {/* Title */}
-          <motion.h1
-            variants={item}
-            className="mt-5 text-5xl sm:text-6xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-white"
-          >
-            Logistics that
-            <span className="text-transparent ml-4 bg-clip-text bg-gradient-to-r from-yellow-500 to-yellow-300">
-              connect the Horn to the world.
-            </span>
-          </motion.h1>
-
-          {/* Description */}
-          <motion.p
-            variants={item}
-            className="mt-5 text-lg text-neutral-200  leading-relaxed max-w-xl border-l-4 border-yellow-400 pl-6"
-          >
-            HornBox delivers global freight solutions via sea, air, road,
-            warehousing and project cargo — powered by a trusted network in
-            195+ countries.
-          </motion.p>
-
-          {/* CTA */}
-          <motion.div variants={item} className="mt-8 flex flex-wrap gap-4">
-            <a
-              href="/services"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-black bg-yellow-400 shadow-md hover:bg-yellow-300 dark:text-black dark:bg-yellow-300 dark:hover:bg-yellow-200"
-            >
-              Explore Our Services
-              <ArrowRight size={18} />
-            </a>
-          </motion.div>
-
-          {/* Stats */}
-          <motion.div
-            variants={item}
-            className="mt-10 grid grid-cols-3 gap-4 text-center"
-          >
-            {[
-              { label: "Countries", value: "195+" },
-              { label: "Cities", value: "852" },
-              { label: "Offices", value: "9,471" },
-            ].map((stat) => (
-              <div
-                key={stat.label}
-                className="rounded-xl p-4 border border-black/10 bg-white/70 backdrop-blur dark:border-white/10 dark:bg-black/40"
-              >
-                <div className="text-xl font-bold text-black dark:text-white">
-                  {stat.value}
-                </div>
-                <div className="text-xs text-black/60 dark:text-slate-400">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </motion.div>
-        </motion.div>
-
-        {/* RIGHT SIDE: LIVE NETWORK PANEL */}
-        <motion.div variants={item} className="w-full max-w-md">
-          <div className="rounded-3xl p-5 border shadow-xl border-black/10 bg-white/40 backdrop-blur dark:border-white/10 dark:bg-black/40">
-            {/* Header */}
-            <div className="flex items-center justify-between border-b border-black/10 pb-3 dark:border-white/10">
-              <div className="flex items-center gap-2 text-xs font-semibold text-black/80 dark:text-white/90">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-yellow-400/20 text-yellow-700 dark:bg-yellow-300/15 dark:text-yellow-300">
-                  <Globe2 size={14} />
-                </span>
-                Live Network
-              </div>
-
-              <span className="inline-flex items-center gap-1 text-[11px] px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                Online
-              </span>
-            </div>
-
-            {/* Modes */}
-            <div className="mt-4 grid grid-cols-3 gap-2 text-xs font-medium">
-              {(
-                [
-                  { key: "ocean", label: "Ocean", icon: Ship },
-                  { key: "air", label: "Air", icon: Plane },
-                  { key: "road", label: "Road", icon: Truck },
-                ] as const
-              ).map((modeItem) => {
-                const Icon = modeItem.icon;
-                const active = activeMode === modeItem.key;
-                return (
-                  <button
-                    key={modeItem.key}
-                    type="button"
-                    onClick={() => setActiveMode(modeItem.key)}
-                    className={[
-                      "flex flex-col items-center rounded-2xl border px-3 py-3.5 focus:outline-none transition-all",
-                      active
-                        ? "border-yellow-400/80 bg-yellow-400/10 text-yellow-700 dark:border-yellow-300 dark:bg-yellow-300/10 dark:text-yellow-200"
-                        : "border-black/10 bg-white/60 text-black/70 hover:bg-white/80 dark:border-white/10 dark:bg-black/40 dark:text-slate-300 dark:hover:bg-black/60",
-                    ].join(" ")}
-                  >
-                    <Icon size={18} className="mb-1" />
-                    {modeItem.label}
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Map */}
-            <div className="mt-5 h-40 relative overflow-hidden rounded-2xl border border-black/10 dark:border-white/10">
-              <Image
-                src="/home/home_bg2.jpg"
-                alt="Global Routes"
-                fill
-                className="object-cover opacity-85 dark:opacity-60"
-              />
-              <div className="absolute bottom-2 left-2 rounded-full bg-black/70 px-3 py-1 text-[10px] text-white/90 dark:bg-black/80">
-                Active mode: {mode.label}
-              </div>
-            </div>
-
-            {/* KPIs */}
-            <div className="mt-4 grid grid-cols-3 gap-3 text-[11px]">
-              {KPI_DEF.map((kpi) => (
+                {/* --- ABSOLUTE POINTING HAND --- */}
                 <div
-                  key={kpi.key}
-                  className="rounded-xl p-3 bg-white/70 text-black dark:bg-black/40 dark:text-white/90"
+                    className="hidden -scale-x-100 lg:block absolute z-20 left-[50%] top-24 -translate-x-1/2 pointer-events-none"
                 >
-                  <div className="uppercase text-[10px] text-black/50 dark:text-slate-400">
-                    {kpi.title}
-                  </div>
-                  <div className="font-semibold">
-                    {mode[kpi.key as KpiKey]}
-                  </div>
+                    <Image
+                        src="/home/hero.png" 
+                        alt="Pointing Hand"
+                        width={400}
+                        height={400}
+                    />
                 </div>
-              ))}
-            </div>
 
-            {/* Live footer summary */}
-            <div className="mt-3 flex items-center justify-between text-[10px] text-black/60 dark:text-slate-400">
-              <span className="flex items-center gap-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                Updated{" "}
-                {lastUpdated === 0 ? "just now" : `${lastUpdated}s ago`}
-              </span>
-              <span className="truncate text-right max-w-[60%]">
-                {mode.summary}
-              </span>
+                {/* LEFT: CONTENT & WORD FLIP */}
+                <div className="lg:col-span-7 order-1 lg:order-1">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <div className="flex items-center gap-3 mb-6">
+                            <div className="h-[2px] w-8 bg-[#24365C]" />
+                            <span className="text-[10px] font-bold tracking-[0.4em] text-[#241c72] dark:text-slate-400 uppercase">
+                                {t("badge")}
+                            </span>
+                        </div>
+
+                        <div className="max-w-4xl">
+                            <h1 className="text-5xl sm:text-4xl md:text-7xl lg:text-7xl font-bold tracking-tighter text-slate-900 dark:text-white leading-[1.1] md:leading-[0.95]">
+                                <span className="block mb-2">{t("title_row_1")}</span>
+
+                                <div className="flex flex-wrap items-baseline gap-x-4">
+                                    <WordFlip
+                                        words={t.raw("title_row_2_words")}
+                                        interval={2500}
+                                    />
+                                </div>
+
+                                <span className="text-slate-400 dark:text-white/20">{t("title_row_3")}</span>
+                            </h1>
+                        </div>
+
+                        <p className="mt-8 font-medium text-justify text-md  text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed border-l-2 border-slate-200 dark:border-white/10 pl-6">
+                            {t("description")}
+                        </p>
+
+                        <div className="mt-12 flex flex-col sm:flex-row items-center gap-5">
+                            <Link
+                                href="/service-request"
+                                className="group relative w-full sm:w-auto min-w-[240px] px-8 py-5 overflow-hidden rounded-sm transition-all duration-300"
+                                style={{ backgroundColor: brand.colors.primary }}
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+
+                                <div className="relative z-10 flex items-center justify-between gap-4">
+                                    <div className="flex flex-col items-start">
+                                        <span className="text-sm font-bold text-white uppercase tracking-widest">
+                                            {t("cta_primary")}
+                                        </span>
+                                    </div>
+                                    <ArrowUpRight
+                                        size={20}
+                                        className="text-white opacity-70 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300"
+                                    />
+                                </div>
+
+                                <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[#4C8FC4] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                            </Link>
+
+                            <Link
+                                href="/projects"
+                                className="group relative w-full sm:w-auto min-w-[240px] px-8 py-5 overflow-hidden rounded-sm border border-slate-200 dark:border-white/10 bg-white/50 dark:bg-white/[0.02] backdrop-blur-sm transition-all duration-300 hover:border-[#4C8FC4]/40"
+                            >
+                                <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity [background-image:radial-gradient(#24365C_1px,transparent_1px)] dark:[background-image:radial-gradient(#ffffff_1px,transparent_1px)] [background-size:10px_10px]" />
+
+                                <div className="relative z-10 flex items-center justify-between gap-4">
+                                    <div className="flex flex-col items-start">
+                                        <span className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-widest">
+                                            {t("cta_secondary")}
+                                        </span>
+                                    </div>
+                                    <PieChart size={18} className="text-slate-400 group-hover:text-[#4C8FC4] transition-colors" />
+                                </div>
+                            </Link>
+                        </div>
+                    </motion.div>
+                </div>
+
+                {/* RIGHT: DASHBOARD */}
+                <div className="lg:col-span-5 z-50 w-full order-2 lg:order-2 max-w-[500px] lg:max-w-none mx-auto">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.98 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 1 }}
+                        className="bg-white dark:bg-[#0c0c0c] border border-slate-200 dark:border-white/10 rounded-xl shadow-2xl overflow-hidden"
+                    >
+                        <div className="flex items-center justify-between px-4 md:px-6 py-4 bg-slate-50 dark:bg-white/5 border-b border-slate-200 dark:border-white/5">
+                            <div className="flex items-center gap-3">
+                                <div className="flex gap-1">
+                                    <div className="w-2 h-2 rounded-full bg-red-500/50" />
+                                    <div className="w-2 h-2 rounded-full bg-yellow-500/50" />
+                                    <div className="w-2 h-2 rounded-full bg-green-500/50" />
+                                </div>
+                                <span className="text-[9px] md:text-[10px] text-slate-400 dark:text-slate-500 uppercase tracking-widest truncate">
+                                    {t("dashboard.status")}
+                                </span>
+                            </div>
+                            <div className="flex items-center gap-2 text-[10px] text-[#24365C] font-mono">
+                                <Activity size={12} className="animate-pulse" />
+                                {timestamp.slice(11, 19)}
+                            </div>
+                        </div>
+
+                        <div className="flex border-b border-slate-200 dark:border-white/5 overflow-x-auto no-scrollbar">
+                            {(Object.keys(SECTORS) as SectorKey[]).map((key) => (
+                                <button
+                                    key={key}
+                                    onClick={() => setActiveSector(key)}
+                                    className={`flex-1 min-w-fit px-4 py-4 text-[9px] md:text-[10px] font-bold uppercase tracking-widest transition-all ${activeSector === key
+                                        ? "text-[#241c72] dark:text-white border-b-2 border-[#24365C]"
+                                        : "text-slate-400 hover:bg-slate-50 dark:hover:bg-white/5"
+                                        }`}
+                                >
+                                    {t(`sectors.${key}.nav`)}
+                                </button>
+                            ))}
+                        </div>
+
+                        <div className="p-6 md:p-8">
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={activeSector}
+                                    initial={{ opacity: 0, x: 10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: -10 }}
+                                    transition={{ duration: 0.2 }}
+                                >
+                                    <div className="flex items-start justify-between mb-6 gap-4">
+                                        <div className="flex-1">
+                                            <h3 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white">
+                                                {SECTORS[activeSector].label}
+                                            </h3>
+                                            <p className="text-[11px] text-slate-500 mt-1 leading-relaxed">
+                                                {SECTORS[activeSector].tagline}
+                                            </p>
+                                        </div>
+                                        {(() => {
+                                            const Icon = SECTORS[activeSector].icon;
+                                            return <Icon size={24} className="text-[#24365C] shrink-0" />;
+                                        })()}
+                                    </div>
+
+                                    <div className="space-y-3">
+                                        {SECTORS[activeSector].stats.map((stat, idx) => (
+                                            <div key={idx} className="flex items-center justify-between p-3 rounded bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5">
+                                                <span className="text-[10px] text-slate-400 uppercase">
+                                                    {stat.label}
+                                                </span>
+                                                <span className="text-xs font-bold text-slate-900 dark:text-white">
+                                                    {stat.value}
+                                                </span>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    <div className="mt-8 flex items-center justify-between text-[9px] text-slate-400 uppercase tracking-tighter border-t border-slate-100 dark:border-white/5 pt-6">
+                                        <div className="flex items-center gap-2">
+                                            <Fingerprint size={12} />
+                                            {t("dashboard.auth")}
+                                        </div>
+                                        <span className="truncate ml-2">{t("dashboard.region")}</span>
+                                    </div>
+                                </motion.div>
+                            </AnimatePresence>
+                        </div>
+                    </motion.div>
+                </div>
             </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
+        </section>
+    );
 }

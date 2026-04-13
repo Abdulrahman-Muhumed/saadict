@@ -1,68 +1,188 @@
 "use client";
 
-import { forwardRef, useTransition } from "react";
-import type { LanguageOption } from "./types";
+import { useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
+import { useRouter, usePathname } from "@/lib/i18n/navigation";
+import { routing } from "@/lib/i18n/routing";
+import { useLocale } from "next-intl";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown, Check } from "lucide-react";
 
-type Props = {
-  locale: string;
-  languages: LanguageOption[];
-  changeLang: (nextLocale: string) => void;
+// Map locales
+const LOCALE_MAP: Record<
+    string,
+    { label: string; icon: string; code: string }
+> = {
+    en: { label: "English", icon: "🇬🇧", code: "EN" },
+    so: { label: "Somali", icon: "🇸🇴", code: "SO" },
+    ar: { label: "العربية", icon: "🇸🇦", code: "AR" },
 };
 
-/**
- * <details> dropdown for languages.
- * We forward the DOM ref so the parent can close it on outside click / Esc.
- */
-const LangChooser = forwardRef<HTMLDetailsElement, Props>(function LangChooser(
-  { locale, languages, changeLang },
-  ref
-) {
-  const [isPending, startTransition] = useTransition();
-  const current = languages.find((l) => l.code === locale) ?? languages[0];
+export default function LanguageSwitcher() {
 
-  return (
-    <details ref={ref} className="relative">
-      <summary
-        className="inline-flex cursor-pointer list-none items-center gap-2 rounded-full border border-black/10 bg-white/60 px-2.5 py-1.5 backdrop-blur [&::-webkit-details-marker]:hidden"
-        title={current.label}
-      >
-        <span className="grid h-6 w-6 place-items-center rounded-full text-base">
-          <span className={current.flag} />
-        </span>
-        <svg className="h-4 w-4 text-slate-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-          <path d="M5.3 7.3a1 1 0 0 1 1.4 0L10 10.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 0-1.4Z" />
-        </svg>
-      </summary>
+    const [isOpen, setIsOpen] = useState(false);
+    const [mounted, setMounted] = useState(false);
+    const [pos, setPos] = useState<{ top: number; right: number }>({
+        top: 0,
+        right: 16,
+    });
 
-      {/* z-80 so it sits above the legal context bar */}
-      <ul
-        className="absolute right-0 z-[80] max-h-72 w-auto overflow-auto rounded-xl border border-black/10 bg-white p-1 text-sm shadow-xl"
-        role="menu"
-      >
-        {languages.map((l) => {
-          const active = locale === l.code;
-          return (
-            <li key={l.code}>
-              <button
+    const router = useRouter();
+    const pathname = usePathname();
+    const currentLocale = useLocale();
+    const triggerRef = useRef<HTMLButtonElement>(null);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    // Close when clicking outside or pressing ESC
+    useEffect(() => {
+        const handleClick = (e: MouseEvent) => {
+            if (!triggerRef.current?.contains(e.target as Node)) {
+                setIsOpen(false);
+            }
+        };
+        const handleEsc = (e: KeyboardEvent) => {
+            if (e.key === "Escape") setIsOpen(false);
+        };
+
+        if (isOpen) {
+            window.addEventListener("mousedown", handleClick);
+            window.addEventListener("keydown", handleEsc);
+        }
+        return () => {
+            window.removeEventListener("mousedown", handleClick);
+            window.removeEventListener("keydown", handleEsc);
+        };
+    }, [isOpen]);
+
+    const current =
+        LOCALE_MAP[currentLocale] ?? {
+            label: currentLocale.toUpperCase(),
+            icon: "🌐",
+            code: currentLocale.toUpperCase(),
+        };
+
+    const openDropdown = () => {
+        const rect = triggerRef.current?.getBoundingClientRect();
+        if (rect) {
+            setPos({
+                top: rect.bottom + 8,
+                right: window.innerWidth - rect.right,
+            });
+        }
+        setIsOpen((v) => !v);
+    };
+
+    return (
+        <>
+            {/* Trigger */}
+            <button
+                ref={triggerRef}
                 type="button"
-                disabled={isPending}
-                onClick={() => startTransition(() => changeLang(l.code))}
-                className={`flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left transition ${active ? "bg-orange-50 ring-1 ring-orange-300" : "hover:bg-black/5"} disabled:cursor-not-allowed disabled:opacity-60`}
-                role="menuitem"
-                aria-pressed={active}
-                title={l.label}
-              >
-                <span className="grid h-5 w-5 place-items-center text-base">
-                  <span className={l.flag} />
+                onClick={openDropdown}
+                aria-haspopup="menu"
+                aria-expanded={isOpen}
+                className="
+                    group flex items-center gap-2 rounded-xl border px-3 py-2 text-xs font-semibold
+                    transition-all
+                    bg-white text-slate-800 border-slate-200 hover:bg-slate-50
+                    dark:bg-neutral-900 dark:text-slate-100 dark:border-neutral-800 dark:hover:bg-neutral-800
+                    shadow-sm
+                    "
+            >
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-slate-100 dark:bg-neutral-800">
+                    {current.icon}
                 </span>
-                <span className="min-w-24 text-black">{l.label}</span>
-              </button>
-            </li>
-          );
-        })}
-      </ul>
-    </details>
-  );
-});
+                <span className="tracking-wider">{current.code}</span>
+                <ChevronDown
+                    className={`h-3.5 w-3.5 opacity-70 transition-transform ${isOpen ? "rotate-180" : ""
+                        }`}
+                />
+            </button>
 
-export default LangChooser;
+            {/* Dropdown (Portal) */}
+            {mounted &&
+                createPortal(
+                    <AnimatePresence>
+                        {isOpen && (
+                            <motion.div
+                                initial={{ opacity: 0, y: 6, scale: 0.98 }}
+                                animate={{ opacity: 1, y: 0, scale: 1 }}
+                                exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                                transition={{ duration: 0.15, ease: "easeOut" }}
+                                style={{
+                                    position: "fixed",
+                                    top: pos.top,
+                                    right: pos.right,
+                                }}
+                                className="
+                  z-[9999] min-w-[180px] overflow-hidden rounded-xl border p-1
+                  bg-white border-slate-200 shadow-2xl
+                  dark:bg-neutral-900 dark:border-neutral-800
+                "
+                                role="menu"
+                            >
+                                <div className="px-3 py-2">
+                                    <span className="text-[10px] uppercase tracking-widest text-slate-500 dark:text-neutral-400">
+                                        Language
+                                    </span>
+                                </div>
+
+                                <div className="max-h-64 overflow-auto">
+                                    {routing.locales.map((locale) => {
+                                        const meta =
+                                            LOCALE_MAP[locale] ??
+                                            ({
+                                                label: locale,
+                                                icon: "🌐",
+                                                code: locale.toUpperCase(),
+                                            } as any);
+
+                                        const active = currentLocale === locale;
+
+                                        return (
+                                            <button
+                                                key={locale}
+                                                onClick={() => {
+                                                    router.push(pathname, { locale });
+                                                    setIsOpen(false);
+                                                }}
+                                                role="menuitem"
+                                                className={`
+                          flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm
+                          transition-colors
+                          hover:bg-slate-100 dark:hover:bg-neutral-800
+                          ${active ? "bg-slate-100 dark:bg-neutral-800" : ""}
+                        `}
+                                            >
+                                                <div className="flex items-center gap-2">
+                                                    <span className="text-base">{meta.icon}</span>
+                                                    <span
+                                                        className={`${active
+                                                            ? "font-semibold text-emerald-600 dark:text-emerald-400"
+                                                            : "text-slate-700 dark:text-slate-200"
+                                                            }`}
+                                                    >
+                                                        {meta.label}
+                                                    </span>
+                                                </div>
+
+                                                {active && (
+                                                    <Check className="h-4 w-4 text-emerald-500" />
+                                                )}
+                                            </button>
+                                        );
+                                    })}
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>,
+                    document.body
+                )}
+
+
+        </>
+    );
+}

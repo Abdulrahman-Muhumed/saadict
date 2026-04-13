@@ -1,22 +1,39 @@
 "use client";
 
 import AboutHero from "./_components/AboutHero";
-import ProfessionalEdgeSection from "./_components/ProfessionalEdgeSection";
-import LegacySection from "./_components/LegacySection";
+import IntroGrid from "./_components/intro-grid";
+import Story from "./_components/story";
 import IntegratedSolutionsSection from "./_components/IntegratedSolutionsSection";
 import MissionVisionSection from "./_components/MissionVisionSection";
-import NetworkStripSection from "./_components/NetworkStripSection";
+import WhySaad from "./_components/why-saad.tsx";
 import FinalCTASection from "./_components/FinalCTASection";
-
+import AboutPrinciples from "./_components/Principles";
+import AboutMarketFocus from "./_components/market-focus";
+import AboutProjectPresence from "./_components/project-presence";
+import AboutSystemSpotlight from "./_components/spotlight";
+import AboutFounderNote from "./_components/founder-note";
+import AboutStandards from "./_components/Standards";
+import AboutClientPerspective from "./_components/Testimonials";
+//import AboutVisualGallery from "./_components/Gallery";
+import AboutFutureDirection from "./_components/future-direction";
 export default function AboutPage() {
   return (
-    <main className="relative w-full overflow-hidden text-slate-900 dark:text-slate-100 font-sans selection:bg-yellow-400 selection:text-black">
+    <main className="relative w-full overflow-hidden text-slate-900 dark:text-slate-100 font-sans">
       <AboutHero />
-      <ProfessionalEdgeSection />
-      <LegacySection />
-      <IntegratedSolutionsSection />
+      <IntroGrid />
+      <Story />
       <MissionVisionSection />
-      <NetworkStripSection />
+      <IntegratedSolutionsSection /> {/* what-we-build */}
+      <WhySaad />
+      <AboutPrinciples />
+      <AboutMarketFocus />
+      <AboutProjectPresence />
+      <AboutSystemSpotlight />
+      <AboutFounderNote />
+      <AboutStandards />
+      <AboutClientPerspective />
+      {/* <AboutVisualGallery /> */}
+      <AboutFutureDirection />
       <FinalCTASection />
     </main>
   );

@@ -1,79 +1,53 @@
 "use client";
 
 import { useEffect, useState } from "react";
-// Import Variants type along with motion, AnimatePresence
-import { motion, AnimatePresence, useReducedMotion, Variants } from "framer-motion";
-
-const primary = "#241c72";
-const accent = "#F99417";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 type WordFlipProps = {
   words: string[];
   interval?: number;
 };
 
-// FIX: Explicitly type the variants as Variants from framer-motion.
-// This ensures Framer Motion correctly recognizes the 'type' in the transition object.
-const wordVariants: Variants = {
-  // Initial state (before entering)
-  initial: {
-    opacity: 0,
-    y: 20,
-    transition: { 
-      type: "spring", // TypeScript is now happy with this literal string
-      damping: 12, 
-      stiffness: 100 
-    },
-  },
-  // The animated state (while visible)
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: { 
-      type: "spring", 
-      damping: 12, 
-      stiffness: 100 
-    },
-  },
-  // Exit state (when leaving)
-  exit: {
-    opacity: 0,
-    y: -20,
-    transition: { 
-      type: "tween", // Using a simple tween for a quick fade-out is common for exits
-      duration: 0.25 
-    },
-  },
-};
-
-export default function WordFlip({ words = [], interval = 2200 }: WordFlipProps) {
+export default function WordFlip({ words = [], interval = 2500 }: WordFlipProps) {
   const prefersReduced = useReducedMotion();
-  const [i, setI] = useState(0);
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    if (prefersReduced) return;
-    const t = setInterval(() => setI((v) => (v + 1) % words.length), interval);
-    return () => clearInterval(t);
+    if (prefersReduced || words.length <= 1) return;
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % words.length);
+    }, interval);
+    return () => clearInterval(timer);
   }, [interval, words.length, prefersReduced]);
 
-  const currentWord = words[i] ?? "";
-
   return (
-    <span className="inline-block">
+    <span className="relative inline-grid h-[1.3em] overflow-hidden align-bottom">
       <AnimatePresence mode="wait">
         <motion.span
-          key={currentWord}
-          variants={wordVariants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          className="block bg-clip-text text-transparent whitespace-nowrap"
-          style={{ backgroundImage: `linear-gradient(90deg, ${primary}, ${accent})` }}
-          aria-live="polite"
+          key={index}
+          // Shifted y values to ensure text stays within the 1.3em viewport
+          initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          exit={{ opacity: 0, y: -10, filter: "blur(8px)" }}
+          transition={{
+            duration: 0.5,
+            ease: [0.23, 1, 0.32, 1]
+          }}
+          // Added px-1 to prevent right-side clipping of italic/bold characters
+          className="whitespace-nowrap  bg-clip-text text-transparent bg-gradient-to-r from-[#24365C] to-[#4C8FC4] dark:from-white dark:to-[#4C8FC4] font-bold"
         >
-          {currentWord}
+          {words[index]}
         </motion.span>
       </AnimatePresence>
+
+      {/* Progress Line - Adjusted to sit perfectly at the bottom of the text descender zone */}
+      <motion.div
+        initial={{ width: 0 }}
+        animate={{ width: "100%" }}
+        key={`line-${index}`}
+        transition={{ duration: interval / 1000, ease: "linear" }}
+        className="absolute bottom-0 left-0 h-[2px] bg-[#4C8FC4]/30 dark:bg-[#4C8FC4]/50"
+      />
     </span>
   );
 }

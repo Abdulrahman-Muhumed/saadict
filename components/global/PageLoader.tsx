@@ -1,13 +1,14 @@
 "use client";
 
 import { motion, AnimatePresence, Variants } from "framer-motion";
+import { brand } from "@/components/config/brand";
 
 // --- CONFIGURATION CONSTANTS ---
 const CONTAINER_HEIGHT = 100; // Total height of the loader area
 const BAR_WIDTH = 10; // Width/thickness of each bar
 const GAP_WIDTH = 12; // Space between bars
 const NUMBER_OF_BARS = 6; 
-const BRAND_COLOR = "bg-amber-500 dark:bg-amber-400"; // Brand Yellow
+const BRAND_COLOR = brand.colors.accent; // Brand Yellow
 
 /* --------------------------------------------- */
 /* CONTAINER VARIANTS (Staggered Children)        */

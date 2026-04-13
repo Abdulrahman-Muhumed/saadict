@@ -1,89 +1,119 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Ship, Plane, Truck, Factory, Building2, Globe2 } from "lucide-react";
-import { fadeUp, staggerContainer } from "./animations";
+import { useTranslations } from "next-intl";
+import {
+  LayoutTemplate,
+  Blocks,
+  Cpu,
+  MonitorSmartphone,
+  Terminal,
+  Database,
+  Code
+} from "lucide-react";
 
-const solutions = [
-  {
-    icon: Ship,
-    title: "Ocean Freight",
-    desc: "FCL & LCL services, strategic carrier partnerships, reliable mainline and feeder routes across key global ports.",
-  },
-  {
-    icon: Plane,
-    title: "Air Freight",
-    desc: "Express and premium air freight via major hubs such as DXB, DOH, IST, ADD, NBO and beyond.",
-  },
-  {
-    icon: Truck,
-    title: "Road Transport",
-    desc: "Regional trucking linking Somalia, Kenya, Ethiopia, Djibouti and GCC markets with door-to-door delivery.",
-  },
-  {
-    icon: Factory,
-    title: "Warehousing",
-    desc: "Secure storage, inventory handling, cross-docking, consolidation and regional distribution operations.",
-  },
-  {
-    icon: Building2,
-    title: "Customs & Compliance",
-    desc: "Documentation, customs clearance, and regulatory alignment across multiple jurisdictions and ports.",
-  },
-  {
-    icon: Globe2,
-    title: "Trade & Project Support",
-    desc: "Support for NGOs, government contracts, industrial projects and complex supply chain requirements.",
-  },
+import SectionHeading from "@/components/landing/section-heading";
+
+const capabilities = [
+  { id: "SRV-01", translationKey: "SCT01", icon: LayoutTemplate },
+  { id: "SRV-02", translationKey: "SCT02", icon: Blocks },
+  { id: "SRV-03", translationKey: "SCT03", icon: Cpu },
+  { id: "SRV-04", translationKey: "SCT04", icon: MonitorSmartphone },
 ];
 
-export default function IntegratedSolutionsSection() {
-  return (
-    <section className="py-20 md:py-24 bg-white dark:bg-neutral-900 border-y border-neutral-200/60 dark:border-neutral-800">
-      <div className="max-w-7xl mx-auto px-8">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          <motion.div
-            variants={fadeUp(0.1)}
-            className="text-center max-w-3xl mx-auto mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold">
-              Our Integrated Logistics Solutions
-            </h2>
-            <p className="mt-3 text-lg text-neutral-600 dark:text-neutral-400">
-              We provide end-to-end logistics coverage – from first mile to last
-              mile – with specialized multi-modal operations.
-            </p>
-          </motion.div>
+export default function CapabilityMatrix() {
+  const t = useTranslations("about.aboutMatrix");
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {solutions.map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <motion.div
-                  key={item.title}
-                  variants={fadeUp(0.15 + i * 0.05)}
-                  className="group rounded-2xl border border-neutral-200 bg-neutral-50/70 p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg dark:border-neutral-800 dark:bg-neutral-950/50 backdrop-blur"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-yellow-400/15 text-yellow-600 dark:bg-yellow-300/15 dark:text-yellow-300">
-                      <Icon size={20} />
-                    </div>
-                    <h3 className="font-bold text-base">{item.title}</h3>
-                  </div>
-                  <p className="mt-3 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                    {item.desc}
-                  </p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </motion.div>
+  return (
+    <section className="bg-[#fcfcfc] dark:bg-[#080808] py-32 border-y border-slate-200 dark:border-white/5">
+      <div className="max-w-7xl mx-auto px-6">
+        
+        <SectionHeading
+          eyebrow={t("heading.eyebrow")}
+          title={t("heading.title")}
+          desc={t("heading.desc")}
+        />
+
+        {/* The Matrix: 4-Column Technical Grid */}
+        <div className="grid mt-14 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t border-l border-slate-200 dark:border-white/10">
+          {capabilities.map((item, idx) => (
+            <motion.div
+              key={item.id}
+              whileHover={{ backgroundColor: "rgba(36,28,114,0.02)" }}
+              className="group p-8 border-r border-b border-slate-200 dark:border-white/10 transition-colors relative overflow-hidden h-full"
+            >
+              {/* Technical Telemetry */}
+              <div className="flex justify-between items-start mb-16 relative z-10">
+                <span className="text-[9px] font-mono text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
+                  {item.id}
+                </span>
+                <item.icon 
+                  size={20} 
+                  strokeWidth={1.5} 
+                  className="text-slate-300 dark:text-slate-700 group-hover:text-[#17ccf9] transition-colors duration-300" 
+                />
+              </div>
+
+              <div className="space-y-4 relative z-10">
+                <div className="inline-block px-2 py-0.5 rounded-sm bg-slate-100 dark:bg-white/5 text-[9px] font-bold uppercase tracking-widest text-slate-500 group-hover:bg-[#17ccf9]/10 group-hover:text-black transition-colors">
+                  {t(`matrix.${item.translationKey}.tag`)}
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white leading-tight">
+                  {t(`matrix.${item.translationKey}.title`)}
+                </h3>
+                <p className="text-xs leading-relaxed text-slate-500 dark:text-slate-400 font-light">
+                  {t(`matrix.${item.translationKey}.desc`)}
+                </p>
+              </div>
+
+              {/* Functional CTA / Tag Display */}
+              <div className="mt-12 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0 duration-300 relative z-10">
+                <span className="text-[10px] font-bold uppercase tracking-tighter text-slate-900 dark:text-white border-b border-[#1753f9]">
+                  {t(`matrix.${item.translationKey}.tag`)}
+                </span>
+              </div>
+
+              {/* Architectural Background Accent */}
+              <div className="absolute -bottom-4 -right-4 text-slate-100 dark:text-white/[0.02] font-mono text-6xl font-bold select-none pointer-events-none group-hover:text-[#241c72]/[0.03] dark:group-hover:text-white/[0.04] transition-colors">
+                0{idx + 1}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Global Terminal Footer */}
+        <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <TerminalItem 
+            icon={<Terminal size={16} />} 
+            label={t("techStack.environment.label")} 
+            value={t("techStack.environment.value")} 
+          />
+          <TerminalItem 
+            icon={<Database size={16} />} 
+            label={t("techStack.database.label")} 
+            value={t("techStack.database.value")} 
+          />
+          <TerminalItem 
+            icon={<Code size={16} />} 
+            label={t("techStack.style.label")} 
+            value={t("techStack.style.value")} 
+          />
+        </div>
       </div>
     </section>
+  );
+}
+
+function TerminalItem({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
+  return (
+    <div className="flex items-center gap-4 p-5 rounded-xl border border-slate-200 dark:border-white/5 bg-white dark:bg-white/[0.02] hover:border-[#F99417]/20 transition-all group">
+      <div className="text-slate-400 group-hover:text-[#17b9f9] transition-colors">
+        {icon}
+      </div>
+      <div className="flex-1">
+        <div className="text-[9px] font-mono uppercase text-slate-400 tracking-wider">{label}</div>
+        <div className="text-xs font-bold dark:text-white group-hover:translate-x-1 transition-transform">{value}</div>
+      </div>
+    </div>
   );
 }

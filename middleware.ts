@@ -26,13 +26,12 @@ export async function middleware(request: NextRequest) {
     url.pathname = `/${i18n.defaultLocale}${pathname}`;
     return NextResponse.redirect(url);
   }
-
-  return NextResponse.next();
 }
 
 export const config = {
   matcher: [
     // match all routes except next/image/static files
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)","/protected/:path*"
   ],
 };
+

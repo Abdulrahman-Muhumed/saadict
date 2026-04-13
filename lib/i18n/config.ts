@@ -1,7 +1,7 @@
 // lib/i18n/config.ts
 export const i18n = {
   defaultLocale: "en",
-  locales: ["en"],
+  locales: ["en", "so", "ar"],
   timeZone: "Africa/Mogadishu"
 } as const;
 

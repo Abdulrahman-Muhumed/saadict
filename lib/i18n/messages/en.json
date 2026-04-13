@@ -1,215 +1,1141 @@
 {
   "home": {
     "hero": {
-      "badge": "Official Digital Platform",
-      "titleTop": "Welcome to",
-      "titleHighlight": "Hoggaan E-Portal",
-      "desc": "Manage your pilgrimage journey securely — access bookings, digital IDs, invoices, and document verification in one unified dashboard.",
-      "cta": "Login to Portal",
-      "chips": {
-        "secure": "Secure",
-        "accessible": "Accessible",
-        "verified": "Verified"
+      "badge": "Saad ICT • Next-Gen Systems",
+      "title_row_1": "Building",
+      "title_row_2_words": [
+        "Operational",
+        "Scalable",
+        "Sovereign",
+        "Reliable"
+      ],
+      "title_row_3": "Systems.",
+      "description": "We bridge the gap in modern digital infrastructure. From Mogadishu to the world, we engineer structured software solutions that redefine business operations.",
+      "cta_primary": "Get Started",
+      "cta_secondary": "Explore Saad Projects",
+      "dashboard": {
+        "status": "SAAD ICT NEXT_GEN",
+        "auth": "SAAD",
+        "region": "Region: MOG"
       },
-      "imageAlt": "Hoggaan E-Portal Dashboard Preview"
-    },
-    "chips": [
-      {
-        "title": "Since 2020",
-        "subtitle": "Experience"
+      "sectors": {
+        "enterprise": {
+          "nav": "Enterprise",
+          "label": "Digital Platforms",
+          "tagline": "Custom-built platforms designed to structure operations, automate workflows, and support long-term business growth.",
+          "stats": {
+            "deployment": "Cloud-Based",
+            "structure": "Scalable",
+            "impact": "Operational Efficiency"
+          }
+        },
+        "systems": {
+          "nav": "Systems",
+          "label": "Operational Systems",
+          "tagline": "We transform fragmented manual processes into clear, reliable, and scalable digital systems.",
+          "stats": {
+            "architecture": "Modular",
+            "experience": "User-Centered",
+            "stability": "Production-Ready"
+          }
+        },
+        "security": {
+          "nav": "Security",
+          "label": "Security & Reliability",
+          "tagline": "Built with strong data control, secure access layers, and consistent system integrity across all environments.",
+          "stats": {
+            "access": "Role-Based",
+            "encryption": "Secure Layers",
+            "monitoring": "Continuous"
+          }
+        }
       },
-      {
-        "title": "Licensed",
-        "subtitle": "& Insured"
+      "chips": [
+        {
+          "title": "Since 2020",
+          "subtitle": "Experience"
+        },
+        {
+          "title": "Licensed",
+          "subtitle": "& Insured"
+        },
+        {
+          "title": "On Time",
+          "subtitle": "Support"
+        }
+      ],
+      "why": {
+        "title": "Why Hoggaan Travels",
+        "desc": "Trusted, comfortable, and expertly guided experiences for pilgrims and families.",
+        "cards": [
+          {
+            "title": "Trusted",
+            "desc": "Transparent pricing & clear itineraries."
+          },
+          {
+            "title": "Comfort",
+            "desc": "Curated hotels & smooth transport."
+          },
+          {
+            "title": "Guidance",
+            "desc": "On-ground support and ritual help."
+          },
+          {
+            "title": "Experience",
+            "desc": "Multi-season partners & ops."
+          }
+        ]
       },
-      {
-        "title": "On Time",
-        "subtitle": "Support"
+      "process": {
+        "title": "Hoggaan Travels",
+        "desc": "Your journey, step by step",
+        "step1": "Visa",
+        "step2": "Flight",
+        "step3": "Hotel",
+        "step4": "Rituals",
+        "step5": "Return"
+      },
+      "cta": {
+        "title": "Ready to plan your pilgrimage?",
+        "desc": "Contact us — we’ll help you choose the right dates and package.",
+        "button": "Contact Us"
+      },
+      "services": {
+        "title": "Our Services",
+        "desc": "A unified platform for Travel services & logistics."
+      },
+      "features": {
+        "badge": "Core Features",
+        "title": "Everything you need for a seamless digital pilgrimage",
+        "desc": "The Hoggaan E-Portal connects pilgrims, agents, and administrators through one secure system — for travel, documents, and payments.",
+        "items": {
+          "id": {
+            "title": "Digital Pilgrim ID",
+            "desc": "Access your personalized ID, print cards, and verify your booking instantly."
+          },
+          "data": {
+            "title": "Centralized Data",
+            "desc": "All bookings, documents, and traveler details securely stored and synced in real-time."
+          },
+          "payments": {
+            "title": "Payments & Invoices",
+            "desc": "Track transactions, invoices, and receipts with full transparency at every step."
+          },
+          "access": {
+            "title": "Verified Access",
+            "desc": "Multi-role authentication keeps pilgrims, agents, and admins on the right access level."
+          },
+          "updates": {
+            "title": "24/7 Updates",
+            "desc": "Stay informed with instant alerts, travel schedules, and document status updates."
+          },
+          "support": {
+            "title": "Integrated Support",
+            "desc": "Reach your travel administrator or the Hoggaan team directly from within the portal."
+          }
+        },
+        "ctaTitle": "Begin your journey with Hoggaan E-Portal",
+        "ctaDesc": "Log in to access your digital tools or verify your booking status now.",
+        "ctaLogin": "Login"
       }
-    ],
-    "why": {
-      "title": "Why Hoggaan Travels",
-      "desc": "Trusted, comfortable, and expertly guided experiences for pilgrims and families.",
-      "cards": [
-        {
-          "title": "Trusted",
-          "desc": "Transparent pricing & clear itineraries."
-        },
-        {
-          "title": "Comfort",
-          "desc": "Curated hotels & smooth transport."
-        },
-        {
-          "title": "Guidance",
-          "desc": "On-ground support and ritual help."
-        },
-        {
-          "title": "Experience",
-          "desc": "Multi-season partners & ops."
-        }
-      ]
     },
-    "process": {
-      "title": "Hoggaan Travels",
-      "desc": "Your journey, step by step",
-      "step1": "Visa",
-      "step2": "Flight",
-      "step3": "Hotel",
-      "step4": "Rituals",
-      "step5": "Return"
-    },
-    "cta": {
-      "title": "Ready to plan your pilgrimage?",
-      "desc": "Contact us — we’ll help you choose the right dates and package.",
-      "button": "Contact Us"
-    },
-    "services": {
-      "title": "Our Services",
-      "desc": "A unified platform for Travel services & logistics."
-    },
-    "features": {
-      "badge": "Core Features",
-      "title": "Everything you need for a seamless digital pilgrimage",
-      "desc": "The Hoggaan E-Portal connects pilgrims, agents, and administrators through one secure system — for travel, documents, and payments.",
-      "items": {
-        "id": {
-          "title": "Digital Pilgrim ID",
-          "desc": "Access your personalized ID, print cards, and verify your booking instantly."
+    "whoweare": {
+      "heading": {
+        "eyebrow": "Who We Are",
+        "title": "A modern software company for serious businesses.",
+        "description": "Saad ICT develops websites, SaaS platforms, customer systems, and mobile applications with stronger emphasis on structure, usability, and long-term business value."
+      },
+      "stats": {
+        "founded": {
+          "label": "Founded in",
+          "value": "2025"
         },
-        "data": {
-          "title": "Centralized Data",
-          "desc": "All bookings, documents, and traveler details securely stored and synced in real-time."
+        "deliveries": {
+          "label": "Live project deliveries",
+          "value": "5+"
         },
-        "payments": {
-          "title": "Payments & Invoices",
-          "desc": "Track transactions, invoices, and receipts with full transparency at every step."
+        "products": {
+          "label": "Products and custom builds",
+          "value": "SaaS +"
         },
-        "access": {
-          "title": "Verified Access",
-          "desc": "Multi-role authentication keeps pilgrims, agents, and admins on the right access level."
-        },
-        "updates": {
-          "title": "24/7 Updates",
-          "desc": "Stay informed with instant alerts, travel schedules, and document status updates."
-        },
-        "support": {
-          "title": "Integrated Support",
-          "desc": "Reach your travel administrator or the Hoggaan team directly from within the portal."
+        "market": {
+          "label": "Core market, broader reach",
+          "value": "Somalia"
         }
       },
-      "ctaTitle": "Begin your journey with Hoggaan E-Portal",
-      "ctaDesc": "Log in to access your digital tools or verify your booking status now.",
-      "ctaLogin": "Login"
+      "cards": {
+        "websites": {
+          "title": "Websites",
+          "text": "Premium business websites built for trust, clarity, and modern brand presence."
+        },
+        "systems": {
+          "title": "Systems",
+          "text": "Structured digital platforms designed around real workflows and operational use."
+        },
+        "saas": {
+          "title": "SaaS",
+          "text": "Scalable software products such as Saad Finance and future system lines."
+        },
+        "mobile": {
+          "title": "Mobile Apps",
+          "text": "Business-driven mobile applications connected to real backend processes."
+        }
+      }
+    },
+    "whySaadIct": {
+      "heading": {
+        "eyebrow": "Why Saad ICT",
+        "title": "Built for a market that needs sharper systems and stronger digital quality.",
+        "description": "We focus on what businesses actually notice: modern design, usable systems, structured delivery, and a more professional digital standard."
+      },
+      "system_core": {
+        "01": {
+          "title": "Modern Design",
+          "metric": "Visual Clarity",
+          "desc": "Clean, well-structured interfaces built for clarity, consistency, and long-term scalability."
+        },
+        "02": {
+          "title": "Security First",
+          "metric": "Secure by Default",
+          "desc": "Systems designed with strong access control, data protection, and reliability at every level."
+        },
+        "03": {
+          "title": "User Focus",
+          "metric": "Low Friction",
+          "desc": "Thoughtful workflows that make systems easier to use, faster to navigate, and more efficient in practice."
+        },
+        "04": {
+          "title": "Reliable Delivery",
+          "metric": "Production Ready",
+          "desc": "Stable, well-tested systems delivered with consistency and built to perform in real environments."
+        }
+      },
+      "footer": {
+        "status": "Next Gen ICT",
+        "brand": "Saad ICT"
+      }
+    },
+    "whatWeDo": {
+      "heading": {
+        "eyebrow": "What We Do",
+        "title": "Digital systems designed for real operations, not just presentation.",
+        "description": "Our work spans websites, SaaS products, business systems, and mobile applications — all built to support growth, clarity, and credibility."
+      },
+      "cards": {
+        "websites": {
+          "title": "Website Development",
+          "text": "Corporate and business websites built for performance, trust, and visual strength."
+        },
+        "systems": {
+          "title": "Custom Systems",
+          "text": "Internal dashboards, workflow tools, and customer-specific operational platforms."
+        },
+        "saas": {
+          "title": "SaaS Platforms",
+          "text": "Scalable systems designed for structured workflows and long-term product growth."
+        },
+        "mobile": {
+          "title": "Mobile Applications",
+          "text": "Modern mobile products connected to real services, users, and business logic."
+        }
+      },
+      "cta": "Explore Our Services"
+    },
+    "systemsShowcase": {
+      "heading": {
+        "eyebrow": "Our Projects",
+        "title": "Operational systems, not just software.",
+        "description": "Saad ICT builds systems that help businesses operate with more structure, clarity, and control."
+      },
+      "featured": {
+        "badge": "Featured System",
+        "header_mono": "Featured System",
+        "title": "Saad Finance",
+        "description": "A modern financial workflow system designed for invoicing, records, structured output, and clearer daily business operations.",
+        "stats": {
+          "workflow": {
+            "label": "Workflow",
+            "value": "Structured"
+          },
+          "output": {
+            "label": "Output",
+            "value": "PDF-Ready"
+          },
+          "useCase": {
+            "label": "Use Case",
+            "value": "Business Finance"
+          }
+        },
+        "buttons": {
+          "access": "Access System",
+          "view": "View Systems"
+        }
+      },
+      "planned": {
+        "title": "Planned Systems",
+        "items": [
+          "HR & Workforce",
+          "Operations Control",
+          "Customer Platforms"
+        ]
+      },
+      "direction": {
+        "title": "System Direction",
+        "text": "Each system is designed to balance usability, structured workflows, modern presentation, and business reliability."
+      },
+      "cta": "View Our Projects"
+    },
+    "howWeWork": {
+      "heading": {
+        "eyebrow": "Technical Process",
+        "title": "Structured approach. Predictable delivery.",
+        "description": "We move through discovery, architecture, execution, and continuity — keeping both design and system quality in focus."
+      },
+      "phases": {
+        "01": {
+          "title": "Discovery & System Mapping",
+          "desc": "We analyze core business objectives and map operational workflows and data dependencies before any development begins.",
+          "meta": "INPUT ANALYSIS",
+          "deliverables": [
+            "Stakeholder Requirements Analysis",
+            "Workflow Bottleneck Identification",
+            "Existing System Compatibility Review"
+          ]
+        },
+        "02": {
+          "title": "Intelligence Optimization",
+          "desc": "We integrate AI-assisted logic where relevant to optimize performance, automate repetitive processes, and support decision-making layers.",
+          "meta": "COGNITIVE",
+          "deliverables": [
+            "Load & Performance Simulation",
+            "Natural Language Interface Structuring",
+            "Automated Data Processing Pipelines"
+          ]
+        },
+        "03": {
+          "title": "System Architecture",
+          "desc": "We design scalable and secure system architecture that prioritizes data integrity, performance, and long-term maintainability.",
+          "meta": "INFRASTRUCT",
+          "deliverables": [
+            "Database Schema Design (Relational & Scalable)",
+            "API & Infrastructure Planning",
+            "Performance & Latency Optimization"
+          ]
+        },
+        "04": {
+          "title": "Engineering & Development",
+          "desc": "We execute structured development using modern, type-safe frameworks to deliver reliable, production-ready systems.",
+          "meta": "BUILD VELOCITY",
+          "deliverables": [
+            "Frontend & Backend Development",
+            "State & Data Flow Management",
+            "Real-time System Integration"
+          ]
+        },
+        "05": {
+          "title": "Security & Quality Assurance",
+          "desc": "We validate system reliability through testing, security checks, and performance evaluation to meet production standards.",
+          "meta": "DEFENSE PROTOCOL",
+          "deliverables": [
+            "Security & Access Control Validation",
+            "Automated & Manual Testing",
+            "Performance & Load Testing"
+          ]
+        },
+        "06": {
+          "title": "Deployment & Continuity",
+          "desc": "We manage deployment and provide ongoing support, monitoring, and iterative improvements to ensure system stability over time.",
+          "meta": "MISSION SUCCESS",
+          "deliverables": [
+            "Deployment Pipeline Execution",
+            "Monitoring & Logging Setup",
+            "Ongoing Maintenance & Improvements"
+          ]
+        }
+      },
+      "common": {
+        "keyDeliverables": "Key Deliverables:",
+        "phasePrefix": "PHASE 0"
+      },
+      "visuals": {
+        "codeExe": "SYSTEM EXE :: 100%",
+        "dataSync": ">>> DATA SYNC COMPLETE",
+        "cacheInv": ">>> CACHE INVALIDATED"
+      }
+    },
+    "valueProposition": {
+      "heading": {
+        "eyebrow": "Value Proposition",
+        "title": "Why businesses choose Saad ICT.",
+        "description": "Our value is built on better execution, better user experience, and stronger systems thinking."
+      },
+      "cards": {
+        "modern": {
+          "title": "Modern",
+          "text": "A more current design and product standard than what many businesses are used to."
+        },
+        "scalable": {
+          "title": "Scalable",
+          "text": "Systems designed to grow with operations instead of being rebuilt too soon."
+        },
+        "reliable": {
+          "title": "Reliable",
+          "text": "More structure, better consistency, and stronger confidence in daily use."
+        },
+        "competitive": {
+          "title": "Competitive",
+          "text": "Premium-looking output with real business practicality and cost awareness."
+        }
+      }
+    },
+    "marketFocus": {
+      "heading": {
+        "eyebrow": "Market Focus",
+        "title": "Local-first understanding with broader delivery capability.",
+        "description": "Somalia remains our core focus, but our service model is not limited by geography."
+      },
+      "cards": {
+        "smes": {
+          "title": "SMEs & Growing Businesses",
+          "text": "Companies that need stronger digital presence and more structured operations."
+        },
+        "startups": {
+          "title": "Startups & New Ventures",
+          "text": "Teams launching modern services that need better systems from the start."
+        },
+        "regional": {
+          "title": "Regional & External Clients",
+          "text": "Businesses outside Somalia looking for quality execution and flexible delivery."
+        }
+      },
+      "footer": "Service Delivery"
+    },
+    "projectExperience": {
+      "heading": {
+        "eyebrow": "Project Experience",
+        "title": "Proven work. Growing portfolio.",
+        "description": "Our work spans business websites, operational platforms, and internal systems — with active projects continuing to expand across different industries and use cases."
+      },
+      "stats": {
+        "total": "Total projects",
+        "live": "Live deployments",
+        "active": "Active builds",
+        "categories": "Project categories"
+      }
+    },
+    "philosophy": {
+      "heading": {
+        "eyebrow": "Philosophy",
+        "title": "We build systems,",
+        "titleSecondary": "not just interfaces.",
+        "description": "A digital product should improve business logic. We focus on architectural integrity and operational flow."
+      },
+      "items": {
+        "structured": {
+          "title": "Structured",
+          "text": "Built with logic, flow, and maintainable system architecture."
+        },
+        "reliable": {
+          "title": "Reliable",
+          "text": "Designed to support real operations, not just visual presentation."
+        },
+        "efficient": {
+          "title": "Efficient",
+          "text": "Focused on reducing friction and improving business execution."
+        },
+        "nextGen": {
+          "title": "Next-Gen",
+          "text": "A higher standard of digital quality for the market we serve."
+        }
+      },
+      "footer": "SAAD ICT"
+    },
+    "ctaPanel": {
+      "metadata": "Start Today",
+      "title": "Build something that moves",
+      "titleItalic": "your business forward.",
+      "description": "From high-density custom systems to scalable SaaS architecture. We define the direction and execute with technical precision.",
+      "buttons": {
+        "request": "Request Service",
+        "explore": "Explore Systems"
+      },
+      "footer": {
+        "brand": "SAAD",
+        "service": "ict solutions"
+      }
+    },
+    "testimonials": {
+      "heading": {
+        "eyebrow": "Client Testimonials",
+        "title": "Clarity, quality, and modern execution.",
+        "description": "A record of regional partnerships and system-driven deliveries."
+      },
+      "labels": {
+        "verified": "Verified Client"
+      },
+      "data": {
+        "hoggaan": {
+          "name": "Operations Team",
+          "role": "Management",
+          "quote": "Saad ICT helped us move from scattered manual processes into a more structured digital workflow. Their work on our platforms and internal systems gave us better digital presence.",
+          "project": "Corporate Website & Umrah Portal"
+        },
+        "hornbox": {
+          "name": "Business Development Office",
+          "role": "Administration",
+          "quote": "What stood out was their ability to understand the business side before building the website. The final result was clean & credible.",
+          "project": "Corporate Informative Website"
+        },
+        "sunaratinga": {
+          "name": "Project Coordination Team",
+          "role": "Engineering Support",
+          "quote": "Saad ICT approached the project with structure and patience. They were not just designing pages, but shaping how our brand, capabilities, and technical services.",
+          "project": "Energy Company Website"
+        }
+      }
     }
   },
   "about": {
-    "about": {
-      "badge": "About the Platform",
-      "title": "The Hoggaan E-Portal",
-      "body": "The Hoggaan E-Portal is the official internal platform for Hoggaan Travels. It centralizes all digital operations — from booking and pilgrim management to financial records and document verification. Built exclusively for authorized Hoggaan employees and verified users, it ensures security, efficiency, and transparency across every department."
+    "aboutHero": {
+      "badge": "Verified Technology Partner",
+      "titleMain": "SYSTEMS",
+      "titleAccent": "BEYOND WEB.",
+      "description": "Saad ICT is a specialized engineering firm based in Somalia. We replace outdated processes with high-precision digital infrastructure and scalable SaaS architectures.",
+      "cards": {
+        "tech": {
+          "label": "01 / TECH",
+          "title": "Core SaaS",
+          "desc": "Next-gen financial workflows and operational management systems."
+        },
+        "structure": {
+          "label": "02 / STRUCTURE",
+          "title": "Scalable Build",
+          "desc": "International standards for security and long-term reliability."
+        },
+        "momentum": {
+          "label": "03 / MOMENTUM",
+          "title": "Active Projects",
+          "location": "Mogadishu & Global"
+        }
+      }
     },
-    "access": {
-      "badge": "Who Can Access",
-      "title": "Verified Staff and Authorized Users Only",
-      "body": "Access to the portal is restricted to authenticated Hoggaan personnel, group coordinators, and assigned administrative users. Every login is protected by secure session management, ensuring that sensitive data such as visas, payments, and bookings remain confidential.",
-      "bullets": [
-        "Employees and departmental managers",
-        "Authorized agents and field coordinators",
-        "Verified administrative staff"
-      ]
+    "aboutIntro": {
+      "heading": {
+        "eyebrow": "Company Snapshot",
+        "title": "A clear view of who we are and where we are headed.",
+        "desc": "This page is not just a profile. It reflects the standards, focus, and ambition behind Saad ICT."
+      },
+      "items": {
+        "founded": {
+          "title": "Founded",
+          "value": "2025",
+          "text": "Established with a focus on raising digital quality and systems standards."
+        },
+        "headquarters": {
+          "title": "Headquarters",
+          "value": "Mogadishu",
+          "text": "Built from Somalia with strong awareness of local business realities."
+        },
+        "focus": {
+          "title": "Primary Focus",
+          "value": "Web + SaaS",
+          "text": "Premium websites, customer systems, and structured digital products."
+        },
+        "market": {
+          "title": "Market Reach",
+          "value": "Somalia First",
+          "text": "Core focus on Somalia with capability to serve clients beyond borders."
+        },
+        "model": {
+          "title": "Delivery Model",
+          "value": "Flexible",
+          "text": "SaaS, one-time builds, support, maintenance, and consulting."
+        },
+        "stage": {
+          "title": "Current Stage",
+          "value": "Growing",
+          "text": "Multiple live projects, active system development, and expanding direction."
+        }
+      }
     },
-    "core": {
-      "badge": "Core Capabilities",
-      "title": "Connected Tools in One Secure Dashboard",
-      "body": "The system integrates booking, document management, financial tracking, and digital identity verification into a unified workflow. This enables real-time collaboration and automated record keeping.",
-      "bullets": [
-        "Booking and group management",
-        "Pilgrim ID and QR verification",
-        "Hotel and transport assignment",
-        "Invoice and payment tracking",
-        "Automated reports and analytics"
-      ]
+    "aboutStory": {
+      "heading": {
+        "eyebrow": "Why We Exist",
+        "title": "Building digital systems with structure, clarity, and purpose",
+        "desc": "Saad ICT was founded on a simple but important observation: many businesses struggle with digital tools that are disconnected from how they actually operate. We exist to bridge that gap."
+      },
+      "narrative": {
+        "para1": "Saad ICT was built around a simple observation: many businesses need better systems, not just better-looking software. We focus on platforms and digital tools that support actual operations, improve clarity, and create a stronger foundation for growth.",
+        "para2": "Our work spans internal systems, operational platforms, business websites, and service-driven digital infrastructure. Every solution is designed to be practical, scalable, and aligned with how the organization functions in the real world."
+      },
+      "sidebar": {
+        "eyebrow": "Core Focus",
+        "title": "Structured digital delivery",
+        "platforms": {
+          "label": "Platforms",
+          "value": "Operational systems, portals, and internal tools"
+        },
+        "approach": {
+          "label": "Approach",
+          "value": "Scalable architecture with practical workflows"
+        },
+        "standard": {
+          "label": "Standard",
+          "value": "Reliable delivery with long-term maintainability"
+        }
+      },
+      "points": {
+        "step01": {
+          "label": "The Operational Gap",
+          "description": "Many organizations are still relying on disconnected tools, repetitive manual processes, and digital systems that do not reflect how their operations actually work. This creates delays, weakens visibility, and limits their ability to grow with confidence.",
+          "technical": "Observed: fragmented workflows and low process clarity"
+        },
+        "step02": {
+          "label": "The Need for Structure",
+          "description": "Businesses do not just need attractive interfaces. They need digital systems with clear logic, reliable architecture, and workflows that are built around real operational requirements. That means software should support the business properly, not force the business to adapt to weak tools.",
+          "technical": "Requirement: structured systems with practical business logic"
+        },
+        "step03": {
+          "label": "The Saad ICT Approach",
+          "description": "Saad ICT builds platforms, internal systems, and digital tools with a focus on clarity, scalability, and long-term reliability. Our work is rooted in strong architecture, thoughtful user experience, and technical execution that helps businesses operate more professionally.",
+          "technical": "Execution: scalable systems engineered for real-world use"
+        }
+      }
     },
-    "security": {
-      "badge": "Security & Reliability",
-      "title": "Enterprise-Level Protection",
-      "body": "Data is secured through Supabase and Next.js middleware, ensuring that every transaction, file, and session follows strict internal access policies. Continuous audits and encrypted storage protect both staff and pilgrim data.",
-      "bullets": [
-        "Supabase real-time RLS enforcement",
-        "Role-based access for admins and employees",
-        "Automatic session updates and timeout protection",
-        "Encrypted file storage and audit logs"
-      ]
+    "aboutVision": {
+      "heading": {
+        "eyebrow": "Vision & Mission",
+        "title": "Driven by a clearer long-term direction.",
+        "desc": "Saad ICT is not only building projects. It is building a stronger digital standard for how businesses in Somalia and beyond can operate."
+      },
+      "vision": {
+        "label": "Vision",
+        "title": "To become a leading ICT company in Somalia and a recognized provider of modern digital systems across the region.",
+        "content": "The long-term ambition is to help elevate digital expectations in the market — through systems that look modern, work reliably, and support serious business operations.",
+        "footer": "Regional credibility through local excellence"
+      },
+      "mission": {
+        "label": "Mission",
+        "title": "To address the lack of modern, reliable, and user-focused digital systems by delivering software that is structured, scalable, and aligned with real business needs.",
+        "content": "Saad ICT exists to help businesses move beyond weak digital execution, outdated presentation, and fragmented tools — toward software and systems that support growth, trust, and better day-to-day operations.",
+        "tags": [
+          "Better Design Standards",
+          "Stronger System Thinking",
+          "Usable Digital Products",
+          "Long-Term Business Value"
+        ]
+      }
+    },
+    "aboutMatrix": {
+      "heading": {
+        "eyebrow": "Our Capabilities",
+        "title": "Systemic Engineering.",
+        "desc": "Saad ICT operates at the intersection of structural logic and modern aesthetics, delivering digital systems that function as long-term business infrastructure."
+      },
+      "matrix": {
+        "SCT01": {
+          "title": "Premium Digital Presence",
+          "tag": "Interface",
+          "desc": "Architecting high-conversion corporate platforms with Swiss-Modernist precision."
+        },
+        "SCT02": {
+          "title": "SaaS Infrastructure",
+          "tag": "Systems",
+          "desc": "Developing scalable multi-tenant architectures and recurring value workflows."
+        },
+        "SCT03": {
+          "title": "Operational Dashboards",
+          "tag": "Logic",
+          "desc": "Custom internal systems designed for data integrity and process automation."
+        },
+        "SCT04": {
+          "title": "Cross-Platform Access",
+          "tag": "Mobile",
+          "desc": "Native-grade mobile applications extending core system utility to the field."
+        }
+      },
+      "techStack": {
+        "environment": {
+          "label": "Environment",
+          "value": "Node.js / Next.js 15"
+        },
+        "database": {
+          "label": "Database Engine",
+          "value": "PostgreSQL / NoSql."
+        },
+        "style": {
+          "label": "Style",
+          "value": "Tailwind CSS / CSS."
+        }
+      }
+    },
+    "aboutWhy": {
+      "heading": {
+        "eyebrow": "The Difference",
+        "title": "Thinking beyond the interface.",
+        "desc": "Saad ICT combines modern design quality, stronger systems thinking, and a more serious approach to business-facing software."
+      },
+      "brandCard": {
+        "eyebrow": "Our Core Strength",
+        "title1": "BETTER SYSTEMS.",
+        "title2": "BETTER OUTCOMES.",
+        "content": "The difference is not one single feature. It is the combined effect of stronger design standards, more structured systems, and more serious execution.",
+        "statusLabel": "Operational Status:",
+        "statusValue": "01010111_SYNC_OK"
+      },
+      "items": {
+        "design": {
+          "title": "Modern Design Standard",
+          "text": "A cleaner, more structured digital presentation aligned with international standards and professional business expectations.",
+          "tag": "AESTHETICS",
+          "spec": "System Design",
+          "data": "Premium Design"
+        },
+        "security": {
+          "title": "Security-Conscious Thinking",
+          "text": "Systems designed with proper access control, data handling practices, and attention to long-term stability.",
+          "tag": "INTEGRITY",
+          "spec": "End-to-End Encryption",
+          "data": "AUTH PROTOCOL"
+        },
+        "systems": {
+          "title": "Systems Thinking",
+          "text": "Beyond visual interfaces — we focus on workflows, logic, and how the system supports actual business operations.",
+          "tag": "LOGIC",
+          "spec": "Modular Data Flow",
+          "data": "LOGIC LAYER"
+        },
+        "ux": {
+          "title": "User-Focused Execution",
+          "text": "Interfaces are designed to be clear, predictable, and easy to navigate across both desktop and mobile environments.",
+          "tag": "UX_FLOW",
+          "spec": "High Tier UX/UI",
+          "data": "RESPONSIVE"
+        },
+        "scale": {
+          "title": "Scalable Foundations",
+          "text": "Built with future growth in mind, allowing systems to expand without requiring complete redesign or replacement.",
+          "tag": "SCALABILITY",
+          "spec": "Flexible Schema",
+          "data": "GROWTH READY"
+        },
+        "delivery": {
+          "title": "Professional Delivery",
+          "text": "Structured execution with clear communication, organized workflows, and outcomes that align with real business needs.",
+          "tag": "DELIVERY",
+          "spec": "Standard Compliance",
+          "data": "PROFESSIONAL STANDARD"
+        },
+        "architecture": {
+          "title": "Structured Architecture",
+          "text": "Systems are built with clear architecture and data flow, making them easier to maintain, extend, and operate reliably.",
+          "tag": "ARCHITECTURE",
+          "spec": "Architecture Blueprint",
+          "data": "OPS"
+        },
+        "data": {
+          "title": "Data Clarity",
+          "text": "Information is organized in a way that improves visibility, reduces duplication, and supports better decision-making.",
+          "tag": "DATA",
+          "spec": "Optimized Indexing",
+          "data": "DATA LAYER"
+        }
+      }
+    },
+    "aboutPrinciples": {
+      "heading": {
+        "eyebrow": "Principles",
+        "title": "The standards behind how Saad ICT works.",
+        "desc": "These principles guide how we design, build, and deliver systems that are clear, reliable, and aligned with real business use."
+      },
+      "hero": {
+        "eyebrow": "Internal Standards",
+        "titlePart1": "Better systems come from",
+        "titlePart2": "better standards.",
+        "content": "At Saad ICT, good delivery is not accidental. It comes from clear principles around structure, usability, reliability, and long-term thinking. These standards shape how we approach every platform, internal tool, and digital system we build.",
+        "overviewLabel": "Overview",
+        "overviewItems": [
+          "Architecture-led delivery",
+          "Practical user experience",
+          "Long-term maintainability",
+          "Business-aligned execution"
+        ]
+      },
+      "items": {
+        "structure": {
+          "title": "Clear Structure First",
+          "text": "We start with sound architecture and clear system flow before adding complexity. Strong structure makes everything else more reliable.",
+          "code": "ARCH_FIRST"
+        },
+        "quality": {
+          "title": "Quality Over Shortcuts",
+          "text": "We would rather build carefully than deliver something that looks finished but fails under real use.",
+          "code": "QUALITY_STD"
+        },
+        "reliability": {
+          "title": "Reliability Builds Trust",
+          "text": "Systems should feel stable, predictable, and professionally built from day one. Trust comes from consistency in how a product performs.",
+          "code": "STABLE_CORE"
+        },
+        "usability": {
+          "title": "Usability With Purpose",
+          "text": "Good design is not decoration. It should reduce confusion, support the workflow, and make the product easier to use with confidence.",
+          "code": "USEFUL_UX"
+        },
+        "performance": {
+          "title": "Performance That Matters",
+          "text": "We focus on performance where it improves the real experience of the system, not just where it looks good in technical summaries.",
+          "code": "PERF_VALUE"
+        },
+        "growth": {
+          "title": "Built To Grow",
+          "text": "A system should remain useful as the business grows. We think beyond launch and build with future expansion in mind.",
+          "code": "SCALABLE_MOD"
+        },
+        "data": {
+          "title": "Organized Data Foundations",
+          "text": "Clear data structure improves reporting, reduces duplication, and makes the platform easier to manage over time.",
+          "code": "DATA_CLARITY"
+        },
+        "context": {
+          "title": "Business Context Matters",
+          "text": "We do not build in isolation. Every decision should reflect how the team works, how the service is delivered, and what the business actually needs.",
+          "code": "OPS_CONTEXT"
+        }
+      }
+    },
+    "aboutMarket": {
+      "heading": {
+        "eyebrow": "Market Focus",
+        "title": "Built for local relevance, designed with broader reach.",
+        "desc": "Saad ICT starts with strong understanding of the Somali market while remaining capable of serving clients across different regions and business types."
+      },
+      "geoPanel": {
+        "eyebrow": "Geographic Direction",
+        "title": "Somalia First",
+        "subtitle": "Local understanding.",
+        "subtitleAccent": "Broader delivery capability.",
+        "description": "Saad ICT is rooted in the realities of the Somali business environment, while maintaining the flexibility to deliver for organizations outside the country as well.",
+        "stats": {
+          "primary": {
+            "label": "Primary Market",
+            "value": "Somalia"
+          },
+          "reach": {
+            "label": "Service Reach",
+            "value": "Flexible"
+          },
+          "type": {
+            "label": "Client Type",
+            "value": "SMEs + Startups"
+          },
+          "model": {
+            "label": "Model",
+            "value": "Local + External"
+          }
+        },
+        "footer": "Regional growth remains part of the long-term direction"
+      },
+      "markets": {
+        "sme": {
+          "title": "SMEs & Growing Companies",
+          "text": "Businesses that need stronger digital presence, better workflows, and more credible systems."
+        },
+        "startups": {
+          "title": "Startups & New Ventures",
+          "text": "Founders and teams looking to launch modern digital products with stronger early foundations."
+        },
+        "custom": {
+          "title": "Custom Business Clients",
+          "text": "Organizations that need tailored systems instead of generic tools or inflexible platforms."
+        },
+        "service": {
+          "title": "Service-Based Businesses",
+          "text": "Companies that need structured websites, client-facing tools, or internal operational systems."
+        }
+      }
+    },
+    "aboutProjectPresence": {
+      "heading": {
+        "eyebrow": "Project Presence",
+        "title": "Built work. Active delivery.",
+        "desc": "Our portfolio reflects real delivery across websites, operational systems, and digital products — with ongoing work continuing to expand in both scope and quality."
+      },
+      "hero": {
+        "tag": "Projects Portfolio",
+        "title": "Real project activity.",
+        "subtitle": "Measurable delivery.",
+        "description": "Saad ICT is still building its portfolio, but the work is already tangible. The current project base includes live deliveries, active builds, and a range of categories that reflect practical digital capability rather than presentation alone.",
+        "terminalLabel": "Projects"
+      },
+      "metrics": {
+        "total": {
+          "label": "Total Projects",
+          "text": "A growing portfolio across websites, systems, and digital platforms."
+        },
+        "web": {
+          "label": "Web Platforms",
+          "text": "Live and in-progress websites, portals, and business-facing digital experiences."
+        },
+        "active": {
+          "label": "Active Builds",
+          "text": "Projects currently being developed, improved, or expanded."
+        },
+        "app": {
+          "label": "App Experience",
+          "text": "Mobile-oriented product and workflow experience reflected across delivery work."
+        }
+      }
+    },
+    "aboutSystemSpotlight": {
+      "hero": {
+        "eyebrow": "System Spotlight",
+        "title": "Saad Finance",
+        "description": "Saad Finance represents the company’s shift from service delivery into product thinking — a system designed for invoicing, structured records, and clearer financial operations.",
+        "benefits": [
+          "Shows real SaaS capability",
+          "Designed around actual business workflow",
+          "Demonstrates product and system maturity"
+        ],
+        "ctaAccess": "Access Saad Finance",
+        "ctaView": "View Systems"
+      },
+      "interface": {
+        "terminalLabel": "saad finance",
+        "metrics": {
+          "invoices": {
+            "label": "Invoices",
+            "value": "Structured Output"
+          },
+          "workflow": {
+            "label": "Workflow",
+            "value": "Business Finance"
+          },
+          "control": {
+            "label": "Control",
+            "value": "System-Led"
+          },
+          "direction": {
+            "label": "Direction",
+            "value": "Scalable"
+          }
+        },
+        "features": [
+          "PDF Export",
+          "Invoice Logic",
+          "Record Flow"
+        ],
+        "significance": {
+          "label": "Product Significance",
+          "content": "Saad Finance is important not only as a system itself, but as proof that Saad ICT can design, structure, and deliver usable SaaS products."
+        }
+      }
+    },
+    "aboutFounderNote": {
+      "rail": {
+        "eyebrow": "Founder Note",
+        "title": "A company built to raise the digital standard."
+      },
+      "editorial": {
+        "lead": "Saad ICT was founded with the belief that businesses in Somalia deserve better digital systems — not only better visuals, but better structure, better usability, and better long-term quality.",
+        "paragraph1": "The goal is not simply to build websites or applications. The goal is to contribute to a stronger digital environment where businesses can operate with more clarity, trust, and modern capability.",
+        "paragraph2": "Saad ICT is still growing, but the direction is clear: raise expectations, build better systems, and deliver work that reflects a more serious standard for the future.",
+        "signature": {
+          "title": "Founder, Saad ICT",
+          "tagline": "Building with direction"
+        }
+      }
+    },
+    "aboutStandards": {
+      "heading": {
+        "eyebrow": "Standards",
+        "title": "The quality benchmark behind the work.",
+        "desc": "Our Standards represent the core principles that guide every project we undertake. They are the foundation of our commitment to delivering exceptional solutions that drive real business impact."
+      },
+      "items": {
+        "ux": {
+          "title": "Modern UI / UX",
+          "desc": "Interfaces should look current, feel clear, and support user confidence from the first interaction."
+        },
+        "security": {
+          "title": "Security Awareness",
+          "desc": "Even when a system is simple, the thinking behind it should account for control, integrity, and safer structure."
+        },
+        "architecture": {
+          "title": "Scalable Architecture",
+          "desc": "The foundation should allow future growth without forcing unnecessary rebuilds too early."
+        },
+        "workflow": {
+          "title": "Workflow Alignment",
+          "desc": "A strong system matches how a business actually works, instead of forcing weak or generic flows."
+        },
+        "performance": {
+          "title": "Performance Discipline",
+          "desc": "Systems should remain responsive, practical, and focused on useful business outcomes."
+        },
+        "delivery": {
+          "title": "Professional Delivery",
+          "desc": "Presentation, consistency, and implementation quality all influence how seriously a business is perceived."
+        }
+      },
+      "labelPrefix": "Standard"
+    },
+    "aboutClientPerspective": {
+      "heading": {
+        "eyebrow": "Client Perspective",
+        "title": "Feedback shaped by",
+        "subtitle": "real delivery and working systems.",
+        "desc": "These testimonials reflect client-facing work across websites, operational platforms, and digital systems. The focus is not only on presentation, but on clarity, structure, and the quality of execution."
+      },
+      "pills": {
+        "testimonials": "Testimonials",
+        "featured": "Featured",
+        "feedback": "Real Client-Based Feedback"
+      }
+    },
+    "aboutFutureDirection": {
+      "heading": {
+        "eyebrow": "Future Direction",
+        "title": "Built for what comes next,",
+        "subtitle": "not only for what exists today.",
+        "desc": "Saad ICT is still in its early stage, but its direction is intentionally larger: stronger systems, a broader portfolio, and a more serious digital standard for the businesses it serves."
+      },
+      "roadmap": {
+        "p1": {
+          "phase": "01",
+          "title": "Expand System Portfolio",
+          "text": "Grow beyond current offerings by introducing more specialized business systems under Saad ICT."
+        },
+        "p2": {
+          "phase": "02",
+          "title": "Strengthen SaaS Capability",
+          "text": "Develop stronger recurring product value through structured software platforms and system-led services."
+        },
+        "p3": {
+          "phase": "03",
+          "title": "Raise Digital Standards",
+          "text": "Contribute to a market where businesses expect stronger design, clearer systems, and better digital execution."
+        },
+        "p4": {
+          "phase": "04",
+          "title": "Regional Recognition",
+          "text": "Position Saad ICT as a credible provider of modern business systems beyond Somalia over time."
+        }
+      },
+      "footer": "Strategic direction"
+    },
+    "aboutCta": {
+      "badge": {
+        "name": "SAAD ICT",
+        "tagline": "Build with direction, not guesswork"
+      },
+      "title": "Ready to build something",
+      "subtitle": "serious and future-ready?",
+      "desc": "Whether you need a premium website, a custom business system, a mobile application, or a scalable SaaS solution, Saad ICT is positioned to help define the right digital direction and deliver it with stronger quality.",
+      "services": [
+        "Premium websites",
+        "Operational systems",
+        "Scalable digital products"
+      ],
+      "action": {
+        "eyebrow": "Contact",
+        "title": "Start the conversation",
+        "primaryBtn": "Request a Service",
+        "secondaryBtn": "Contact US"
+      }
     }
   },
   "contact": {
-    "title": "Contact the Hoggaan E-Portal Team",
-    "intro": "Reach out to our digital operations team — we’ll get back to you promptly.",
-    "side": {
-      "title": "Need Assistance?",
-      "subtitle": "Technical issues, access requests, or custom portal inquiries — we’re here to help."
+    "hero": {
+      "badge": "SAAD SYSTEMS",
+      "title": "Initialize",
+      "titleItalic": "Direct Contact.",
+      "description": "Connect with our engineering and systems specialists. We bridge technical gaps with structured architecture and sovereign digital logic."
+    },
+    "quickActions": {
+      "label": "Contact Details",
+      "voice": "Phone / Whatsapp",
+      "email": "Email",
+      "office": "Office"
     },
     "form": {
-      "title": "Send us a message",
+      "terminal": "Contact Form",
       "name": "Full Name",
+      "namePlaceholder": "Enter name...",
       "email": "Email Address",
-      "message": "Message",
-      "placeholders": {
-        "name": "Your full name",
-        "email": "you@example.com",
-        "message": "Write your message here..."
+      "emailPlaceholder": "email@domain.com",
+      "company": "Organization",
+      "companyPlaceholder": "Your company name",
+      "type": "Inquiry Type",
+      "typeOptions": {
+        "systems": "Software Systems",
+        "identity": "Digital Identity",
+        "infrastructure": "Infrastructure"
       },
-      "cta": "Send Message",
-      "sending": "Sending…",
-      "success": "Message sent successfully.",
-      "disclaimer": "By submitting, you agree to be contacted by the Hoggaan E-Portal support team."
+      "message": "Project Details",
+      "messagePlaceholder": "Details of your project...",
+      "submit": "Send Message",
+      "loading": "Processing..."
     },
-    "errors": {
-      "required": "Please fill in all required fields."
+    "operational": {
+      "node": "MGQ",
+      "label": "Working Hours",
+      "weekdays": "Sat - Thu",
+      "friday": "Friday",
+      "supportOnly": "Support Only",
+      "security": "Secure Communication"
+    },
+    "modal": {
+      "successTitle": "Email Sent",
+      "successDesc": "Your email has been received. Our team will respond shortly.",
+      "errorTitle": "Transmission Error",
+      "errorDesc": "The secure connection was interrupted. Please check your network and try again.",
+      "action": "Close"
     }
   },
   "meta": {
-    "title": "Hoggaan Travels",
-    "description": "Official Hoggaan Travels website"
+    "title": "SAAD ICT",
+    "description": "Saad ict official website."
   },
   "nav": {
-    "brandName": "Hoggaan E-Portal",
-    "logoAlt": "Hoggaan E-Portal Logo",
+    "brandName": "Saad ICT",
+    "logoAlt": "Saad ICT Logo",
     "home": "Home",
-    "about": "About Portal",
+    "about": "About",
     "services": "Services",
-    "contact": "Help & Support",
-    "login": "Login",
-    "dashboard": "Dashboard"
+    "contact": "Contact US",
+    "projects": "Projects",
+    "resources": "Resources",
+    "faq": "FAQ",
+    "serviceRequest": "Service Request"
   },
-  "portalFooter": {
-    "brand": "Hoggaan E-Portal",
-    "description": "The centralized digital backbone of Hoggaan Travels — connecting bookings, finance, and pilgrim operations in one secure platform.",
+  "footer": {
+    "tagline": "Digital Systems & Platforms",
+    "description": "We design and build scalable digital systems, platforms, and operational tools that help organizations streamline workflows, improve service delivery, and support long-term growth.",
+    "status": "Systems_Online",
     "badges": {
-      "verified": "Verified System",
-      "secure": "Secure Access",
-      "powered": "Powered by Next.js + Supabase"
+      "arch": "System_Architecture",
+      "secure": "Secure_By_Design"
     },
-    "groups": {
-      "platform": "Platform",
-      "resources": "Resources"
+    "nav": {
+      "company": {
+        "title": "Company",
+        "about": "About",
+        "projects": "Projects",
+        "services": "Services",
+        "contact": "Contact"
+      },
+      "resources": {
+        "title": "Resources",
+        "faq": "FAQ",
+        "request": "Service Request",
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Service"
+      }
     },
-    "links": {
-      "about": "About Portal",
-      "services": "Services",
-      "support": "Support",
-      "login": "Login",
-      "main": "Main Website"
-    },
-    "support": {
-      "title": "System Support",
-      "address": "Hoggaan Travels HQ – Mogadishu & Jeddah",
-      "languages": "Multi-Language Interface (EN / SO / AR)"
-    },
-    "legal": {
-      "rights": "© {year} Hoggaan Travels E-Portal – All Rights Reserved",
-      "builtWith": "Built by"
-    }
+    "contactTitle": "Contact Us",
+    "rights": "All rights reserved.",
+    "engineered": "Engineered by"
   },
   "terms_privacy": {
     "hero": {
@@ -442,81 +1368,527 @@
       }
     ]
   },
-  "portalServices": {
-    "hero": {
-      "badge": "Hoggaan E-Portal",
-      "title": "Core Services & Modules",
-      "desc": "The E-Portal is a unified platform for Hoggaan employees and verified users — enabling smooth digital operations, bookings, and management of every travel process."
-    },
-    "groups": [
-      {
-        "heading": "Operations & Management",
-        "desc": "Core modules designed for booking workflows and pilgrim coordination inside Hoggaan’s ecosystem.",
-        "items": [
-          {
-            "icon": "booking",
-            "title": "Booking & Group Management",
-            "desc": "Create, manage, and track pilgrim bookings, flights, and groups in real-time across departments."
-          },
-          {
-            "icon": "id",
-            "title": "Pilgrim ID & Verification",
-            "desc": "Issue unique digital IDs with QR codes for instant check-in, identification, and data sync."
-          },
-          {
-            "icon": "documents",
-            "title": "Documents & Visa Processing",
-            "desc": "Securely upload, verify, and store required travel and visa documentation for every registered pilgrim."
-          }
-        ]
+  "faq": {
+    "faqHero": {
+      "badge": "FAQ",
+      "title": "Questions,",
+      "titleItalic": "answered clearly.",
+      "description": "A practical reference covering the specifics of Saad ICT services, system architectures, delivery timelines, and project development cycles.",
+      "metrics": {
+        "sections": "FAQ Sections",
+        "questions": "Answered Questions",
+        "clarity": "Client Clarity"
       },
-      {
-        "heading": "Accommodation & Logistics",
-        "desc": "Tools for handling all movement and lodging operations from arrival to departure.",
+      "terminal": {
+        "label": "FAQ Coverage",
+        "title": "What this page covers",
+        "description": "This FAQ is designed to answer the practical questions people ask before starting a project or requesting a specialized system.",
         "items": [
           {
-            "icon": "hotel",
-            "title": "Hotel & Room Allocation",
-            "desc": "Assign rooms and monitor occupancy seamlessly through hotel dashboards and capacity tracking."
+            "tag": "01",
+            "text": "What Saad ICT builds and offers"
           },
           {
-            "icon": "transport",
-            "title": "Transport & Route Scheduling",
-            "desc": "Coordinate transfers between airports, Madinah, and Makkah with route-based time tracking."
+            "tag": "02",
+            "text": "How projects usually begin"
           },
           {
-            "icon": "finance",
-            "title": "Invoices & Financial Records",
-            "desc": "Generate and review invoices, expenses, and payments automatically with secure audit trails."
-          }
-        ]
-      },
-      {
-        "heading": "Security, Analytics & Support",
-        "desc": "Advanced layers that keep operations safe, measurable, and connected for Hoggaan’s workforce.",
-        "items": [
-          {
-            "icon": "security",
-            "title": "Role-Based Access Security",
-            "desc": "Granular permissions for employees, managers, and admins to ensure safe access and compliance."
+            "tag": "03",
+            "text": "What systems include in practice"
           },
           {
-            "icon": "analytics",
-            "title": "Analytics & Reports",
-            "desc": "Visual dashboards with live metrics for bookings, occupancy, expenses, and agent performance."
-          },
-          {
-            "icon": "support",
-            "title": "Integrated Support",
-            "desc": "Built-in helpdesk and staff support tools for internal communication and field assistance."
+            "tag": "04",
+            "text": "Delivery, support, and next steps"
           }
         ]
       }
-    ],
+    },
+    "faqGroups": {
+      "general": {
+        "eyebrow": "Overview",
+        "title": "General Questions",
+        "description": "Common questions about how Saad ICT works, what we build, and how projects typically begin.",
+        "items": [
+          {
+            "question": "What kind of systems does Saad ICT build?",
+            "answer": "Saad ICT focuses on practical digital systems that solve real operational needs. This includes SaaS platforms, business web applications, mobile apps, informative websites, and structured internal tools such as dashboards, financial systems, workflow systems, and admin platforms."
+          },
+          {
+            "question": "Do you only build websites?",
+            "answer": "No. Websites are only one part of what we do. Our main strength is building structured systems and applications — especially platforms that support real business operations, user roles, data workflows, and long-term scalability."
+          },
+          {
+            "question": "Can you help shape the idea before development starts?",
+            "answer": "Yes. Many projects begin at the planning stage. We can help define the right scope, structure the workflow, recommend the suitable stack, and identify what should be built first so the project starts on a solid technical foundation."
+          },
+          {
+            "question": "Do you work with companies only, or also with startups and individuals?",
+            "answer": "We can work with companies, startups, and serious founders. The important factor is not company size, but whether the project has clear purpose, realistic requirements, and commitment to building it properly."
+          }
+        ]
+      },
+      "saas-web-apps": {
+        "eyebrow": "Systems",
+        "title": "SaaS & Web Applications",
+        "description": "Questions related to custom software platforms, dashboards, portals, and operational systems.",
+        "items": [
+          {
+            "question": "What is the difference between a website and a web application?",
+            "answer": "A website is primarily informational and presentation-focused. A web application is interactive and operational — it includes user actions, dashboards, data handling, workflows, permissions, and business logic."
+          },
+          {
+            "question": "Can Saad ICT build a custom SaaS platform for our company?",
+            "answer": "Yes. Custom SaaS development is one of our core service areas. We can build systems tailored to your workflow."
+          },
+          {
+            "question": "Do your systems support different user roles and permissions?",
+            "answer": "Yes. Role-based access and structured permission logic are important in most serious systems."
+          },
+          {
+            "question": "Can you connect the system to APIs or third-party services?",
+            "answer": "Yes. We can integrate with payment gateways, APIs, maps, storage, and communication tools."
+          },
+          {
+            "question": "Do you build internal dashboards and admin panels?",
+            "answer": "Yes. Internal dashboards and control panels are a major part of what we build."
+          }
+        ]
+      },
+      "mobile-apps": {
+        "eyebrow": "Mobile",
+        "title": "Mobile Applications",
+        "description": "Questions about mobile app development and integrations.",
+        "items": [
+          {
+            "question": "Do you develop for both Android and iPhone?",
+            "answer": "Yes. We build apps for both Android and iOS depending on requirements."
+          },
+          {
+            "question": "Can the mobile app connect to our backend?",
+            "answer": "Yes. Apps are connected to APIs, authentication, and real-time systems."
+          },
+          {
+            "question": "Can you build apps for staff and customers?",
+            "answer": "Yes. Apps can be internal, customer-facing, or both."
+          }
+        ]
+      },
+      "websites": {
+        "eyebrow": "Web Presence",
+        "title": "Informative Websites",
+        "description": "Questions about company websites and digital presence.",
+        "items": [
+          {
+            "question": "What kind of websites does Saad ICT build?",
+            "answer": "We build professional informative websites for companies and organizations."
+          },
+          {
+            "question": "Can you redesign an existing website?",
+            "answer": "Yes. We modernize and restructure outdated websites."
+          },
+          {
+            "question": "Will the website be mobile responsive?",
+            "answer": "Yes. All websites are responsive across devices."
+          },
+          {
+            "question": "Can the website include forms and FAQ sections?",
+            "answer": "Yes. These are standard and fully supported."
+          }
+        ]
+      },
+      "process": {
+        "eyebrow": "Workflow",
+        "title": "Process & Delivery",
+        "description": "Questions about project flow and execution.",
+        "items": [
+          {
+            "question": "How does a project usually start?",
+            "answer": "Projects start with understanding requirements, then structuring scope and execution."
+          },
+          {
+            "question": "Do you help define the project scope?",
+            "answer": "Yes. Scope definition is a critical part of the process."
+          },
+          {
+            "question": "Can a project be built in phases?",
+            "answer": "Yes. Phased development is recommended for complex systems."
+          },
+          {
+            "question": "Do you provide support after launch?",
+            "answer": "Yes. Ongoing support and improvements are available."
+          }
+        ]
+      },
+      "consulting-ai": {
+        "eyebrow": "Strategy",
+        "title": "Consulting & AI",
+        "description": "Questions about advisory and AI capabilities.",
+        "items": [
+          {
+            "question": "What does your consulting include?",
+            "answer": "Consulting includes architecture, workflows, and system planning."
+          },
+          {
+            "question": "Do you offer AI solutions?",
+            "answer": "Yes. Focused on practical automation and smart workflows."
+          },
+          {
+            "question": "Can AI be added later?",
+            "answer": "Yes. AI is best added after core systems are stable."
+          }
+        ]
+      }
+    }
+  },
+  "projects": {
+    "projectsHero": {
+      "titleMain": "Engineering the",
+      "titleAccent": "Digital Backbone.",
+      "description": "A technical archive of high-precision infrastructure. We build the operational systems that power modern enterprise.",
+      "highlight": "stability and scale",
+      "metrics": {
+        "nodes": "Nodes",
+        "uptime": "Uptime",
+        "architecture": "Architecture"
+      },
+      "labels": {
+        "systemFocus": "System Focus",
+        "accessSystem": "Access System"
+      }
+    },
+    "projects": {
+      "categories": {
+        "financial": "Financial Platform",
+        "financial_saas": "Financial Platform | SAAS",
+        "corporate": "Corporate Website",
+        "travel": "Travel Platform",
+        "umrah": "Umrah Portal",
+        "energy": "Energy Website",
+        "trading": "Trading Website",
+        "agency": "Digital Agency Website",
+        "hotel_app": "Hotel system Mobile App",
+        "all": "All"
+      },
+      "statuses": {
+        "live": "Live",
+        "development": "In Development",
+        "released": "Released",
+        "internal": "Internal",
+        "upcoming": "Upcoming",
+        "coming_soon": "Coming Soon"
+      },
+      "list": {
+        "saad-finance-platform": {
+          "title": "Saad Finance",
+          "shortDescription": "A modern financial operations platform developed by Saad ICT to streamline invoicing, expense management, PDF generation, and core business accounting workflows.",
+          "fullDescription": "Saad Finance is Saad ICT’s financial platform built to centralize and modernize core accounting and invoicing operations...",
+          "client": "Saad ICT",
+          "sector": "Financial Technology",
+          "location": "Global",
+          "duration": "Ongoing",
+          "services": [
+            "Financial Platform Architecture",
+            "Invoice & Expense Workflow Design",
+            "Server-Side PDF System",
+            "Operational Dashboard Development",
+            "Scalable Internal System Engineering"
+          ],
+          "metrics": {
+            "type": "Internal Product",
+            "platform": "Web-Based",
+            "status": "Live / Active Development"
+          }
+        },
+        "hoggaan-travels-website": {
+          "title": "Hoggaan Travels Website",
+          "shortDescription": "A professional travel company website for Hoggaan Travels, designed to present services, company credibility, and digital travel features including Hoggaan ID.",
+          "fullDescription": "Hoggaan Travels is a modern company website built for Hoggaan Travels to strengthen digital presence...",
+          "client": "Hoggaan Travels",
+          "sector": "Travel & Tourism",
+          "location": "Somalia",
+          "duration": "Completed / Ongoing Improvements",
+          "services": [
+            "Corporate Website Design",
+            "Travel Brand Presentation",
+            "Custom Feature Integration",
+            "Responsive Frontend Development",
+            "Digital Identity Experience"
+          ],
+          "metrics": {
+            "type": "Public Website",
+            "industry": "Travel & Pilgrimage",
+            "status": "Live"
+          }
+        },
+        "hoggaan-portal": {
+          "title": "Hoggaan Umrah Portal",
+          "shortDescription": "A Dashboard operational portal built for Hoggaan Travels to manage Umrah workflows, records, and internal service operations digitally.",
+          "fullDescription": "Hoggaan Dashboard is an Umrah operations portal developed to support Hoggaan Travels in managing internal travel workflows more efficiently...",
+          "client": "Hoggaan Travels",
+          "sector": "Travel Technology",
+          "location": "Somalia",
+          "duration": "Ongoing",
+          "services": [
+            "SaaS Product Architecture",
+            "Travel Operations System Design",
+            "Internal Workflow Engineering",
+            "Admin Dashboard Development",
+            "Scalable Portal Infrastructure"
+          ],
+          "metrics": {
+            "type": "SaaS Platform",
+            "useCase": "Umrah Operations",
+            "status": "Live / Evolving"
+          }
+        },
+        "hornbox-website": {
+          "title": "Horn Box LLC Website",
+          "shortDescription": "An informative business website for Horn Box LLC with structured content presentation and form-based user interaction.",
+          "fullDescription": "HornBox LLC is an informative corporate website designed to present the company professionally while enabling user interaction...",
+          "client": "Horn Box LLC",
+          "sector": "Corporate Services",
+          "location": "Global",
+          "duration": "Completed",
+          "services": [
+            "Corporate Website Design",
+            "Informative Content Structuring",
+            "Lead Form Integration",
+            "Responsive Frontend Development",
+            "Business Presentation Strategy"
+          ],
+          "metrics": {
+            "type": "Business Website",
+            "focus": "Presentation + Inquiry",
+            "status": "Live"
+          }
+        },
+        "sun-aratinga-website": {
+          "title": "Sun Aratinga Website",
+          "shortDescription": "A modern energy-sector website being developed for Sun Aratinga to showcase solar engineering capabilities, solutions, and project credibility.",
+          "fullDescription": "Sun Aratinga is an upcoming website for Sun Aratinga, focused on presenting the company’s solar engineering profile...",
+          "client": "Sun Aratinga",
+          "sector": "Solar & Energy",
+          "location": "Somalia",
+          "duration": "In Progress",
+          "services": [
+            "Energy Website Design",
+            "Technical Brand Positioning",
+            "Solar Solutions Presentation",
+            "Responsive Frontend Engineering",
+            "Content Architecture"
+          ],
+          "metrics": {
+            "type": "Corporate Website",
+            "sector": "Renewable Energy",
+            "status": "Upcoming / In Development"
+          }
+        },
+        "east-hides-website": {
+          "title": "EAST Hides Website",
+          "shortDescription": "A business website for EAST Hides & Investment Co, Ltd, designed to present products, company profile, and trading credibility ahead of launch.",
+          "fullDescription": "EAST Hides is an upcoming corporate website being prepared for EAST Hides & Investment Co, Ltd...",
+          "client": "EAST Hides & Investment Co, Ltd",
+          "sector": "Trading & Export",
+          "location": "East Africa",
+          "duration": "Pre-Launch",
+          "services": [
+            "Corporate Website Design",
+            "Trading Brand Presentation",
+            "Product Showcase Structuring",
+            "Responsive Frontend Development",
+            "Pre-Launch Web Strategy"
+          ],
+          "metrics": {
+            "type": "Business Website",
+            "launch": "Pre-Launch",
+            "status": "Upcoming"
+          }
+        },
+        "anaam-digital-website": {
+          "title": "Anaam Digital Website",
+          "shortDescription": "A developing digital agency website for Anaam Digital, focused on service presentation, brand identity, and future online launch readiness.",
+          "fullDescription": "An'aam Digital is a coming-soon website currently under development for Anaam Digital...",
+          "client": "Anaam Digital",
+          "sector": "Digital Agency",
+          "location": "Somalia",
+          "duration": "In Development",
+          "services": [
+            "Agency Website Design",
+            "Brand Presentation Strategy",
+            "Content Architecture",
+            "Responsive Frontend Development",
+            "Launch-Ready Website Structuring"
+          ],
+          "metrics": {
+            "type": "Agency Website",
+            "phase": "Development",
+            "status": "Coming Soon"
+          }
+        },
+        "ysws": {
+          "title": "YSWS (You Stay We Serve)",
+          "shortDescription": "YSWS is a hotel next-gen App that simplifies the guests during stay services.",
+          "fullDescription": "Hospitality mobile app that offers personalized during-stay services and data-driven insights for admins.",
+          "client": "YSWS (You Stay We Serve)",
+          "sector": "Hospitality",
+          "location": "Saudi Arabia",
+          "duration": "In Development (Update)",
+          "services": [
+            "Mobile App Development",
+            "Brand Presentation Strategy",
+            "Content Architecture",
+            "Responsive Frontend Development",
+            "Launch-Ready Mobile App Structuring"
+          ],
+          "metrics": {
+            "type": "Hospitality App",
+            "phase": "Development",
+            "status": "Update Coming Soon"
+          }
+        }
+      }
+    },
+    "confidential": {
+      "label": "Classified Projects",
+      "titleMain": "Confidential &",
+      "titleAccent": "Restricted Deployments",
+      "ndaPolicy": "Non-Disclosure Agreement Policy",
+      "description": "A significant portion of our technical portfolio is delivered within high-security environments. Due to strict confidentiality protocols, specific architectural details remain undisclosed to the public.",
+      "securityPoints": [
+        "Multi-site secure infrastructure deployments",
+        "Enterprise-grade surveillance systems",
+        "High-security network segmentation environments",
+        "Critical systems integration under restricted access"
+      ]
+    },
+    "projectsCTA": {
+      "status": "Start Today",
+      "titleMain": "Ready to build a",
+      "titleAccent": "better system?",
+      "description": "Let's skip the fluff. If you have a project that needs technical precision and a solid deployment strategy, we are ready to start.",
+      "buttonText": "Start a Project"
+    }
+  },
+  "services": {
+    "servicesHero": {
+      "pill": "SAAD ICT SERVICES",
+      "titleMain": "Digital",
+      "titleItalic": "Services",
+      "description": "Saad ICT delivers structured digital services across SaaS platforms, websites, web applications, mobile products, consulting, and emerging AI solutions — built with clarity, scalability, and production-ready thinking.",
+      "tags": [
+        "SaaS Systems",
+        "Web Platforms",
+        "Mobile Apps",
+        "Consulting",
+        "AI"
+      ],
+      "nodeLabel": "Service Node",
+      "nodes": {
+        "saas": "SaaS Platforms",
+        "consulting": "Consulting",
+        "websites": "Websites",
+        "webApps": "Web Applications",
+        "ai": "AI Apps",
+        "mobile": "Mobile Apps"
+      },
+      "footerTagline": "ICT Solutions for Modern Businesses"
+    },
+    "servicesList": {
+      "header": {
+        "subtitle": "SAAD ICT SERVICES",
+        "titleMain": "CORE",
+        "titleSub": "CAPABILITIES",
+        "status": "SMART SOLUTIONS FOR EVERYONE."
+      },
+      "labels": {
+        "servicePrefix": "Service",
+        "srvCode": "SRV"
+      },
+      "items": {
+        "saas": {
+          "title": "System Development (SaaS)",
+          "description": "We design and build full-scale SaaS platforms tailored to real business operations, with a strong focus on structure, scalability, and clean long-term maintainability.",
+          "capabilities": [
+            "Custom SaaS platforms",
+            "Financial systems",
+            "Admin dashboards",
+            "Scalable backend",
+            "Production-ready",
+            "Modern Design"
+          ]
+        },
+        "websites": {
+          "title": "Website Development",
+          "description": "Modern, high-performance websites built to represent your brand with clarity, credibility, and a strong digital presence.",
+          "capabilities": [
+            "Corporate websites",
+            "Landing pages",
+            "SEO-ready structure",
+            "Modern UI direction",
+            "Performance optimization"
+          ]
+        },
+        "webApps": {
+          "title": "Web Application Development",
+          "description": "Structured web applications for operational workflows, internal systems, dashboards, and process-driven business environments.",
+          "capabilities": [
+            "Custom business applications",
+            "Dashboards and control panels",
+            "API-based systems",
+            "Authentication",
+            "Realtime workflows"
+          ]
+        },
+        "mobile": {
+          "title": "Mobile App Development",
+          "description": "We build mobile applications that extend business systems into clean, usable, and reliable mobile products.",
+          "capabilities": [
+            "Cross-platform apps",
+            "API integration",
+            "Realtime features",
+            "Clean UI/UX",
+            "High performance"
+          ]
+        },
+        "consulting": {
+          "title": "Consulting",
+          "description": "Technical consulting focused on choosing the right architecture, stack, and system direction before complexity becomes expensive.",
+          "capabilities": [
+            "Architecture planning",
+            "Tech stack decisions",
+            "Workflow design",
+            "Digital transformation",
+            "Project structuring"
+          ]
+        },
+        "ai": {
+          "title": "AI Applications",
+          "description": "An emerging capability focused on practical AI solutions that improve automation, assist workflows, and support data-driven systems.",
+          "capabilities": [
+            "AI-powered tools",
+            "Workflow automation",
+            "Smart assistants",
+            "Data-driven features"
+          ]
+        }
+      }
+    },
     "cta": {
-      "title": "Interested in a Similar E-Portal for Your Organization?",
-      "desc": "Hoggaan’s in-house development team can customize and deploy a dedicated version of this system for travel agencies, ministries, or enterprise clients.",
-      "button": "Contact Our Team"
+      "titleMain": "Build something",
+      "titleItalic": "Structural.",
+      "description": "If you are planning a mission-critical system or enterprise platform, we provide the architectural logic and delivery precision required for long-term reliability.",
+      "button": "Start Your Project",
+      "metadata": "REQ SERVICE"
+    }
+  },
+  "serviceRequest": {
+    "comingSoon": {
+      "status": "Update in Progress",
+      "title": "Project Requests",
+      "titleItalic": "Form",
+      "description": "Our automated service request Form is currently undergoing final update. We are fine-tuning the deployment steps to ensure every project starts with absolute precision.",
+      "backButton": "Return to Services",
+      "metadata": "Coming Soon"
     }
   }
 }

@@ -15,20 +15,20 @@ export async function POST(req: Request) {
     });
 
     const html = `
-      <h2 style="color:#FACC15;font-size:22px;">New Contact Message</h2>
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Company:</strong> ${company}</p>
-      <p><strong>Service:</strong> ${service}</p>
-      <p><strong>Message:</strong></p>
-      <div style="padding:12px;border-left:3px solid #FACC15;background:#111;color:#fff;">
+      <h2 style="color:#24365C;font-size:22px;font-family:sans-serif;">New Contact Message</h2>
+        <p style="font-family:sans-serif;color:#334155;"><strong>Name:</strong> ${name}</p>
+        <p style="font-family:sans-serif;color:#334155;"><strong>Email:</strong> ${email}</p>
+        <p style="font-family:sans-serif;color:#334155;"><strong>Company:</strong> ${company}</p>
+        <p style="font-family:sans-serif;color:#334155;"><strong>Inquiry:</strong> ${service}</p>
+        <p style="font-family:sans-serif;color:#334155;"><strong>Message:</strong></p>
+      <div style="padding:16px;border-left:4px solid #4C8FC4;background:#f8fafc;color:#24365C;font-family:sans-serif;line-height:1.5;">
         ${message}
       </div>
     `;
 
     await transporter.sendMail({
-      from: `HornBox Website <${process.env.SMTP_USER}>`,
-      to: "info@hornboxllc.com",
+      from: `SAAD ICT Website <${process.env.SMTP_USER}>`,
+      to: "info@saadict.com",
       subject: "New Contact Form Message",
       html,
     });

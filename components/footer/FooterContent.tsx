@@ -1,209 +1,206 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/lib/i18n/navigation";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useMemo, useState } from "react";
 import { brand } from "@/components/config/brand";
+import { useTranslations } from "next-intl";
 import {
   Mail,
   Phone,
   MapPin,
   ArrowUpRight,
-  Globe,
+  Cpu,
   ShieldCheck,
+  BriefcaseBusiness,
 } from "lucide-react";
 import { ThemeSwitcher } from "@/components/theme-switcher";
-import { usePathname } from "next/navigation";
 
-export default function FooterContent() {
+export default function FooterEngineered() {
+  const t = useTranslations("footer");
   const YEAR = new Date().getFullYear();
-
-  const pathname = usePathname();
-  const isProjectsPage = pathname.startsWith("/en/projects");
-
-  const PRIMARY = brand.colors.primary ?? "#1A1A1A"; // black
-  const ACCENT = brand.colors.accent ?? "#FFC233"; // yellow
-
-  /* Track footer visibility */
   const [footerVisible, setFooterVisible] = useState(false);
-  useEffect(() => {
-    const footer = document.querySelector("footer");
-    if (!footer) return;
 
+  useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => setFooterVisible(entry.isIntersecting),
       { threshold: 0.1 }
     );
-    observer.observe(footer);
+
+    const footer = document.querySelector("footer");
+    if (footer) observer.observe(footer);
+
     return () => observer.disconnect();
   }, []);
 
   return (
     <>
-      {/* ───────── FLOATING STRIP ───────── */}
-
-      {!isProjectsPage &&
-        <AnimatePresence>
-          {!footerVisible && (
-            <motion.div
-              initial={{ y: 80, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 80, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 260, damping: 25 }}
-              className="fixed bottom-3 left-0 z-50  max-w-7xl -translate-x-1/2 px-4"
-            >
-              <div
-                className="flex h-12 items-center justify-between rounded-2xl px-5
-              dark:bg-black/80 bg-white/80 backdrop-blur-xl border border-white/10
-              text-xs text-white shadow-lg"
+      <AnimatePresence>
+        {!footerVisible && (
+          <motion.div
+            initial={{ y: 100, x: "-50%", opacity: 0 }}
+            animate={{ y: 0, x: "-50%", opacity: 1 }}
+            exit={{ y: 100, x: "-50%", opacity: 0 }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="fixed bottom-3 left-14 -translate-x-1/2 z-50"
+          >
+            <div className="flex h-12 items-center gap-2 rounded-full px-2 border border-white/10 bg-blue-200 dark:bg-white/10 backdrop-blur-2xl shadow-2xl shadow-black/20">
+              <Link
+                href="/service-request"
+                className="flex h-7 w-7 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-200 hover:text-white hover:bg-white/10 transition-all duration-300"
+                aria-label={t("nav.resources.request")}
+                title={t("nav.resources.request")}
               >
+                <BriefcaseBusiness size={16} className="text-black/80 dark:text-white/80" />
+              </Link>
+
+              <div className="h-6 w-px bg-white/10" />
+
+              <div className="flex items-center justify-center rounded-full">
                 <ThemeSwitcher />
-
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-      }
-
-
-      {/* ───────── MAIN FOOTER ───────── */}
-      <footer
-        className="w-full text-white relative z-40"
-        style={{ background: PRIMARY }}
-      >
-        <section className="max-w-7xl mx-auto px-6 py-16 grid gap-12 md:grid-cols-3">
-          {/* ── BRAND COLUMN ── */}
-          <div>
-            <div className="flex items-center gap-3">
-              <Image
-                src={brand.logo.light}
-                alt="HornBox Logo"
-                width={48}
-                height={48}
-                className="h-12 w-auto"
-                priority
-              />
-              <span className="text-lg font-semibold tracking-tight">
-                {brand.name}
-              </span>
             </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-            <p className="mt-4 text-sm text-white/85 leading-relaxed max-w-xs text-justify">
-              Global freight forwarding & logistics partner delivering integrated
-              ocean, air, road, warehousing, and customs solutions across 195+ destinations.
-            </p>
+      <footer className="relative bg-[#0B0F14] text-white overflow-hidden border-t border-white/5">
+        <div
+          className="absolute inset-0 opacity-[0.015] pointer-events-none"
+          style={{
+            backgroundImage: `radial-gradient(#ffffff 1px, transparent 1px)`,
+            backgroundSize: "32px 32px",
+          }}
+        />
 
-            <div className="mt-6 flex flex-wrap gap-2">
-              <Badge icon={<ShieldCheck size={13} />} text="Verified Partner" />
-            </div>
-          </div>
+        <section className="relative max-w-7xl mx-auto px-6 pt-20 pb-12">
+          <div className="grid gap-16 lg:grid-cols-12">
+            <div className="lg:col-span-5 space-y-8">
+              <div className="space-y-4">
+                <Link href="/" className="flex items-center gap-3">
+                  <div className="p-2 bg-white border border-white/10 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.18)]">
+                    <Image
+                      src={brand.logo.dark}
+                      alt={brand.name}
+                      width={32}
+                      height={32}
+                      className="h-8 w-auto"
+                    />
+                  </div>
 
-          {/* ── NAVIGATION GROUPS ── */}
-          <div className="grid sm:grid-cols-2 gap-10">
-            <NavGroup title="Company">
-              <NavItem href="/about" accent={ACCENT}>About Us</NavItem>
-              <NavItem href="/services" accent={ACCENT}>Services</NavItem>
-              <NavItem href="/industries" accent={ACCENT}>Industries</NavItem>
-              <NavItem href="/network" accent={ACCENT}>Global Network</NavItem>
-              <NavItem href="/projects" accent={ACCENT}>Projects</NavItem>
-            </NavGroup>
-
-            <NavGroup title="Quick Links">
-              <NavItem href="/contact" accent={ACCENT}>Contact</NavItem>
-            </NavGroup>
-          </div>
-
-          {/* ── CONTACT BOX ── */}
-          <div>
-            <div
-              className="rounded-2xl p-6 backdrop-blur-lg border border-white/10"
-              style={{
-                background: "linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03))",
-              }}
-            >
-              <h4 className="text-sm font-semibold tracking-tight mb-4">
-                Contact Us
-              </h4>
-
-              <ul className="space-y-3 text-sm text-white/90">
-                <li className="flex items-center gap-3">
-                  <Mail className="h-4 w-4 text-white/70" />
-                  <a
-                    href="mailto:info@hornboxllc.com"
-                    className="group relative inline-flex items-center gap-1"
-                  >
-                    <span className="relative">
-                      {brand.social.email}
-                      <span
-                        className="pointer-events-none absolute inset-x-0 -bottom-1 h-[2px] origin-left scale-x-0
-                        transition-transform duration-300"
-                        style={{
-                          background: `linear-gradient(90deg, transparent, ${ACCENT}, transparent)`,
-                        }}
-                      />
+                  <div className="flex flex-col">
+                    <span className="text-xl font-bold tracking-tighter uppercase text-white">
+                      {brand.name}
                     </span>
-                    <ArrowUpRight className="h-4 w-4 opacity-0 -translate-x-1 translate-y-1 scale-75
-                    transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1
-                    group-hover:-translate-y-1 group-hover:scale-100" />
-                  </a>
-                </li>
+                    <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-slate-500">
+                      {t("tagline")}
+                    </span>
+                  </div>
+                </Link>
 
-                <li className="flex items-center gap-3">
-                  <Phone className="h-4 w-4 text-white/70" />
-                  <span>{brand.social.phoneNumber}</span>
-                </li>
+                <p className="text-sm text-slate-400 leading-relaxed max-w-md">
+                  {t("description")}
+                </p>
 
-                <li className="flex items-center gap-3">
-                  <MapPin className="h-4 w-4 text-white/70" />
-                  <span>
-                    HornBox Headquarters — <br />
-                    {brand.social.location}
+                <div className="flex items-center gap-2 pt-1">
+                  <div className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
+                  <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">
+                    {t("status")}
                   </span>
-                </li>
+                </div>
+              </div>
 
-                <li className="flex items-center gap-3">
-                  <Globe className="h-4 w-4 text-white/70" />
-                  <span>English</span>
-                </li>
-              </ul>
+              <div className="flex flex-wrap gap-3">
+                <SystemBadge icon={<Cpu size={12} />} text={t("badges.arch")} />
+                <SystemBadge icon={<ShieldCheck size={12} />} text={t("badges.secure")} />
+              </div>
+            </div>
+
+            <div className="lg:col-span-4 grid grid-cols-2 gap-8">
+              <NavGroup title={t("nav.company.title")}>
+                <NavItem href="/about">{t("nav.company.about")}</NavItem>
+                <NavItem href="/projects">{t("nav.company.projects")}</NavItem>
+                <NavItem href="/services">{t("nav.company.services")}</NavItem>
+                <NavItem href="/contact">{t("nav.company.contact")}</NavItem>
+              </NavGroup>
+
+              <NavGroup title={t("nav.resources.title")}>
+                <NavItem href="/faq">{t("nav.resources.faq")}</NavItem>
+                <NavItem href="/service-request">{t("nav.resources.request")}</NavItem>
+                <NavItem href="/legal/privacy">{t("nav.resources.privacy")}</NavItem>
+              </NavGroup>
+            </div>
+
+            <div className="lg:col-span-3">
+              <div className="rounded-2xl p-6 border border-white/5 bg-gradient-to-br from-white/[0.04] to-transparent backdrop-blur-sm shadow-[0_20px_40px_rgba(0,0,0,0.18)]">
+                <h4
+                  className="text-[10px] font-mono uppercase tracking-[0.3em] mb-6"
+                  style={{ color: brand?.colors?.primary }}
+                >
+                  {t("contactTitle")}
+                </h4>
+
+                <ul className="space-y-4 text-xs font-mono">
+                  <ContactItem
+                    icon={<Mail size={14} />}
+                    text={brand.social.email}
+                    href={`mailto:${brand.social.email}`}
+                  />
+                  <ContactItem
+                    icon={<Phone size={14} />}
+                    text={brand.social.phoneNumber}
+                    href={`tel:${brand.social.phoneNumber}`}
+                  />
+                  <ContactItem
+                    icon={<MapPin size={14} />}
+                    text={brand.social.location}
+                  />
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
+              <p className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">
+                © {YEAR} {brand.name}. {t("rights")}
+              </p>
+
+              <div className="h-4 w-px bg-white/10 hidden md:block" />
+
+              <div className="flex gap-4 text-[10px] font-mono text-slate-600">
+                <Link href="/legal/privacy" className="hover:text-white transition-colors">
+                  {t("nav.resources.privacy")}
+                </Link>
+                <Link href="/legal/terms" className="hover:text-white transition-colors">
+                  {t("nav.resources.terms")}
+                </Link>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2" style={{ color: brand?.colors?.primary }}>
+              <Cpu size={10} />
+              <span className="text-[9px] font-light uppercase tracking-widest">
+                {t("engineered")} {brand.name}
+              </span>
             </div>
           </div>
         </section>
-
-        {/* ───────── BOTTOM BAR ───────── */}
-        <div className="border-t border-white/10">
-          <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row items-center justify-between text-xs text-white/70">
-            <p>© {YEAR} {brand.name} — All Rights Reserved.</p>
-
-            <p className="mt-2 md:mt-0">
-              Built by{" "}
-              <a
-                href="https://aimmj.vercel.app"
-                className="font-semibold hover:text-white transition"
-              >
-                Aimmj
-              </a>
-            </p>
-          </div>
-        </div>
       </footer>
     </>
   );
 }
 
-/* ---------- SUB COMPONENTS ---------- */
-
-function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
+function SystemBadge({
+  icon,
+  text,
+}: {
+  icon: React.ReactNode;
+  text: string;
+}) {
   return (
-    <span
-      className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-semibold"
-      style={{
-        background: "rgba(255,255,255,.12)",
-        boxShadow: "inset 0 0 0 1px rgba(255,255,255,.2)",
-      }}
-    >
+    <span className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-[10px] font-mono uppercase tracking-wider text-slate-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
       {icon}
       {text}
     </span>
@@ -218,11 +215,11 @@ function NavGroup({
   children: React.ReactNode;
 }) {
   return (
-    <div>
-      <h5 className="text-sm font-semibold tracking-tight text-white">
+    <div className="space-y-4">
+      <h5 className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500">
         {title}
       </h5>
-      <ul className="mt-3 space-y-2 text-sm text-white/85">{children}</ul>
+      <ul className="space-y-3 text-sm text-slate-400">{children}</ul>
     </div>
   );
 }
@@ -230,32 +227,56 @@ function NavGroup({
 function NavItem({
   href,
   children,
-  accent,
 }: {
   href: string;
   children: React.ReactNode;
-  accent: string;
 }) {
   return (
     <li>
       <Link
         href={href}
-        className="group relative inline-flex items-center gap-1 font-semibold"
+        className="group flex items-center gap-1.5 hover:text-white transition-all duration-300"
       >
         <span className="relative">
           {children}
           <span
-            className="pointer-events-none absolute inset-x-0 -bottom-1 h-[2px] origin-left scale-x-0
-            transition-transform duration-300"
-            style={{
-              background: `linear-gradient(90deg, transparent, ${accent}, transparent)`,
-            }}
+            className="absolute -bottom-1 left-0 w-0 h-px transition-all group-hover:w-full"
+            style={{ backgroundColor: brand?.colors?.primary }}
           />
         </span>
-        <ArrowUpRight className="h-3.5 w-3.5 opacity-0 -translate-x-1 translate-y-1 scale-75
-        transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1
-        group-hover:-translate-y-1 group-hover:scale-100" />
+        <ArrowUpRight
+          size={12}
+          className="opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all"
+          style={{ color: brand?.colors?.primary }}
+        />
       </Link>
     </li>
+  );
+}
+
+function ContactItem({
+  icon,
+  text,
+  href,
+}: {
+  icon: React.ReactNode;
+  text: string;
+  href?: string;
+}) {
+  const content = (
+    <div className="flex items-center gap-3 text-slate-400 hover:text-white transition-colors">
+      <span style={{ color: brand?.colors?.primary }}>{icon}</span>
+      <span className="truncate">{text}</span>
+    </div>
+  );
+
+  return href ? (
+    <li>
+      <a href={href} className="block">
+        {content}
+      </a>
+    </li>
+  ) : (
+    <li>{content}</li>
   );
 }

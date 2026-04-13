@@ -1,105 +1,498 @@
 {
   "home": {
     "hero": {
-      "badge": "Mareegta Rasmiga ah ee Dijitaalka",
-      "titleTop": "Ku soo dhowow",
-      "titleHighlight": "Hoggaan E-Portal",
-      "desc": "Maaree safarkaaga Iimaanka si ammaan ah — ka hel hal koonto: booqashooyinka, Aqoonsiyada Dijitaalka ah (QR), qaansheegyada, iyo xaqiijinta dukumentiyada.",
-      "cta": "Gali E-Portal-ka",
-      "chips": {
-        "secure": "Ammaan",
-        "accessible": "La marin karo",
-        "verified": "La xaqiijiyey"
+      "badge": "Saad ICT • Hababka Casriga Ah",
+      "title_row_1": "Dhisidda",
+      "title_row_2_words": [
+        "Hawlgul",
+        "Wadaagid",
+        "Madax-bannaan",
+        "Kalsooni Leh"
+      ],
+      "title_row_3": "System-ka.",
+      "description": "Waxaan soo afjaraynaa daldaloolada ka jira kaabayaasha dhijitaalka ah. Laga soo bilaabo Muqdisho ilaa dunida dadeeda, waxaan dhisnaa barnaamijyo habaysan oo wax ka beddelaya hufnaanta ganacsigaaga.",
+      "cta_primary": "Ku Bilow",
+      "cta_secondary": "Eeg Mashaariicda Saad",
+      "dashboard": {
+        "status": "SAAD ICT NEXT_GEN",
+        "auth": "Sugidda: 256-Bit",
+        "region": "Xarunta: MOG_HQ_01"
       },
-      "imageAlt": "Muuqaalka Dashboard-ka Hoggaan E-Portal"
-    },
-    "chips": [
-      {
-        "title": "Tan iyo 2020",
-        "subtitle": "Khibrad"
+      "sectors": {
+        "enterprise": {
+          "nav": "Ganacsiga",
+          "label": "Madal Dhijitaal Ah",
+          "tagline": "Madallo loo dhisay si gaar ah si loo nidaamiyo hawlgallada, loo fududeeyo shaqada, loona taageero koritaanka fog ee ganacsiga.",
+          "stats": {
+            "deployment": "Ku Salaysan Cloud",
+            "structure": "La ballaarin karo",
+            "impact": "Hufnaan Hawleed"
+          }
+        },
+        "systems": {
+          "nav": "Hababka",
+          "label": "Nidaamyada Hawlgalka",
+          "tagline": "Waxaan u beddelnaa hababka gacanta ee kala daadsan nidaamyo dhijitaal ah oo cad, lagu kalsoonaan karo, lana ballaarin karo.",
+          "stats": {
+            "architecture": "Habaysan",
+            "experience": "Adeeg-fudud",
+            "stability": "Diyaar u ah Shaqo"
+          }
+        },
+        "security": {
+          "nav": "Amniga",
+          "label": "Amniga & Kalsoonida",
+          "tagline": "Waxaa lagu dhisay xakameyn xogeed oo adag, lakabyo amni oo sugan, iyo joogtaynta hufnaanta nidaamka deegaan kasta.",
+          "stats": {
+            "access": "Xaqiijin Heersare ah",
+            "encryption": "Lakabyo Sugan",
+            "monitoring": "Daba-gal Joogto ah"
+          }
+        }
       },
-      {
-        "title": "Shati leh",
-        "subtitle": "iyo Caymis"
+      "chips": [
+        {
+          "title": "Tan iyo 2020",
+          "subtitle": "Khibrad"
+        },
+        {
+          "title": "Shati Leh",
+          "subtitle": "& Caymis"
+        },
+        {
+          "title": "Wakhtiga",
+          "subtitle": "Ilaalinta"
+        }
+      ],
+      "why": {
+        "title": "Maxaad u Dooranaysaa Hoggaan Travels",
+        "desc": "Khibrado lagu kalsoon yahay, raaxo leh, oo si xirfadaysan loogu hagayo xujaajta iyo qoysaska.",
+        "cards": [
+          {
+            "title": "Aamin",
+            "desc": "Qiime hufan & jadwal cad."
+          },
+          {
+            "title": "Raaxo",
+            "desc": "Hoteello la xushay & gaadiid habaysan."
+          },
+          {
+            "title": "Hagid",
+            "desc": "Taageero dhulka ah & caawinta gudashada cibaadada."
+          },
+          {
+            "title": "Khibrad",
+            "desc": "Wada-shaqayn xilliyeed & hawlgal hufan."
+          }
+        ]
       },
-      {
-        "title": "Waqtiyaysan",
-        "subtitle": "Taageero"
+      "process": {
+        "title": "Hoggaan Travels",
+        "desc": "Socdaalkaaga, talaabo-talaabo",
+        "step1": "Fiisaha",
+        "step2": "Duulimaadka",
+        "step3": "Hoteelka",
+        "step4": "Cibaadada",
+        "step5": "Soo laabashada"
+      },
+      "cta": {
+        "title": "Ma diyaar u tahay qorshaynta xajkaaga?",
+        "desc": "Nala soo xiriir — waxaan kaa caawin doonaa doorashada taariikhaha iyo xirmooyinka kugu habboon.",
+        "button": "Nala Soo Xiriir"
+      },
+      "services": {
+        "title": "Adeegyadayada",
+        "desc": "Madal midaysan oo loogu talagalay adeegyada socdaalka iyo saadka."
+      },
+      "features": {
+        "badge": "Astaamaha Muhiimka Ah",
+        "title": "Wax kasta oo aad u baahan tahay si aad u gudato cibaado dhijitaal ah oo sugan",
+        "desc": "Xariirka E-Portal ee Hoggaan wuxuu isku xiraa xujaajta, wakiillada, iyo maamulayaasha isagoo adeegsanaya nidaam sugan — xagga socdaalka, dukumentiyada, iyo lacag bixinta.",
+        "items": {
+          "id": {
+            "title": "Aqoonsiga Xujeyga",
+            "desc": "Hel aqoonsigaaga gaarka ah, daabaco kaararka, oo xaqiiji boos qabsashadaada isla markaaba."
+          },
+          "data": {
+            "title": "Xog Midaysan",
+            "desc": "Dhammaan boos qabsashada, dukumentiyada, iyo faahfaahinta socdaalka oo si sugan loo kaydiyay lana isku xiray."
+          },
+          "payments": {
+            "title": "Lacag-bixinta & Biilasha",
+            "desc": "La soco dhaqdhaqaaqa lacagta, biilasha, iyo rasiidhada si hufan tallaabo kasta."
+          },
+          "access": {
+            "title": "Giditaanka la Xaqiijiyay",
+            "desc": "Xaqiijinta heerar kala duwan waxay siisaa xujaajta, wakiillada, iyo maamulayaasha marin u helid sugan."
+          },
+          "updates": {
+            "title": "Xog-siin 24/7 ah",
+            "desc": "La soco ogeysiisyada degdegga ah, jadwalka socdaalka, iyo xaaladda dukumentiyadaada."
+          },
+          "support": {
+            "title": "Taageero Midaysan",
+            "desc": "Si toos ah ula xiriir maamulaha socdaalka ama kooxda Hoggaan adiga oo ku jira gudaha barnaamijka."
+          }
+        },
+        "ctaTitle": "Ku bilow safarkaaga Hoggaan E-Portal",
+        "ctaDesc": "Gali nidaamka si aad u hesho qalabkaaga dhijitaalka ah ama aad u xaqiijiso heerka boos qabsashadaada.",
+        "ctaLogin": "Gali"
       }
-    ],
-    "why": {
-      "title": "Sababta Hoggaan Travels",
-      "desc": "Khibrad la aamini karo, raaxo leh, oo si xirfad leh loo hago—xujaaj iyo qoysas.",
-      "cards": [
-        {
-          "title": "La Aamini Karo",
-          "desc": "Qiime cad & jadwal daah-furan."
-        },
-        {
-          "title": "Raaxo",
-          "desc": "Hoteello la soo xulay & gaadiid fudud."
-        },
-        {
-          "title": "Hagid",
-          "desc": "Taageero goobta iyo caawinta cibaadooyinka."
-        },
-        {
-          "title": "Khibrad",
-          "desc": "Xilliyaal badan & iskaashi hawlgal."
-        }
-      ]
     },
-    "process": {
-      "title": "Hoggaan Travels",
-      "desc": "Safarkaaga, talaabo-talaabo",
-      "step1": "Fiiso",
-      "step2": "Duulimaad",
-      "step3": "Hoteel",
-      "step4": "Cibaadooyin",
-      "step5": "Soo laabasho"
-    },
-    "cta": {
-      "title": "Diyaar ma u tahay qorshaha xajka/ Cumrada?",
-      "desc": "Nala soo xidhiidh — jadwalka iyo xirmada saxda ah ayaan kugu hagi doonaa.",
-      "button": "Nala Soo Xidhiidh"
-    },
-    "services": {
-      "title": "Adeegyadeenna",
-      "desc": "Madal mideysan oo loogu talagalay adeegyada safarka & saadka."
-    },
-    "features": {
-      "badge": "Astaamaha Muhiimka ah",
-      "title": "Wax walba oo aad ugu baahan tahay socdaal Xaj & Cumro dijitaal ah oo habsami leh",
-      "desc": "Hoggaan E-Portal wuxuu isku xiraa hujjajka, wakiillada iyo maamulka gudaha hal nidaam ammaan ah — socdaalka, dukumiintiyada iyo lacag-bixinnada.",
-      "items": {
-        "id": {
-          "title": "Aqoonsi Dijitaal ah oo Hujaajka",
-          "desc": "Ka hel aqoonsigaaga gaarka ah, daabac kaarka, oo si degdeg ah u xaqiiji boos celintaada."
+    "whoweare": {
+      "heading": {
+        "eyebrow": "Waa Ayo Kuwan",
+        "title": "Shirkad software oo casri ah oo loogu talagalay ganacsiyada dhabta ah.",
+        "description": "Saad ICT waxay horumarisaa mareegaha, madallada SaaS, nidaamyada macaamiisha, iyo barnaamijyada moobiilka iyadoo xoogga saaraysa hab-dhismeedka, fududeynta isticmaalka, iyo qiimaha fog ee ganacsiga."
+      },
+      "stats": {
+        "founded": {
+          "label": "La aasaasay",
+          "value": "2025"
         },
-        "data": {
-          "title": "Xog Isku-xiran",
-          "desc": "Dhammaan boos celinta, dukumiintiyada iyo xogta safarka waxaa lagu kaydiyaa si ammaan ah oo waqtiga-dhabta ah isu waafaqsan."
+        "deliveries": {
+          "label": "Mashaariic la dhammaystiray",
+          "value": "5+"
         },
-        "payments": {
-          "title": "Lacag-bixino & Invoice-yo",
-          "desc": "La soco lacag-bixinnada, invoice-yada iyo risiidhada — daah-furnaan buuxda talaabo kasta."
+        "products": {
+          "label": "Alaabooyinka & dhismooyinka gaarka ah",
+          "value": "SaaS +"
         },
-        "access": {
-          "title": "Gelitaan La Xaqiijiyay",
-          "desc": "Heerarka oggolaanshaha kala duwan ayaa ka dhigaya in hujjajka, wakiillada iyo maamulku ay helaan waxa ay u baahan yihiin oo keliya."
-        },
-        "updates": {
-          "title": "Cusboonaysiin 24/7 ah",
-          "desc": "La soco digniino degdeg ah, jadwalka socdaalka iyo xaaladda dukumiintiyada."
-        },
-        "support": {
-          "title": "Taageero Isku-dhexjir ah",
-          "desc": "Kala xiriir maamulkaaga safarka ama kooxda Hoggaan si toos ah gudahaa portal-ka."
+        "market": {
+          "label": "Suuqayada ugu weyn",
+          "value": "Soomaaliya"
         }
       },
-      "ctaTitle": "Ka bilaaw safarkaaga Hoggaan E-Portal",
-      "ctaDesc": "Gali akoonkaaga si aad u hesho qalabka dijitaalka ah ama u xaqiijiso xaaladda boos celintaada.",
-      "ctaLogin": "Gali (Login)"
+      "cards": {
+        "websites": {
+          "title": "Mareegaha",
+          "text": "Mareegaha ganacsiga ee heersare ah oo loo dhisay kalsoonida, caddaynta, iyo muuqashada casriga ah."
+        },
+        "systems": {
+          "title": "Nidaamyada",
+          "text": "Madallo dhijitaal ah oo habaysan oo loo qorsheeyay hab-shaqeedka dhabta ah iyo isticmaalka hawlgalka."
+        },
+        "saas": {
+          "title": "SaaS",
+          "text": "Barnaamijyada software-ka ee la ballaarin karo sida Saad Finance iyo mashaariicda mustaqbalka."
+        },
+        "mobile": {
+          "title": "App-ka Moobiilka",
+          "text": "Barnaamijyo moobiil oo ku xiran hawlgallada dhabta ah ee ganacsiga."
+        }
+      }
+    },
+    "whySaadIct": {
+      "heading": {
+        "eyebrow": "Maxaad u Dooranaysaa Saad ICT",
+        "title": "Wuxuu u dhisanyahay suuq u baahan nidaamyo ka fiiqan oo ka tayo wanaagsan dhinaca dhijitaalka.",
+        "description": "Waxaan diiradda saarnaa waxyaabaha ganacsiyadu u baahan yihiin: naqshad casri ah, nidaamyo fudud, gaarsiin habaysan, iyo heer xirfadeed oo dhijitaal ah."
+      },
+      "system_core": {
+        "01": {
+          "title": "Naqshad Casri Ah",
+          "metric": "Muuqaal Cad",
+          "desc": "Muuqaallo nadiif ah oo habaysan, loona dhisay joogtaynta iyo ballaarinta fog."
+        },
+        "02": {
+          "title": "Amniga oo Horreeya",
+          "metric": "Sugid Joogto ah",
+          "desc": "Nidaamyo loo qorsheeyay xakameyn adag, ilaalinta xogta, iyo kalsoonida heer kasta."
+        },
+        "03": {
+          "title": "Mudnaanta Isticmaalaha",
+          "metric": "Fududeynta Shaqada",
+          "desc": "Hab-shaqeed si fiican loo fekeray oo ka dhigaya nidaamyada kuwo sahlan, degdeg ah, oo wax-ku-ool ah."
+        },
+        "04": {
+          "title": "Garsiin Lagu Kalsoon Yahay",
+          "metric": "Diyaar u ah Isticmaal",
+          "desc": "Nidaamyo fadhiya oo si fiican loo tijaabiyey, loona dhisay inay ku shaqeeyaan deegaan kasta."
+        }
+      },
+      "footer": {
+        "status": "ICT Casri Ah",
+        "brand": "Saad ICT"
+      }
+    },
+    "whatWeDo": {
+      "heading": {
+        "eyebrow": "Waxyaabaha aan Qabano",
+        "title": "Nidaamyo dhijitaal ah oo loo qorsheeyay hawlgallo dhab ah, ee aan ahayn kaliya qurux.",
+        "description": "Shaqadayadu waxay ka koobantahay mareegaha, alaabooyinka SaaS, nidaamyada ganacsiga, iyo barnaamijyada moobiilka."
+      },
+      "cards": {
+        "websites": {
+          "title": "Horumarinta Mareegaha",
+          "text": "Mareegaha shirkadaha iyo ganacsiyada oo loo dhisay xawaare, kalsooni, iyo muuqaal soo jiidasho leh."
+        },
+        "systems": {
+          "title": "Nidaamyada Gaarka Ah",
+          "text": "Dashboard-yada gudaha, aaladaha shaqada, iyo madallada hawlgalka ee macaamiisha gaarka u ah."
+        },
+        "saas": {
+          "title": "Madallada SaaS",
+          "text": "Nidaamyo la ballaarin karo oo loogu talagalay hab-shaqeedka habaysan iyo koritaanka alaabta mustaqbalka."
+        },
+        "mobile": {
+          "title": "Barnaamijyada Moobiilka",
+          "text": "Alaabooyin casri ah oo ku xiran adeegyada dhabta ah, isticmaaleyaasha, iyo nidaamka ganacsiga."
+        }
+      },
+      "cta": "Eeg Adeegyadayada"
+    },
+    "systemsShowcase": {
+      "heading": {
+        "eyebrow": "Mashaariicdayada",
+        "title": "Nidaamyada hawlgalka, ee ma ahan kaliya software.",
+        "description": "Saad ICT waxay dhisaysaa nidaamyo ka caawiya ganacsiyada inay ku shaqeeyaan hab-dhismeed, caddaan, iyo xakameyn dheeraad ah."
+      },
+      "featured": {
+        "badge": "Nidaam Gaar ah",
+        "header_mono": "NIDAAMKA LA XUSHAY",
+        "title": "Saad Finance",
+        "description": "Nidaam maaliyadeed oo casri ah oo loogu talagalay biilasha, diiwaannada, iyo habaynta hawlaha maalinlaha ah ee ganacsiga.",
+        "stats": {
+          "workflow": {
+            "label": "Hab-shaqeedka",
+            "value": "Habaysan"
+          },
+          "output": {
+            "label": "Natiijada",
+            "value": "Diyaar u ah PDF"
+          },
+          "useCase": {
+            "label": "Isticmaalka",
+            "value": "Maaliyadda Ganacsiga"
+          }
+        },
+        "buttons": {
+          "access": "Gali Nidaamka",
+          "view": "Eeg Nidaamyada"
+        }
+      },
+      "planned": {
+        "title": "Nidaamyada Qorshaysan",
+        "items": [
+          "Shaqaalaha & Maamulka (HR)",
+          "Xakamaynta Hawlgallada",
+          "Madallada Macaamiisha"
+        ]
+      },
+      "direction": {
+        "title": "Hadafka Nidaamka",
+        "text": "Nidaam kasta waxaa loo qaabeeyey inuu isku dheellitiri fududeynta, hab-shaqeedka, muuqaalka casriga ah, iyo kalsoonida ganacsiga."
+      },
+      "cta": "Eeg Mashaariicdayada"
+    },
+    "howWeWork": {
+      "heading": {
+        "eyebrow": "Habka Farsamada",
+        "title": "Hab-raac habaysan. Garsiin la saadaalin karo.",
+        "description": "Waxaan marnaa marxaladaha sahminta, naqshadaynta, fulinta, iyo joogtaynta — annagoo isku xireyna tayada naqshadda iyo nidaamka."
+      },
+      "phases": {
+        "01": {
+          "title": "Sahminta & Naqshadaynta Nidaamka",
+          "desc": "Waxaan falanqeynaa ujeedooyinka ganacsiga, waxaanan sawirnaa hab-shaqeedka iyo xogta ka hor inta aan la bilaabin horumarinta.",
+          "meta": "FALANQAYNTA",
+          "deliverables": [
+            "Falanqaynta Shuruudaha Ganacsiga",
+            "Aqoonsiga Caqabadaha Shaqada",
+            "Dib-u-eegista Nidaamyada Jira"
+          ]
+        },
+        "02": {
+          "title": "Hagaajinta Sirdoonka",
+          "desc": "Waxaan ku daraynaa caqliga AI meelaha looga baahan yahay si loo kordhiyo waxqabadka loona toosiyo hababka soo noqnoqda.",
+          "meta": "COGNITIVE",
+          "deliverables": [
+            "Tijaabinta Culeyska & Waxqabadka",
+            "Habaynta Isgaarsiinta Luqadda",
+            "Toosinta Habaynta Xogta"
+          ]
+        },
+        "03": {
+          "title": "Dhismaha Nidaamka",
+          "desc": "Waxaan naqshadaynaa dhisme sugan oo la ballaarin karo, kaas oo mudnaanta siiya bedqabka xogta iyo xawaaraha shaqada.",
+          "meta": "INFRASTRUCT",
+          "deliverables": [
+            "Naqshadaynta Database-ka",
+            "Qorshaynta API & Kaabayaasha",
+            "Hagaajinta Xawaaraha & Daahitaanka"
+          ]
+        },
+        "04": {
+          "title": "Injineernimada & Horumarinta",
+          "desc": "Waxaan fulinaa horumarin habaysan annagoo adeegsanayna qalabka ugu casrisan si aan u bixinno nidaamyo sugan.",
+          "meta": "BUILD VELOCITY",
+          "deliverables": [
+            "Horumarinta Frontend & Backend",
+            "Maamulka Xogta & Socodkeeda",
+            "Isku-xirka Nidaamyada Tooska Ah"
+          ]
+        },
+        "05": {
+          "title": "Amniga & Sugidda Tayada",
+          "desc": "Waxaan xaqiijinaa kalsoonida nidaamka annagoo tijaabineyna amniga iyo waxqabadka si aan u gaarno heerarka looga baahan yahay.",
+          "meta": "DEFENSE PROTOCOL",
+          "deliverables": [
+            "Xaqiijinta Amniga & Xakamaynta",
+            "Tijaabinta Tooska ah & Tan Gacanta",
+            "Tijaabinta Culeyska Nidaamka"
+          ]
+        },
+        "06": {
+          "title": "Garsiinta & Joogtaynta",
+          "desc": "Waxaan maamulnaa garsiinta nidaamka, waxaanan bixinaa taageero joogto ah iyo dabagal si loo xaqiijiyo fadhiga nidaamka.",
+          "meta": "MISSION SUCCESS",
+          "deliverables": [
+            "Fulinta Garsiinta Nidaamka",
+            "Dejinta Daba-galka & Diiwaangelinta",
+            "Dayactirka & Hagaajinta Joogtada Ah"
+          ]
+        }
+      },
+      "common": {
+        "keyDeliverables": "Natiijooyinka Muhiimka Ah:",
+        "phasePrefix": "MARXALADDA 0"
+      },
+      "visuals": {
+        "codeExe": "SYSTEM EXE :: 100%",
+        "dataSync": ">>> ISKU-XIRKA XOGTA WAA DHAMMAAD",
+        "cacheInv": ">>> CACHE-KA WAA LA NADIIFIYEY"
+      }
+    },
+    "valueProposition": {
+      "heading": {
+        "eyebrow": "Maxay Tahay Faa'idada",
+        "title": "Sababta ganacsiyadu u doortaan Saad ICT.",
+        "description": "Qiimahayagu wuxuu ku dhisanyahay fulin wanaagsan, waayo-aragnimo isticmaale oo tayo leh, iyo feker nidaamsan."
+      },
+      "cards": {
+        "modern": {
+          "title": "Casri",
+          "text": "Naqshad iyo tayo ka sarreysa heerarka ay ganacsiyo badani u barteen."
+        },
+        "scalable": {
+          "title": "La Ballaarin Karo",
+          "text": "Nidaamyo loo qorsheeyay inay la koraan hawlgallada halkii dib looga dhisik lahaa."
+        },
+        "reliable": {
+          "title": "Lagu Kalsoon Yahay",
+          "text": "Hab-dhismeed cad, joogtaynta tayada, iyo kalsooni dheeraad ah oo xagga isticmaalka ah."
+        },
+        "competitive": {
+          "title": "Tartame",
+          "text": "Natiijo heersare ah oo la socota baahida dhabta ah ee ganacsiga iyo tixgelinta kharashka."
+        }
+      }
+    },
+    "marketFocus": {
+      "heading": {
+        "eyebrow": "Ahmiyadda Suuqa",
+        "title": "Fahamka suuqayada gudaha iyo awoodda garsiinta ballaaran.",
+        "description": "Soomaaliya ayaa ah ahmiyaddayada koowaad, laakiin adeeggayagu ma lahan xuduud juquraafi."
+      },
+      "cards": {
+        "smes": {
+          "title": "Ganacsiyada Soo Koraya",
+          "text": "Shirkadaha u baahan muuqasho dhijitaal ah oo adag iyo hawlgallo habaysan."
+        },
+        "startups": {
+          "title": "Mashaariicda Cusub",
+          "text": "Kooxaha bilaabaya adeegyo casri ah oo u baahan nidaamyo tayo leh bilowga hore."
+        },
+        "regional": {
+          "title": "Macaamiisha Gobolka & Dibadda",
+          "text": "Ganacsiyada ka baxsan Soomaaliya ee raadinaya fulin tayo leh iyo garsiin dabacsan."
+        }
+      },
+      "footer": "Adeeg Gaarsiin"
+    },
+    "projectExperience": {
+      "heading": {
+        "eyebrow": "Khibradda Shaqada",
+        "title": "Shaqooyin la xaqiijiyey. Portfolio koraya.",
+        "description": "Shaqadayadu waxay ka koobantahay mareegaha ganacsiga, madallada hawlgalka, iyo nidaamyada gudaha."
+      },
+      "stats": {
+        "total": "Mashaariicda guud",
+        "live": "Nidaamyada shaqaynaya",
+        "active": "Kuwa gacanta lagu hayo",
+        "categories": "Qaybaha mashaariicda"
+      }
+    },
+    "philosophy": {
+      "heading": {
+        "eyebrow": "Falsafadda",
+        "title": "Waxaan dhisnaa nidaamyo,",
+        "titleSecondary": "ee ma ahan kaliya muuqaallo.",
+        "description": "Alaabta dhijitaalka ah waa inay horumarisaa nidaamka ganacsiga. Waxaan xoogga saarnaa hufnaanta dhismaha iyo socodka shaqada."
+      },
+      "items": {
+        "structured": {
+          "title": "Habaysan",
+          "text": "Lagu dhisay caqli, socod shaqo, iyo dhisme nidaam oo la maarayn karo."
+        },
+        "reliable": {
+          "title": "Lagu Kalsoon Yahay",
+          "text": "Loo qorsheeyay inuu taageero hawlgallada dhabta ah, ee aan ahayn kaliya soo bandhigid."
+        },
+        "efficient": {
+          "title": "Wax-ku-ool",
+          "text": "Diiradda lagu saaray yaraynta caqabadaha iyo kordhinta fulinta ganacsiga."
+        },
+        "nextGen": {
+          "title": "Heer Casri",
+          "text": "Heer sare oo tayo dhijitaal ah oo loogu talagalay suuqa aan u adeegno."
+        }
+      },
+      "footer": "SAAD ICT"
+    },
+    "ctaPanel": {
+      "metadata": "Maanta Bilow",
+      "title": "Dhis wax horay u riixaya",
+      "titleItalic": "ganacsigaaga.",
+      "description": "Laga soo bilaabo nidaamyada gaarka ah ilaa dhismaha SaaS ee la ballaarin karo. Waxaan qeexnaa jihada, waxaanan ku fulinaa si farsamaysan.",
+      "buttons": {
+        "request": "Codso Adeeg",
+        "explore": "Baaritaan Nidaamyada"
+      },
+      "footer": {
+        "brand": "SAAD",
+        "service": "ict solutions"
+      }
+    },
+    "testimonials": {
+      "heading": {
+        "eyebrow": "Markhaatiga Macaamiisha",
+        "title": "Caddaan, tayo, iyo fulin casri ah.",
+        "description": "Diiwaanka iskaashiga gobolka iyo garsiinta nidaamyada."
+      },
+      "labels": {
+        "verified": "Macamiil la Xaqiijiyey"
+      },
+      "data": {
+        "hoggaan": {
+          "name": "Kooxda Hawlgallada",
+          "role": "Maamulka",
+          "quote": "Saad ICT waxay naga caawisay inaan ka guurno hababkii gacanta ee kala daadsanaa, una guurno hab-shaqeed dhijitaal ah oo habaysan. Shaqadoodu waxay noo yeeshay muuqasho dhijitaal ah oo xooggan.",
+          "project": "Mareegta Shirkadda & Xariirka Cumrada"
+        },
+        "hornbox": {
+          "name": "Xafiiska Horumarinta Ganacsiga",
+          "role": "Maamulka",
+          "quote": "Waxa nala yaabka badnaa waxay ahayd awoodda ay u lahaayeen inay fahmaan dhinaca ganacsiga ka hor inta aysan dhisin mareegta. Natiijadu waxay ahayd mid nadiif ah oo lagu kalsoon yahay.",
+          "project": "Mareegta Macluumaadka Shirkadda"
+        },
+        "sunaratinga": {
+          "name": "Kooxda Isku-xirka Mashruuca",
+          "role": "Taageerada Injineernimada",
+          "quote": "Saad ICT waxay mashruuca u wajaheen si habaysan oo samir leh. Kaliya ma aysan naqshadaynayn boggaga, laakiin waxay qaabaynayeen aqoonsiga summaddayada iyo awooddayada farsamo.",
+          "project": "Mareegta Shirkadda Korontada"
+        }
+      }
     }
   },
   "about": {
@@ -173,43 +566,44 @@
     "description": "Bogga rasmiga ah ee Hoggaan Travels"
   },
   "nav": {
-    "brandName": "Hoggaan E-Portal",
-    "logoAlt": "Astaanta Hoggaan E-Portal",
+    "brandName": "Saad ICT",
+    "logoAlt": "Saad ICT Logo",
     "home": "Bogga Hore",
-    "about": "Ku Saabsan Portal-ka",
-    "services": "Adeegyo",
-    "contact": "Caawimaad & Taageero",
-    "login": "Gali",
-    "dashboard": "Dashboard"
+    "about": "Nagu Saabsan",
+    "services": "Adeegyada",
+    "contact": "Nala Soo Xiriir",
+    "projects": "Mashaariicda",
+    "resources": "Kheyraad",
+    "faq": "Su'aalaha",
+    "serviceRequest": "Codsi Adeeg"
   },
-  "portalFooter": {
-    "brand": "Hoggaan E-Portal",
-    "description": "Lafta dhexe ee dijitaalka ah ee Hoggaan Travels — isku xirta qabsashada, maaliyadda, iyo hawlgallada xujaajta hal madal ammaan ah.",
+  "footer": {
+    "tagline": "Nidaamyada & Madallada Dhijitaalka ah",
+    "description": "Waxaan naqshadaynaa oo dhisnaa nidaamyo dhijitaal ah oo la ballaarin karo iyo aaladaha hawlgalka kuwaas oo ka caawiya ururrada inay habeeyaan shaqada, hagaajiyaan adeegga, iyo taageeridda koritaanka fog.",
+    "status": "Nidaamka_Waa_Toos",
     "badges": {
-      "verified": "Nidaam La Xaqiijiyey",
-      "secure": "Gelitaan Amaan ah",
-      "powered": "Ku shaqeeya Next.js + Supabase"
+      "arch": "Dhismaha_Nidaamka",
+      "secure": "Sugidda_Amniga"
     },
-    "groups": {
-      "platform": "Madal",
-      "resources": "Kheyraad"
+    "nav": {
+      "company": {
+        "title": "Shirkadda",
+        "about": "Naguna Saabsan",
+        "projects": "Mashaariicda",
+        "services": "Adeegyada",
+        "contact": "Xiriirka"
+      },
+      "resources": {
+        "title": "Macluumaad",
+        "faq": "Su'aalaha",
+        "request": "Codso Adeeg",
+        "privacy": "Ilaalinta Xogta",
+        "terms": "Shuruudaha Adeegga"
+      }
     },
-    "links": {
-      "about": "Ku Saabsan Portal-ka",
-      "services": "Adeegyo",
-      "support": "Taageero",
-      "login": "Gali",
-      "main": "Bogga Ugu Weyn"
-    },
-    "support": {
-      "title": "Taageerada Nidaamka",
-      "address": "Hoggaan Travels HQ – Muqdisho & Jeddah",
-      "languages": "Afaf Badan (EN / SO / AR)"
-    },
-    "legal": {
-      "rights": "© {year} Hoggaan Travels E-Portal – Xuquuq kasta way xifdisan yihiin",
-      "builtWith": "Waxaa dhisay "
-    }
+    "contactTitle": "Nala Soo Xiriir",
+    "rights": "Xuquuqda oo dhan waa dhowran tahay.",
+    "engineered": "Waxaa dhisay"
   },
   "terms_privacy": {
     "hero": {

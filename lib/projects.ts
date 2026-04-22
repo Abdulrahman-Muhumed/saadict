@@ -79,7 +79,7 @@ export const projects: Project[] = [
     category: "website",
     statKey: "live",
     year: 2026,
-    website: "https://sunaratinga.com",
+    website: "https://solar.sunaratinga.com",
     coverImage: "/projects/sun-aratinga.png",
     coverImageAlt: "Sun Aratinga preview",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],

@@ -7,10 +7,12 @@ export const brand = {
     accent: "#4C8FC4",    // 
   },
   logo: {
-    light: "/brand/saad_logo_light.jpg",
-    dark: "/brand/saad_logo_dark.png",
-    square: "/brand/saad_logo_light2.png",
-    nav_logo: "/brand/saad_logo_light.png",
+    light: "/brand/3.png",
+    dark: "/brand/4.png",
+    square: "/brand/1.png",
+    square2: "/brand/2.png",
+    nav_logo: "/brand/saad_light.png",
+    icon_tab: "/brand/saad_icon_tab.png",
   },
   social: {
     whatsapp: "https://wa.me/252610395112",

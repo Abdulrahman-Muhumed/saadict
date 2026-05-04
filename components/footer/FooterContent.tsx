@@ -79,9 +79,9 @@ export default function FooterEngineered() {
             <div className="lg:col-span-5 space-y-8">
               <div className="space-y-4">
                 <Link href="/" className="flex items-center gap-3">
-                  <div className="p-2 bg-white border border-white/10 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.18)]">
+                  <div className="p-1 bg-white border border-white/10 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.18)]">
                     <Image
-                      src={brand.logo.dark}
+                      src={brand.logo.light}
                       alt={brand.name}
                       width={32}
                       height={32}

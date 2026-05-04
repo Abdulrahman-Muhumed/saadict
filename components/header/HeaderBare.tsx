@@ -57,7 +57,7 @@ export default function HeaderEngineered() {
       >
         {/* ── SYSTEM IDENTITY ── */}
         <div className="flex items-center gap-8">
-          <Link href="/" className="group flex items-center gap-3 hover:opacity-80">
+          <Link href="/" className="group flex items-center  hover:opacity-80">
             {mounted && (
               <div className="relative h-9 w-9 overflow-hidden">
                 <Image
@@ -71,7 +71,7 @@ export default function HeaderEngineered() {
               </div>
             )}
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#1F2933] dark:text-white">
-              {brand.name}
+              AAD ICT
             </span>
           </Link>
         </div>

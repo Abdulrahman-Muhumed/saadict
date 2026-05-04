@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   description:
     "Saad ICT is a Somalia-based / Global technology company specializing in the design and development of modern digital systems.",
   icons: {
-    icon: brand.logo.dark,
-    apple: brand.logo.dark,
+    icon: brand.logo.icon_tab,
+    apple: brand.logo.icon_tab,
   },
   keywords: [
     "Saad ICT",

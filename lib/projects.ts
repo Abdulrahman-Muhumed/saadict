@@ -25,7 +25,7 @@ export const projects: Project[] = [
     statKey: "live",
     year: 2025,
     website: "https://finance.saadict.com",
-    coverImage: "/brand/saad_logo_dark.png",
+    coverImage: "/brand/3.png",
     featured_img: "/brand/saad_logo_dark.png",
     coverImageAlt: "finance.saadict.com dashboard",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase"],

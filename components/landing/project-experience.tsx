@@ -12,11 +12,11 @@ export default function ProjectExperience() {
   const totalProjects = projects.length;
 
   const liveProjects = projects.filter(
-    (p) => p.statKey === "Live" || p.statKey === "Released"
+    (p) => p.statKey === "Live" || p.statKey === "live"
   ).length;
 
   const ongoingProjects = projects.filter(
-    (p) => p.statKey === "In Development"
+    (p) => p.statKey === "upcoming" || p.statKey === "coming_soon"
   ).length;
 
   const categoriesCount = new Set(projects.map((p) => p.category)).size;
